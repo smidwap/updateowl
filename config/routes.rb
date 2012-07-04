@@ -6,4 +6,9 @@ UpdateMe::Application.routes.draw do
   devise_for :users
 
   root to: "home#dashboard"
+
+  resources :students do
+    get :preview, on: :member
+    resources :messages, only: :new
+  end
 end

@@ -19,4 +19,12 @@
 
   %body
     = yield
+    
+    :javascript
+      window.App = {
+        Views: {},
+        Models: {},
+        Collections: {},
+        Routers: {}
+      }
     = javascript_include_tag "application"

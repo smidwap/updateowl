@@ -1,2 +1,5 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+.student_picker
+  = link_to "new update", new_student_message_path(1), remote: true
+
+.message
+  = link_to "Student", preview_student_path(1), remote: true
