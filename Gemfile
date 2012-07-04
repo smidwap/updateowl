@@ -41,8 +41,6 @@ gem "mysql2"
 gem "haml"
 gem "haml-rails"
 gem "bootstrap-sass", "~> 2.0.2"
-gem "simple_form"
-gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"
 gem "devise"
 gem "cancan"
 gem "activeadmin"
@@ -54,6 +52,7 @@ gem "capistrano_colors", :require => false
 gem "therubyracer", :require => false
 gem "foreman", :require => false
 gem "thin", :require => false
+
 group :development, :test do
   gem "yard", :require => false
   gem "simplecov", :require => false
