@@ -18,32 +18,5 @@
     = yield(:head)
 
   %body
-    .container
-
-      .navbar.navbar-fixed-top
-        .navbar-inner
-          .container
-            = link_to "App_Name", root_path, :class => "brand"
-
-            %ul.nav.pull-right
-              - if current_user
-                %li= link_to "Logout", destroy_user_session_path, :method => :delete
-              - else
-                %li= link_to "Login", new_user_session_path
-
-
-      - if flash[:notice]
-        .alert.alert-info
-          %a.close{"data-dismiss" => "alert"}×
-          = flash[:notice]
-      - if flash[:error]
-        .alert.alert-error
-          %a.close{"data-dismiss" => "alert"}×
-          = flash[:error]
-
-      = yield
-      
-    #footer
-      .p &copy; 2012 DeveloperTown
-
+    = yield
     = javascript_include_tag "application"
