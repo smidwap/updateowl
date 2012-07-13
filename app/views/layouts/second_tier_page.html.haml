@@ -1,0 +1,9 @@
+.second_tier_page.modal.hide{class: @second_tier_page_class}
+  - if content_for? :title
+    .modal-header
+      = link_to "x", "#", class: "close", data: {dismiss: "modal"}
+      %h3= yield :title
+  .modal-body
+    = yield
+  - if content_for? :footer
+    .modal-footer= yield :footer

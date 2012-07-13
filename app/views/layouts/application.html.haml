@@ -18,13 +18,11 @@
     = yield(:head)
 
   %body
+    = link_to "new update", select_user_students_path(current_user), remote: true, class: 'student_selector_link'
+    = link_to "Student", preview_student_path(1), remote: true
+
     = yield
-    
+
     :javascript
-      window.App = {
-        Views: {},
-        Models: {},
-        Collections: {},
-        Routers: {}
-      }
+      window.App = {}
     = javascript_include_tag "application"

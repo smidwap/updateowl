@@ -52,6 +52,7 @@ gem "capistrano_colors", :require => false
 gem "therubyracer", :require => false
 gem "foreman", :require => false
 gem "thin", :require => false
+gem "jquery-ui-rails"
 
 group :development, :test do
   gem "yard", :require => false

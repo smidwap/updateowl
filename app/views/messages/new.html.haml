@@ -1,3 +1,11 @@
-.modal.hide
-  .modal-body
-    Testing
+- content_for :title do
+  New Update for #{@student.full_name}
+
+- if @student.has_parents?
+  = form_for([@student, @message], remote: true) do |f|
+    = @message.errors.full_messages.to_sentence
+    = f.hidden_field :sender_id
+    = f.text_area :body
+    = f.submit
+- else
+  Brian has no parents! You should probably add some.

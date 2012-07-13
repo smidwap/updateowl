@@ -1,0 +1,18 @@
+- @second_tier_page_class = 'student_selector'
+
+- content_for :title do
+  New Update
+
+.autocomplete_container
+  = text_field_tag("autocomplete", nil, data: {students: autocomplete_data_for_students(@user.students)}, placeholder: "Send an update for...")
+
+- if @user.messages.count == 0
+  .no_previous_messages.call_to_action
+    %header
+      %h3 Ready to send your first update?
+    .call_to_action_body
+      %p It's easy!
+      %ol
+        %li Find the student whose parents you want to update
+        %li Write a <u>short update</u> to send the student's parents
+        %li The update will be <u>automatically delivered</u> to the parents by phone or email, depending on their preference

@@ -9,12 +9,26 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require jquery.ui.all
  *= require_tree .
 */
 /* Insert any bootstrap overrides -here- before the bootstrap @import */
+
+$baseFontSize: 14px;
 
 /* Fix up bootstrap image paths */
 $iconSpritePath: image-path('glyphicons-halflings.png');
 $iconWhiteSpritePath: image-path('glyphicons-halflings-white.png');
 @import "bootstrap";
 @import "bootstrap-responsive";
+
+.call_to_action {
+  padding: 10px;
+  background: $red;
+  color: $grayLighter;
+  @include border-radius(6px);
+
+  header {
+    margin-bottom: 10px;
+  }
+}

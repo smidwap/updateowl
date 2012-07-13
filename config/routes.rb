@@ -9,6 +9,13 @@ UpdateMe::Application.routes.draw do
 
   resources :students do
     get :preview, on: :member
-    resources :messages, only: :new
+    
+    resources :messages, only: [:new, :create]
+  end
+
+  resources :users do
+    resources :students, only: [] do
+      get :select, on: :collection
+    end
   end
 end

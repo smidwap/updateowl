@@ -1,5 +1,11 @@
 class StudentsController < ApplicationController
+  load_and_authorize_resource :user
+
+  layout "second_tier_page"
+
   def preview
-    render layout: nil
+  end
+
+  def select
   end
 end
