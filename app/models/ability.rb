@@ -7,5 +7,9 @@ class Ability
     end
 
     can :manage, User, id: user.id
+
+    can :manage, Student do |student|
+      user.has_student?(student)
+    end
   end
 end

@@ -1,16 +1,16 @@
 .sidebox
-  %header Your Overview
+  %header Updates Overview
   .sidebox_body
     .stats.three
       .stat_container
         .stat
-          .number= link_to "128", user_path(user)
+          .number= blank_or_link_for_stat(user.messages.count, user_path(user))
           .description TOTAL
       .stat_container
         .stat
-          .number= link_to "27", "#"
+          .number= blank_or_link_for_stat(user.num_messages_last_week, "#")
           .description LAST WEEK
       .stat_container
         .stat
-          .number= link_to "7", "#"
+          .number= blank_or_link_for_stat(user.num_messages_unchecked, "#")
           .description UNCHECKED

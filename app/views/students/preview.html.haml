@@ -1,4 +1,5 @@
-.modal.hide
-  .modal-body
-    This is a student's modal
-    = link_to "New Message", new_student_message_path(1), remote: true
+- content_for :title do
+  = link_to @student.full_name, student_path(@student)
+
+.messages
+  = render partial: "shared/message", collection: @student.messages
