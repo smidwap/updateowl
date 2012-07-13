@@ -4,6 +4,8 @@ class CreateMessages < ActiveRecord::Migration
       t.references :sender
       t.references :student
       t.text :body
+
+      t.timestamps
     end
   end
 end

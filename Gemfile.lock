@@ -117,11 +117,15 @@ GEM
     hashie (1.2.0)
     highline (1.6.13)
     hike (1.2.1)
+    http_parser (0.1.3)
     http_parser.rb (0.5.3)
     i18n (0.6.0)
     inherited_resources (1.3.1)
       has_scope (~> 0.5.0)
       responders (~> 0.6)
+    jaws (0.6.0)
+      http_parser (= 0.1.3)
+      rack (>= 1.0.0)
     journey (1.0.4)
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
@@ -171,6 +175,8 @@ GEM
     pry-nav (0.2.1)
       pry (~> 0.9.9)
     rack (1.4.1)
+    rack-bridge (0.6.1)
+      jaws (= 0.6.0)
     rack-cache (1.2)
       rack (>= 0.4)
     rack-ssl (1.3.2)
@@ -297,6 +303,7 @@ DEPENDENCIES
   mysql2
   pry
   pry-nav
+  rack-bridge
   rails (= 3.2.3)
   rails3-generators
   rspec-rails

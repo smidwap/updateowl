@@ -20,7 +20,14 @@ $baseFontSize: 14px;
 $iconSpritePath: image-path('glyphicons-halflings.png');
 $iconWhiteSpritePath: image-path('glyphicons-halflings-white.png');
 @import "bootstrap";
-@import "bootstrap-responsive";
+
+.container {
+  margin-top: 40px;
+
+  .main {
+    margin-right: 20px;
+  }
+}
 
 .call_to_action {
   padding: 10px;
@@ -31,4 +38,87 @@ $iconWhiteSpritePath: image-path('glyphicons-halflings-white.png');
   header {
     margin-bottom: 10px;
   }
+}
+
+.event_container {
+  border-bottom: 1px solid $grayLighter;
+  margin-bottom: 10px;
+
+  > header {
+    @include clearfix();
+    font-weight: bold;
+
+    .subject {
+      float: left;
+      width: 70%;
+    }
+
+    time {
+      float: left;
+      width: 30%;
+      text-align: right;
+    }
+  }
+
+  .event_body {
+    padding: 10px;
+  }
+}
+
+.sidebox {
+  @include border-radius(5px);
+  border: 2px solid $grayLighter;
+
+  > header {
+    background: $grayLighter;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  > header, > .sidebox_body {
+    padding: 10px;
+  }
+}
+
+.stats {
+  @include clearfix();
+
+  &.three > .stat_container {
+    width: 33%;
+  }
+
+  &.two > .stat_container {
+    width: 50%;
+  }
+
+  > .stat_container {
+    float: left;
+
+    > .stat {
+      padding: 5px;
+      border-bottom: 1px solid $grayLighter;
+      border-right: 1px solid $grayLighter;
+      text-align: center;
+
+      > .number {
+        font-size: 24px;
+      }
+
+      > .description {
+        margin-top: 8px;
+        font-size: 10px;
+        color: $grayLight;
+      }
+    }
+
+    &:last-child > .stat {
+      border-right: none;
+    }
+  }
+}
+
+h1 {
+  font-size: 24px;
+  color: $red;
+  margin-bottom: 10px;
 }

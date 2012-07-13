@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :messages, foreign_key: :sender_id
+  has_many :messages, foreign_key: :sender_id, order: "created_at DESC"
   has_many :classroom_relationships
   has_many :students, through: :classroom_relationships
 

@@ -65,6 +65,7 @@ group :development, :test do
   gem "growl", :require => false
   gem "pry"
   gem "pry-nav"
+  gem "rack-bridge"
 end
 
 group :test do

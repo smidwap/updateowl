@@ -1,0 +1,41 @@
+@import 'bootstrap/mixins';
+@import 'bootstrap/variables';
+
+.message_container {
+  @include clearfix();
+  border-bottom: 1px solid $grayLighter;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+
+  > .message {
+    float: left;
+    width: 80%;
+
+    span.student {
+      color: #000;
+      font-weight: bold;
+    }
+
+    span.message_body {
+      color: $grayLight;
+    }
+
+    &:hover {
+      a {
+        text-decoration: none;
+
+        span.student {
+          color: $linkColor;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  time {
+    float: left;
+    width: 20%;
+    text-align: right;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,6 @@
+.event_container.message
+  %header
+    .subject
+      You sent an update for #{link_to(message.student.full_name, preview_student_path(message.student), remote: true)}
+    %time= time_or_date_format(message.created_at)
+  .event_body= message.body

@@ -59,5 +59,7 @@ module UpdateMe
       g.test_framework :rspec, :views => false
       g.template_engine :haml
     end
+    
+    config.time_zone = "Eastern Time (US & Canada)"
   end
 end

@@ -1,0 +1,8 @@
+@import 'bootstrap/mixins';
+@import 'bootstrap/variables';
+
+.event_container.message {
+  > .event_body {
+    color: $grayLight;
+  }
+}
