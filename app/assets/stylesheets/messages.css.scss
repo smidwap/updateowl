@@ -38,3 +38,36 @@ table.messages {
     }
   }
 }
+
+section.recent_updates {
+  margin-top: 20px;
+}
+
+.new_message_container {
+  padding: 10px;
+  border: 1px solid $grayLight;
+  background: $grayLighter;
+  @include border-radius($standardRadius);
+
+  .inner_box {
+    margin-bottom: 10px;
+    background: white;
+    border: 1px solid $gray;
+    padding: 10px;
+    @include border-radius($standardRadius);
+  }
+
+  form {
+    margin-bottom: 0;
+  }
+
+  textarea {
+    box-sizing: border-box;
+    width: 100%;
+    height: 60px;
+    background: none;
+    @include box-shadow(none);
+    border: none;
+    resize: none;
+  }
+}

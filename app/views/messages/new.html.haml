@@ -1,11 +1,20 @@
+- @second_tier_page_class = 'new_message'
+
 - content_for :title do
   New Update for #{@student.full_name}
 
 - if @student.has_parents?
-  = form_for([@student, @message], remote: true) do |f|
-    = @message.errors.full_messages.to_sentence
-    = f.hidden_field :sender_id
-    = f.text_area :body
-    = f.submit
+  .new_message_container
+    = form_for([@student, @message], remote: true) do |f|
+      = @message.errors.full_messages.to_sentence
+      = f.hidden_field :sender_id
+      .inner_box
+        = f.text_area :body, placeholder: "Write an update for #{@student.first_name}'s parents..."
+      .choices
+        = f.submit "Send this Message", class: "btn btn-success btn-small"
+        or
+        = link_to "Cancel", "#", data: {dismiss: "modal"}
 - else
   Brian has no parents! You should probably add some.
+
+= render "shared/recent_messages", student: @student

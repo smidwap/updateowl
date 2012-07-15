@@ -7,7 +7,7 @@
   .stat_container
     .stat
       .number 18
-      .description SENT
+      .description SENT BY ALL
   .stat_container
     .stat
       .number 3
@@ -17,9 +17,7 @@
       .number 2
       .description UNCHECKED
 
-%section
-  %header Recent Updates
-  = render "shared/message_list", messages: @student.messages[0..2]
+= render "shared/recent_messages", student: @student
 
 %p.next_steps
   = link_to "See more of #{@student.first_name}'s updates", student_path(@student)
