@@ -1,4 +1,7 @@
 class App.SecondTierPage extends Backbone.View
+  events:
+    'submit form': 'remove'
+    
   update: (fragment) ->
     @remove()
     @setElement fragment

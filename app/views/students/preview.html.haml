@@ -19,7 +19,7 @@
 
 %section
   %header Recent Updates
-  = render "shared/message_list", messages: @student.messages
+  = render "shared/message_list", messages: @student.messages[0..2]
 
 %p.next_steps
   = link_to "See more of #{@student.first_name}'s updates", student_path(@student)

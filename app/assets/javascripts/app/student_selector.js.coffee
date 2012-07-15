@@ -1,10 +1,10 @@
 class App.StudentSelector extends Backbone.View
   initialize: (options) ->
-    @render()
-
     super options
 
-  render: ->
+    @setup()
+
+  setup: ->
     @$autocomplete = @$ 'input'
 
     @setup_autocomplete()

@@ -7,5 +7,5 @@
 //= require_tree .
 
 $ ->
-  App.page = new App.Page;
-  App.main = new App.Main;
+  App.page = new App.Page
+  App.main = new App.Main

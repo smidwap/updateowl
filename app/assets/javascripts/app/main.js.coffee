@@ -13,5 +13,9 @@ class App.Main extends Backbone.View
     .appendTo(@$el)
     .click()
 
+  alert: (content) ->
+    new App.Alert
+      el: $(content).prependTo @$('.alert_container')
+
   redirect: (url) ->
     window.location = url
