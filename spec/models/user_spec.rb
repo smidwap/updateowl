@@ -20,4 +20,14 @@ describe User do
       @user.has_student?(@student).should == false
     end
   end
+
+  describe "#messages_last_week" do
+    it "should return only messages sent last week from this user" do
+      message_last_week = create(:message, sender: @user)
+      message_last_week.update_attribute(:created_at, 1.week.ago.beginning_of_week)
+      message_this_week = create(:message, sender: @user)
+
+      @user.messages_last_week.should == [message_last_week]
+    end
+  end
 end
