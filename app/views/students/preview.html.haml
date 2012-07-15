@@ -1,5 +1,4 @@
 - content_for :title do
   = link_to @student.full_name, student_path(@student)
 
-.messages
-  = render partial: "shared/message", collection: @student.messages
+= render "shared/message_list", messages: @student.messages

@@ -3,4 +3,8 @@ class Message < ActiveRecord::Base
   belongs_to :student
 
   attr_accessible :body, :sender_id
+
+  def checked?
+    true
+  end
 end

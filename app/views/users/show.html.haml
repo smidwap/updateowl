@@ -2,5 +2,4 @@
   = render "shared/user_overview", user: @user
 
 %h1 Updates
-.messages
-  = render partial: "shared/message", collection: @user.messages
+= render "shared/message_list", messages: @user.messages

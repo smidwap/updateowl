@@ -1,41 +1,51 @@
 @import 'bootstrap/mixins';
 @import 'bootstrap/variables';
+@import 'variables';
 
-.message_container {
-  @include clearfix();
-  border-bottom: 1px solid $grayLighter;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+table.messages {
+  tbody > tr > td {
+    border: none;
 
-  > .message {
-    float: left;
-    width: 80%;
-
-    span.student {
-      color: #000;
-      font-weight: bold;
+    &:first-child {
+      @include border-radius($standardRadius 0 0 $standardRadius);
     }
 
-    span.message_body {
-      color: $grayLight;
+    &:last-child {
+      @include border-radius(0 $standardRadius $standardRadius 0);
     }
 
-    &:hover {
-      a {
-        text-decoration: none;
+    &.message {
+      span.student {
+        color: #000;
+        font-weight: bold;
+      }
 
-        span.student {
-          color: $linkColor;
-          text-decoration: underline;
+      span.message_body {
+        color: $grayLight;
+      }
+
+      &:hover {
+        a {
+          text-decoration: none;
+
+          span.student {
+            color: $linkColor;
+            text-decoration: underline;
+          }
         }
       }
     }
-  }
 
-  time {
-    float: left;
-    width: 20%;
-    text-align: right;
-    font-weight: bold;
+    &.time {
+      font-weight: bold;
+    }
+
+    &.checked_status > .checked_circle {
+      width: 22px;
+      line-height: 22px;
+      @include border-radius(11px);
+      text-align: center;
+      background: $green;
+    }
   }
 }
