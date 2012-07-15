@@ -1,5 +1,6 @@
 - content_for :aside do
   = render "shared/user_overview", user: @user
 
-%h1 Updates
-= render "shared/message_list", messages: @user.messages
+%section.messages
+  %header Updates Archive
+  = render "shared/message_list", messages: @user.messages

@@ -1,6 +1,31 @@
 @import 'bootstrap/mixins';
 @import 'bootstrap/variables';
 
+.event_container {
+  border-bottom: 1px solid $grayLighter;
+  margin-bottom: 10px;
+
+  > header {
+    @include clearfix();
+    font-weight: bold;
+
+    .subject {
+      float: left;
+      width: 70%;
+    }
+
+    time {
+      float: left;
+      width: 30%;
+      text-align: right;
+    }
+  }
+
+  .event_body {
+    padding: 10px;
+  }
+}
+
 .event_container.message {
   > .event_body {
     color: $grayLight;

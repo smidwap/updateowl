@@ -27,31 +27,6 @@ $baseFontSize: 14px;
   }
 }
 
-.event_container {
-  border-bottom: 1px solid $grayLighter;
-  margin-bottom: 10px;
-
-  > header {
-    @include clearfix();
-    font-weight: bold;
-
-    .subject {
-      float: left;
-      width: 70%;
-    }
-
-    time {
-      float: left;
-      width: 30%;
-      text-align: right;
-    }
-  }
-
-  .event_body {
-    padding: 10px;
-  }
-}
-
 .sidebox {
   @include border-radius(5px);
   border: 2px solid $grayLighter;
@@ -104,8 +79,14 @@ $baseFontSize: 14px;
   }
 }
 
-h1 {
-  font-size: 24px;
+section > header {
+  font-size: 16px;
   color: $red;
   margin-bottom: 10px;
+}
+
+.modal {
+  p.next_steps {
+    text-align: center;
+  }
 }
