@@ -23,17 +23,6 @@ table.messages {
       span.message_body {
         color: $grayLight;
       }
-
-      &:hover {
-        a {
-          text-decoration: none;
-
-          span.student {
-            color: $linkColor;
-            text-decoration: underline;
-          }
-        }
-      }
     }
 
     &.time {

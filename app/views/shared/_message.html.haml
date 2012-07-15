@@ -1,8 +1,7 @@
 %tr
   %td.message
-    = link_to preview_student_path(message.student), remote: true do
-      %span.student= message.student.full_name
-      %span.message_body= "- #{message.body}"
+    %span.student= message.student.full_name
+    %span.message_body= "- #{message.body}"
   %td.time= time_or_date_format(message.created_at)
   %td.checked_status
     - if message.checked?
