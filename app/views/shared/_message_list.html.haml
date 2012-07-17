@@ -1,3 +1,7 @@
 %table.table.messages
   %tbody
-    = render partial: "shared/message", collection: messages
+    - if messages.count > 0
+      = render partial: "shared/message", collection: messages
+    - else
+      %tr
+        %td.no_messages{colspan: "3"} There aren't any messages to show you yet!

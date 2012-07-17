@@ -2,6 +2,6 @@
   = render "shared/user_overview", user: current_user
 
 %section.events
-  %header What's happened recently
+  %header Recent Activity
   - current_user.messages.each do |message|
     = render "message", message: message

@@ -3,7 +3,7 @@
     %span.student= message.student.full_name
     %span.message_body= "- #{message.body}"
   %td.time= time_or_date_format(message.created_at)
-  %td.checked_status
+  %td.status
     - if message.checked?
-      .checked_circle
-        %i.icon-check.icon-white
+      .circle_icon.green
+        %i.icon-ok.icon-white

@@ -29,12 +29,10 @@ table.messages {
       font-weight: bold;
     }
 
-    &.checked_status > .checked_circle {
-      width: 22px;
-      line-height: 22px;
-      @include border-radius(11px);
+    &.no_messages {
       text-align: center;
-      background: $green;
+      padding: 10px;
+      font-style: italic;
     }
   }
 }
@@ -44,30 +42,32 @@ section.recent_updates {
 }
 
 .new_message_container {
-  padding: 10px;
-  border: 1px solid $grayLight;
-  background: $grayLighter;
-  @include border-radius($standardRadius);
-
-  .inner_box {
-    margin-bottom: 10px;
-    background: white;
-    border: 1px solid $gray;
-    padding: 10px;
-    @include border-radius($standardRadius);
-  }
+  padding-bottom: 20px;
+  border-bottom: 1px solid $grayLighter;
 
   form {
     margin-bottom: 0;
-  }
+    padding: 10px;
+    border: 1px solid $grayLight;
+    background: $grayLighter;
+    @include border-radius($standardRadius);
 
-  textarea {
-    box-sizing: border-box;
-    width: 100%;
-    height: 60px;
-    background: none;
-    @include box-shadow(none);
-    border: none;
-    resize: none;
+    .inner_box {
+      margin-bottom: 10px;
+      background: white;
+      border: 1px solid $gray;
+      padding: 10px;
+      @include border-radius($standardRadius);
+
+      textarea {
+        box-sizing: border-box;
+        width: 100%;
+        height: 60px;
+        background: none;
+        @include box-shadow(none);
+        border: none;
+        resize: none;
+      }
+    }
   }
 }
