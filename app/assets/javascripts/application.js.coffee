@@ -9,3 +9,5 @@
 $ ->
   App.page = new App.Page
   App.main = new App.Main
+
+  $('tr.message_container td.status .circle_icon').tooltip()

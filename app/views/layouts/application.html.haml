@@ -23,7 +23,7 @@
         .span8
           .main
             .alert_container
-            = yield
+            = content_for?(:content) ? yield(:content) : yield
         .span4
           .aside
             = yield(:aside)

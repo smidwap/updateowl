@@ -4,11 +4,11 @@
     .stats.three
       .stat_container
         .stat
-          .number= blank_or_link_for_stat(user.messages.count, user_path(user))
+          .number= blank_or_link_for_stat(user.messages.count, user_messages_path(user))
           .description TOTAL
       .stat_container
         .stat
-          .number= blank_or_link_for_stat(user.num_messages_last_week, "#")
+          .number= blank_or_link_for_stat(user.num_messages_last_week, last_week_user_messages_path(user))
           .description LAST WEEK
       .stat_container
         .stat

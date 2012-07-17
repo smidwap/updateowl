@@ -1,9 +1,9 @@
-%tr
+%tr.message_container
   %td.message
     %span.student= message.student.full_name
     %span.message_body= "- #{message.body}"
   %td.time= time_or_date_format(message.created_at)
   %td.status
     - if message.checked?
-      .circle_icon.green
+      .circle_icon.green{rel: "tooltip", title: "This update has been checked"}
         %i.icon-ok.icon-white

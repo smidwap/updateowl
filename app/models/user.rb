@@ -11,6 +11,13 @@ class User < ActiveRecord::Base
     def in_date_range(start_date, end_date)
       where(created_at: start_date..end_date)
     end
+
+    def last_week
+      in_date_range(
+        1.week.ago.beginning_of_week.to_s,
+        1.week.ago.end_of_week.to_s
+      )
+    end
   end
   has_many :classroom_relationships
   has_many :students, through: :classroom_relationships
@@ -20,13 +27,6 @@ class User < ActiveRecord::Base
 
   def has_student?(student)
     students.include?(student)
-  end
-
-  def messages_last_week
-    messages.in_date_range(
-      1.week.ago.beginning_of_week.to_s,
-      1.week.ago.end_of_week.to_s
-    )
   end
 
   def messages_unchecked

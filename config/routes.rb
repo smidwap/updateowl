@@ -17,5 +17,10 @@ UpdateMe::Application.routes.draw do
     resources :students, only: [] do
       get :select, on: :collection
     end
+
+    resources :messages, controller: 'user_messages' do
+      get :last_week, on: :collection
+      get :unchecked, on: :collection
+    end
   end
 end

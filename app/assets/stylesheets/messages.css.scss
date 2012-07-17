@@ -27,6 +27,7 @@ table.messages {
 
     &.time {
       font-weight: bold;
+      white-space: nowrap;
     }
 
     &.no_messages {
@@ -39,6 +40,21 @@ table.messages {
 
 section.recent_updates {
   margin-top: 20px;
+}
+
+section.messages {
+  .filter_alert {
+    padding: 8px;
+    margin: 15px 0;
+    @include border-radius($standardRadius);
+    background: #000;
+    color: #fff;
+
+    a {
+      color: #fff;
+      text-decoration: underline;
+    }
+  }
 }
 
 .new_message_container {
