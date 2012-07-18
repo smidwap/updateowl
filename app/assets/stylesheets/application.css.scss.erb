@@ -6,9 +6,9 @@
 /* Insert any bootstrap overrides -here- before the bootstrap @import */
 $baseFontSize: 14px;
 
+@import "variables";
 @import "bootstrap";
 @import "mixins";
-@import "variables";
 
 body {
   background: url(<%= image_path('ricepaper.png') %>);
@@ -34,10 +34,7 @@ body {
 }
 
 nav.top_nav {
-  padding: 10px;
-  margin-bottom: 20px;
-  background: $grayLighter;
-  @include border-radius($standardRadius);
+  margin-bottom: 25px;
 
   a {
     margin-right: 10px;
