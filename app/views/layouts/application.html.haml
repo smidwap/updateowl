@@ -18,18 +18,22 @@
     = yield(:head)
 
   %body
-    .container
-      .row
-        .span8
-          .main
-            .alert_container
-            = content_for?(:content) ? yield(:content) : yield
-        .span4
-          .aside
-            = yield(:aside)
-
-      = link_to "new update", new_student_message_path(1), remote: true, class: 'student_selector_link'
-      = link_to "Home", root_path
+    .container#outer
+      %header
+      .container#inner
+        %nav.top_nav
+          = link_to "New Update", select_user_students_path(current_user), remote: true, class: "nav_new_update"
+          = link_to "Recent Activity", root_path, class: "nav_recent_activity"
+          = link_to "Updates", user_messages_path(current_user), class: "nav_updates"
+          = link_to "Students", "#", class: "nav_students"
+        .row
+          .span8
+            .main
+              .alert_container
+              = content_for?(:content) ? yield(:content) : yield
+          .span4
+            .aside
+              = yield(:aside)
     :javascript
       window.App = {}
     = javascript_include_tag "application"

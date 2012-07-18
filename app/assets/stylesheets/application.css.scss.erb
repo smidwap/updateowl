@@ -8,12 +8,84 @@ $baseFontSize: 14px;
 
 @import "bootstrap";
 @import "mixins";
+@import "variables";
 
-.container {
-  margin-top: 40px;
+body {
+  background: url(<%= image_path('ricepaper.png') %>);
+}
 
+.container#outer {
+  margin-top: 20px;
+  width: 982px;
+
+  .container#inner {
+    padding: 20px;
+    border: 1px solid $grayLighter;
+    @include border-radius($standardRadius);
+    @include box-shadow(0 0 4px #666);
+    background: #fff;
+  }
+}
+
+.container#inner {
   .main {
     margin-right: 20px;
+  }
+}
+
+nav.top_nav {
+  padding: 10px;
+  margin-bottom: 20px;
+  background: $grayLighter;
+  @include border-radius($standardRadius);
+
+  a {
+    margin-right: 10px;
+    color: $gray;
+    opacity: 0.6;
+    text-shadow: #fff 0 1px;
+
+    &.nav_new_update {
+      font-weight: bold;
+      padding-right: 10px;
+      border-right: 1px solid #ccc;
+    }
+  }
+
+  &:hover {
+    a {
+      opacity: 1.0;
+    }
+  }
+}
+
+#nav {
+  opacity: 0.6;
+  text-shadow: #fff 0 1px;
+
+  &:hover {
+    opacity: 1.0;
+  }
+
+  a {
+    color: #666;
+
+    &:hover {
+      color: black;
+    }
+  }
+
+  .new_update {
+    padding-right: 10px;
+    border-right: 1px solid #666;
+  }
+
+  .others {
+    padding-left: 10px;
+
+    a {
+      margin-right: 10px;
+    }
   }
 }
 
