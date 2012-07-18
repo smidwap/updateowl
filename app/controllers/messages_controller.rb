@@ -5,7 +5,8 @@ class MessagesController < ApplicationController
 
   def new
     @student = Student.find(params[:student_id])
-    @message = @student.messages.new
+    @message = Message.new
+    @message.student = @student
     @message.sender = current_user
 
     authorize! :manage, @message
