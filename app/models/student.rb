@@ -1,5 +1,5 @@
-class Student < ActiveRecord::Base
-  has_many :messages
+class Student < ActiveRecord::Base  
+  include HasManyMessages
 
   attr_accessible :first_name, :last_name
 

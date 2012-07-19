@@ -5,9 +5,9 @@
 
 - if @student.has_parents?
   .new_message_container
-    = form_for([@student, @message], remote: true) do |f|
+    = form_for([@student, @message], url: student_messages_path(@student), remote: true) do |f|
       = @message.errors.full_messages.to_sentence
-      = f.hidden_field :sender_id
+      = f.hidden_field :user_id
       .inner_box
         = f.text_area :body, placeholder: "Write an update to #{@student.first_name}'s parents..."
       .choices

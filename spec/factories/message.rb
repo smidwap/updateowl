@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :message do
-    sender factory: :user
+    user
     student
   end
 end

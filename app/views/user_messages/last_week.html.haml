@@ -1,3 +1,4 @@
 - content_for :filter_alert do
-  These are the updates you sent <b>Last Week</b>. You can #{link_to "view all updates", user_messages_path(@user)}  instead
+  These are the updates you sent <b>Last Week</b>. You can #{link_to "view all updates", user_messages_path(@user)} instead
+
 = render "shared/message_list", messages: @user.messages.last_week

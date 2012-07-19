@@ -1,11 +1,11 @@
-.sidebox
-  %header Updates Overview
+.sidebox.user_overview
+  %header Your Overview
   .sidebox_body
     .stats.three
       .stat_container
         .stat
           .number= blank_or_link_for_stat(user.messages.count, user_messages_path(user))
-          .description TOTAL
+          .description TOTAL SENT
       .stat_container
         .stat
           .number= blank_or_link_for_stat(user.num_messages_last_week, last_week_user_messages_path(user))

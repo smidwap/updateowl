@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(:version => 20120712040857) do
   end
 
   create_table "messages", :force => true do |t|
-    t.integer  "sender_id"
+    t.integer  "user_id"
     t.integer  "student_id"
     t.text     "body"
     t.datetime "created_at", :null => false

@@ -15,6 +15,8 @@ table.messages {
     }
 
     &.message {
+      padding-left: 0;
+      
       span.student {
         color: #000;
         font-weight: bold;
@@ -26,14 +28,29 @@ table.messages {
     }
 
     &.time {
+      width: 75px;
       font-weight: bold;
       white-space: nowrap;
+      border-right: 1px solid $grayLighter;
+      text-align: right;
+    }
+
+    &.status {
+      width: 22px;
     }
 
     &.no_messages {
       text-align: center;
       padding: 10px;
       font-style: italic;
+    }
+  }
+
+  tbody > tr {
+    &:hover {
+      > td {
+        background: none; // Disable bootstrap hover
+      }
     }
   }
 }
@@ -45,7 +62,8 @@ section.recent_updates {
 section.messages {
   .filter_alert {
     padding: 8px;
-    margin: 15px 0;
+    margin-top: 15px;
+    margin-bottom: 5px;
     @include border-radius($standardRadius);
     background: #000;
     color: #fff;

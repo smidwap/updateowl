@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  include Stats
+  include HasManyMessages
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -7,18 +7,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :messages, foreign_key: :sender_id, order: "created_at DESC" do
-    def in_date_range(start_date, end_date)
-      where(created_at: start_date..end_date)
-    end
-
-    def last_week
-      in_date_range(
-        1.week.ago.beginning_of_week.to_s,
-        1.week.ago.end_of_week.to_s
-      )
-    end
-  end
   has_many :classroom_relationships
   has_many :students, through: :classroom_relationships
 
@@ -27,8 +15,5 @@ class User < ActiveRecord::Base
 
   def has_student?(student)
     students.include?(student)
-  end
-
-  def messages_unchecked
   end
 end

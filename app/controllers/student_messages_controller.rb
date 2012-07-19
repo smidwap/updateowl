@@ -1,13 +1,22 @@
-class MessagesController < ApplicationController
-  load_and_authorize_resource except: [:new, :create]
+class StudentMessagesController < ApplicationController
+  load_and_authorize_resource :student
 
-  layout 'second_tier_page'
+  layout 'second_tier_page', only: [:new, :create]
+
+  def index
+  end
+
+  def user
+    @user = User.find(params[:user_id])
+
+    authorize! :read, @user
+  end
 
   def new
     @student = Student.find(params[:student_id])
     @message = Message.new
     @message.student = @student
-    @message.sender = current_user
+    @message.user = current_user
 
     authorize! :manage, @message
   end

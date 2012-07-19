@@ -1,26 +1,14 @@
 - @second_tier_page_class = 'student_preview'
 
 - content_for :title do
-  = link_to @student.full_name, student_path(@student)
+  = link_to @student.full_name, student_messages_path(@student)
 
-.stats.three
-  .stat_container
-    .stat
-      .number 18
-      .description SENT BY ALL
-  .stat_container
-    .stat
-      .number 3
-      .description SENT BY YOU
-  .stat_container
-    .stat
-      .number 2
-      .description UNCHECKED
+= render "shared/student_stats", student: @student
 
 = render "shared/recent_messages", student: @student
 
 %p.next_steps
   - if @student.messages.count > 0
-    = link_to "See more of #{@student.first_name}'s updates", student_path(@student)
+    = link_to "See more of #{@student.first_name}'s updates", student_messages_path(@student)
     or
   = link_to "Send #{@student.first_name} a new update", new_student_message_path(@student), class: "", remote: true

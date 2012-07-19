@@ -10,7 +10,10 @@ UpdateMe::Application.routes.draw do
   resources :students do
     get :preview, on: :member
     
-    resources :messages, only: [:new, :create]
+    resources :messages, controller: 'student_messages' do
+      get :user, on: :collection
+      get :unchecked, on: :collection
+    end
   end
 
   resources :users do
@@ -21,6 +24,7 @@ UpdateMe::Application.routes.draw do
     resources :messages, controller: 'user_messages' do
       get :last_week, on: :collection
       get :unchecked, on: :collection
+      get :student, on: :collection
     end
   end
 end

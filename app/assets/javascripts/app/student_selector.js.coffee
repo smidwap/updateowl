@@ -23,5 +23,5 @@ class App.StudentSelector extends Backbone.View
   @render_autocomplete_item: (ul, item) ->
     $("<li></li>")
     .data("item.autocomplete", item)
-    .append('<a href="' + item.value + '" data-remote="true">' + item.label + '</a>')
+    .append('<a href="' + item.url + '" data-remote="true">' + item.label + '</a>')
     .appendTo(ul)
