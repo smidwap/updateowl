@@ -3,7 +3,7 @@
 
 - content_for :content do
   %section.messages
-    %header Archive for #{@student.full_name}
+    %header #{@student.full_name}'s Archive
     - if content_for?(:filter_alert)
       .filter_alert= yield(:filter_alert)
     = yield

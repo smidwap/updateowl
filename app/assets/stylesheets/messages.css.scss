@@ -5,6 +5,7 @@
 table.messages {
   tbody > tr > td {
     border: none;
+    border-bottom: 1px solid $grayLighter;
 
     &:first-child {
       @include border-radius($standardRadius 0 0 $standardRadius);
