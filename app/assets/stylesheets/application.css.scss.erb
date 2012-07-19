@@ -56,36 +56,6 @@ nav.top_nav {
   }
 }
 
-#nav {
-  opacity: 0.6;
-  text-shadow: #fff 0 1px;
-
-  &:hover {
-    opacity: 1.0;
-  }
-
-  a {
-    color: #666;
-
-    &:hover {
-      color: black;
-    }
-  }
-
-  .new_update {
-    padding-right: 10px;
-    border-right: 1px solid #666;
-  }
-
-  .others {
-    padding-left: 10px;
-
-    a {
-      margin-right: 10px;
-    }
-  }
-}
-
 .call_to_action {
   padding: 10px;
   background: $red;
@@ -98,17 +68,17 @@ nav.top_nav {
 }
 
 .sidebox {
-  @include border-radius(5px);
-  border: 2px solid $grayLighter;
-
   > header {
+    padding: 5px 5px 5px 15px;
     background: $grayLighter;
-    text-align: center;
+    //text-align: center;
     font-weight: bold;
+    //border-top: 1px solid $grayLight;
+    @include border-radius($standardRadius $standardRadius);
   }
 
-  > header, > .sidebox_body {
-    padding: 10px;
+  > .sidebox_body {
+    padding: 15px;
   }
 }
 
