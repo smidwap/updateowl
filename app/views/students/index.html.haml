@@ -1,0 +1,19 @@
+- content_for :aside do
+  = render "shared/user_overview", user: @user
+
+%section.students_with_registered_parents
+  %header
+    %h3
+      Students with Registered Parents
+  %table.table.students
+    %tbody
+      - @students.each do |student|
+        %tr
+          %td.name{style: "width: 125px;"}
+            = link_to preview_student_path(student), remote: true do
+              #{student.last_name}, #{student.first_name}
+          %td.actions{style: ""}
+            = link_to "New Update", new_student_message_path(student), remote: true
+%section.students_without_registered_parents
+  %header
+    %h3 Everyone Else

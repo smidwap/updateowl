@@ -1,3 +1,4 @@
 %section.recent_updates
-  %header Recent Updates
+  %header
+    %h3 #{student.first_name}'s Recent Updates
   = render "shared/message_list", messages: student.messages[0..2]

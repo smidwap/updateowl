@@ -3,7 +3,8 @@
 
 - content_for :content do
   %section.messages
-    %header Your Archive of Updates
+    %header
+      %h3 Your Archive of Updates
     - if content_for?(:filter_alert)
       .filter_alert= yield(:filter_alert)
     = yield

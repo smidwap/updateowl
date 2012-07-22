@@ -1,7 +1,7 @@
 - @second_tier_page_class = 'student_selector'
 
-- content_for :title do
-  New Update
+- content_for :secondary_title do
+  %h3 New Update
 
 .autocomplete_container
   = text_field_tag("autocomplete", nil, data: {students: autocomplete_data_for_students(@user.students)}, placeholder: "Send an update for...")

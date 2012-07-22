@@ -1,0 +1,32 @@
+- @second_tier_page_class = 'edit_student'
+
+- content_for :secondary_title do
+  %h3= @student.full_name
+
+%section.student_parents_edit
+  %header
+    %h3 #{@student.first_name}'s Registered Parents
+    .circle_icon_nav.add_parent
+      = link_to "#" do
+        .circle_icon
+          %i.icon-plus.icon-black
+        %span Add contact details for a new parent
+  %table.parents.table
+    %tbody
+      - 1.times do |num|
+        %tr.parent
+          %td.number
+            %div= num + 1
+          %td.parent_details_container
+            .who_edited
+              You set email as this parent's prefered form to receive communication.
+              = link_to "Make phone the preferred form of communication", "#"
+            .email_container
+              %input{type: "text", value: "smidwap@gmail.com"}
+              %button.btn Save
+            .remove
+              = link_to "Remove this parent's contact details", "#"
+
+%section.student_details{style: "margin-top: 20px;"}
+  %header
+    %h3 #{@student.first_name}'s Details

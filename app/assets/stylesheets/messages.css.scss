@@ -4,7 +4,6 @@
 
 table.messages {
   tbody > tr > td {
-    border: none;
     border-bottom: 1px solid $grayLighter;
 
     &:first-child {
@@ -15,9 +14,7 @@ table.messages {
       @include border-radius(0 $standardRadius $standardRadius 0);
     }
 
-    &.message {
-      padding-left: 0;
-      
+    &.message {      
       span.student {
         color: #000;
         font-weight: bold;
@@ -32,7 +29,6 @@ table.messages {
       width: 75px;
       font-weight: bold;
       white-space: nowrap;
-      border-right: 1px solid $grayLighter;
       text-align: right;
     }
 
@@ -46,14 +42,6 @@ table.messages {
       font-style: italic;
     }
   }
-
-  tbody > tr {
-    &:hover {
-      > td {
-        background: none; // Disable bootstrap hover
-      }
-    }
-  }
 }
 
 section.recent_updates {
@@ -63,7 +51,6 @@ section.recent_updates {
 section.messages {
   .filter_alert {
     padding: 8px;
-    margin-top: 15px;
     margin-bottom: 5px;
     @include border-radius($standardRadius);
     background: #000;

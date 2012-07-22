@@ -17,7 +17,7 @@ UpdateMe::Application.routes.draw do
   end
 
   resources :users do
-    resources :students, only: [] do
+    resources :students, only: [:index] do
       get :select, on: :collection
     end
 

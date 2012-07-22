@@ -1,5 +1,7 @@
 @import 'bootstrap/variables';
 @import 'bootstrap/mixins';
+@import 'variables';
+@import 'mixins';
 
 .student_selector {
   .autocomplete_container {
@@ -14,9 +16,79 @@
   }
 }
 
-.modal.student_preview {
+.second_tier_page.student_preview {
   .stats {
     margin: 0 auto;
     width: 300px;
+  }
+}
+
+table.students > tbody > tr {
+  > td {
+    border-bottom: 1px solid $grayLighter;
+  }
+
+  > td.name > a {
+    color: $textColor;
+  }
+
+  > td.actions > a {
+    visibility: hidden;
+  }
+
+  &:hover {
+    > td.name > a {
+      color: $linkColor; 
+    }
+
+    > td.actions > a {
+      visibility: visible;
+    }
+  }
+}
+
+.parent {
+  > .number {
+    width: 30px;
+
+    > div {
+      @include circle(9px);
+      border: 1px solid $grayLight;
+      color: $grayLight;
+      line-height: 18px;
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+
+  > .parent_details_container {
+    .who_edited {
+      padding: 8px;
+      @include border-radius($standardRadius);
+      background: $grayLighter;
+      color: $gray;
+      font-weight: bold;
+
+      a {
+        font-weight: normal;
+      }
+    }
+
+    .email_container {
+      margin-top: 15px;
+      margin-left: 15px;
+    }
+
+    .remove {
+      margin-left: 15px;
+
+      a {
+        color: $grayLight;
+
+        &:hover {
+          color: $red;
+        }
+      }
+    }
   }
 }

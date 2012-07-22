@@ -3,7 +3,9 @@
 
 - content_for :content do
   %section.messages
-    %header #{@student.full_name}'s Archive
+    %header
+      %h3 #{@student.full_name}'s Archive
+      = render "shared/student_edit_nav", student: @student
     - if content_for?(:filter_alert)
       .filter_alert= yield(:filter_alert)
     = yield

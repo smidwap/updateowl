@@ -1,7 +1,8 @@
 - @second_tier_page_class = 'student_preview'
 
-- content_for :title do
-  = link_to @student.full_name, student_messages_path(@student)
+- content_for :secondary_title do
+  %h3= link_to @student.full_name, student_messages_path(@student)
+  = render "shared/student_edit_nav", student: @student
 
 = render "shared/student_stats", student: @student
 
