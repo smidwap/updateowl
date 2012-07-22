@@ -4,5 +4,6 @@
 %section.events
   %header
     %h3 Recent Activity
-  - current_user.messages.each do |message|
-    = render "message", message: message
+  .events_list
+    - current_user.messages.each do |message|
+      = render "shared/event_message", message: message

@@ -1,1 +1,7 @@
-App.main.redirect('<%= root_path %>');
+App.main.alert('<div class="alert alert-success">Your update to <b><%= @message.student.full_name %></b> has been sent, and will be delivered by phone or email.</div>');
+
+$('.events_list').prepend('<%= escape_javascript(render "shared/event_message", message: @message) %>');
+
+$('#user_<%= @message.user_id %>_all_messages table.messages tbody').prepend('<%= escape_javascript(render "shared/message", message: @message) %>');
+
+$('#user_<%= @message.user_id %>_unchecked_messages table.messages tbody').prepend('<%= escape_javascript(render "shared/message", message: @message) %>');

@@ -2,7 +2,7 @@
   = render "shared/user_overview", user: @user
 
 - content_for :content do
-  %section.messages
+  %section.messages{id: @messages_id}
     %header
       %h3 Your Archive of Updates
     - if content_for?(:filter_alert)
