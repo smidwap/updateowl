@@ -53,6 +53,8 @@ gem "therubyracer", :require => false
 gem "foreman", :require => false
 gem "thin", :require => false
 gem "jquery-ui-rails"
+gem "audited-activerecord"
+gem "simple_form"
 
 group :development, :test do
   gem "yard", :require => false

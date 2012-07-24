@@ -1,0 +1,7 @@
+%tr
+  %td.name
+    = link_to preview_student_path(student), remote: true do
+      #{student.last_name}, #{student.first_name}
+  %td.actions
+    - if student.has_parents?
+      = link_to "New Update", new_student_message_path(student), remote: true

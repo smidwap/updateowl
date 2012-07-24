@@ -2,13 +2,14 @@ class App.Page extends Backbone.View
   el: 'body'
 
   events:
-    'ajax:success a, form': 'show_second_tier_page_from_remote'
+    'ajax:success a:not([data-no-second-tier])': 'show_second_tier_page_from_remote'
 
   initialize: (options) ->
     @second_tier_page = new App.SecondTierPage
     super options
 
   show_second_tier_page: (element) ->
+    console.log 'show_second_tier_page'
     @$el.append(element)
     @second_tier_page
       .update(element)

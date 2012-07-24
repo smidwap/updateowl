@@ -1,0 +1,15 @@
+.contact
+  = form_for([@student, Parent.new], remote: true, "data-no-second-tier" => true, html: {"data-no-second-tier" => true}) do |form|
+    %div= form.text_field :email, placeholder: "Email"
+    %div= form.text_field :phone, placeholder: "or Phone number"
+    %p{style: "font-weight: bold;"} Communication Preference
+    = form.label :preference_email, class: "radio" do
+      = form.radio_button :preference, 'email'
+      Email
+    = form.label :preference_phone, class: "radio" do
+      = form.radio_button :preference, 'phone'
+      Phone
+    .choices
+      = form.submit "Add this Parent", class: "btn btn-small"
+      or
+      = link_to "Cancel", "#", "data-closer" => true

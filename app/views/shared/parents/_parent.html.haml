@@ -1,0 +1,14 @@
+%li.parent{id: "parent_#{parent.id}"}
+  .who_last_edited
+    - other_choice = parent.prefers_email? ? 'phone' : 'email'
+    = link_to  "Make #{other_choice} this parent's preference.", toggle_preference_parent_path(parent), remote: true, method: :post, "data-no-second-tier" => true, confirm: "Are you sure you want to change this parent's communication preference?"
+  .contact
+    = form_for(parent, remote: true, "data-no-second-tier" => true, html: {class: "form-inline"}) do |form|
+      %div
+        - if parent.prefers_email?
+          = form.text_field :email, placeholder: "Email"
+        - else
+          = form.text_field :phone, placeholder: "Phone number"
+        = form.submit "Save", class: "btn"
+  .remove
+    = link_to "Remove this parent's contact details", parent_path(parent), method: :delete, remote: true, "data-no-second-tier" => true, confirm: "Are you sure you want to permanently delete this parent?"

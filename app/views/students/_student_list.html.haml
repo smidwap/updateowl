@@ -1,0 +1,4 @@
+%table.table.students
+  %tbody
+    - students.each do |student|
+      = render "student", student: student

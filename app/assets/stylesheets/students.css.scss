@@ -28,8 +28,12 @@ table.students > tbody > tr {
     border-bottom: 1px solid $grayLighter;
   }
 
-  > td.name > a {
-    color: $textColor;
+  > td.name {
+    width: 150px;
+
+    > a {
+      color: $textColor;
+    }
   }
 
   > td.actions > a {
@@ -48,47 +52,42 @@ table.students > tbody > tr {
 }
 
 .parent {
-  > .number {
-    width: 30px;
+  padding-left: 10px;
 
-    > div {
-      @include circle(9px);
-      border: 1px solid $grayLight;
-      color: $grayLight;
-      line-height: 18px;
-      text-align: center;
-      font-weight: bold;
+  &:not(:last-child) {
+    padding-bottom: 10px;
+    border-bottom: 1px solid $grayLighter;
+  }
+
+  &:not(:first-child) {
+    margin-top: 10px;
+  }
+
+  .who_last_edited {
+    padding: 8px;
+    @include border-radius($standardRadius);
+    background: $grayLighter;
+    color: $gray;
+    font-weight: bold;
+
+    a {
+      font-weight: normal;
     }
   }
 
-  > .parent_details_container {
-    .who_edited {
-      padding: 8px;
-      @include border-radius($standardRadius);
-      background: $grayLighter;
-      color: $gray;
-      font-weight: bold;
+  .contact, .remove {
+    margin-left: 15px;
+  }
 
-      a {
-        font-weight: normal;
-      }
-    }
+  .contact {
+    margin-top: 15px;
+  }
 
-    .email_container {
-      margin-top: 15px;
-      margin-left: 15px;
-    }
+  .remove > a {
+    color: $grayLight;
 
-    .remove {
-      margin-left: 15px;
-
-      a {
-        color: $grayLight;
-
-        &:hover {
-          color: $red;
-        }
-      }
+    &:hover {
+      color: $red;
     }
   }
 }

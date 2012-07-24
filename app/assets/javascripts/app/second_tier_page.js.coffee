@@ -1,10 +1,11 @@
 class App.SecondTierPage extends Backbone.View
   events:
-    'submit form': 'remove'
+    'ajax:success [data-close-on-success]': 'remove'
     
   update: (fragment) ->
     @remove()
     @setElement fragment
+    App.register_behaviors(@$el)
     @
 
   show: ->
@@ -12,6 +13,7 @@ class App.SecondTierPage extends Backbone.View
     @trigger_ready_notification()
 
   remove: ->
+    console.log 'hide modal'
     @$el.modal 'hide'
     super()
 

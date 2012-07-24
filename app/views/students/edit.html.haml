@@ -3,30 +3,20 @@
 - content_for :secondary_title do
   %h3= @student.full_name
 
-%section.student_parents_edit
+%section.student_parents_edit{data: {behavior: "expandable"}}
   %header
-    %h3 #{@student.first_name}'s Registered Parents
+    %h3 #{@student.first_name}'s Parents (#{@student.parents.count})
     .circle_icon_nav.add_parent
-      = link_to "#" do
+      = link_to "#", "data-expander" => true do
         .circle_icon
           %i.icon-plus.icon-black
         %span Add contact details for a new parent
-  %table.parents.table
-    %tbody
-      - 1.times do |num|
-        %tr.parent
-          %td.number
-            %div= num + 1
-          %td.parent_details_container
-            .who_edited
-              You set email as this parent's prefered form to receive communication.
-              = link_to "Make phone the preferred form of communication", "#"
-            .email_container
-              %input{type: "text", value: "smidwap@gmail.com"}
-              %button.btn Save
-            .remove
-              = link_to "Remove this parent's contact details", "#"
+  %ol.parents#parents
+    - @student.parents.each do |parent|
+      = render "shared/parents/parent", parent: parent
+    %li.parent.hide#new_parent{"data-expansion" => true}
+      = render "new_parent", student: @student
 
-%section.student_details{style: "margin-top: 20px;"}
+%section.student_details
   %header
     %h3 #{@student.first_name}'s Details

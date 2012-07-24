@@ -1,0 +1,1 @@
+$('#parent_<%= @parent.id %>').replaceWith("<%= escape_javascript(render("shared/parents/parent", parent: @parent)) %>");

@@ -11,5 +11,9 @@ class Ability
     can :manage, Student do |student|
       user.has_student?(student)
     end
+
+    can :manage, Parent do |parent|
+      user.students.with_parent(parent).count > 0
+    end
   end
 end
