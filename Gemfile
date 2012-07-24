@@ -56,6 +56,7 @@ gem "jquery-ui-rails"
 gem "audited-activerecord"
 gem "simple_form"
 gem 'validates_as_phone_number'
+gem "valid_email"
 
 group :development, :test do
   gem "yard", :require => false
