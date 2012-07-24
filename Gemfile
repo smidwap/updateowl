@@ -55,6 +55,7 @@ gem "thin", :require => false
 gem "jquery-ui-rails"
 gem "audited-activerecord"
 gem "simple_form"
+gem 'validates_as_phone_number'
 
 group :development, :test do
   gem "yard", :require => false

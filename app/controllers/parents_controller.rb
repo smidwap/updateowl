@@ -19,6 +19,7 @@ class ParentsController < ApplicationController
 
     flash[:notice] = "You successfully updated the parent's contact."
   rescue ActiveRecord::RecordInvalid
+    flash[:alert] = @parent.errors.full_messages.to_sentence
   end
 
   def destroy

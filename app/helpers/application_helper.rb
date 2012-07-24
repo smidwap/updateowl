@@ -14,13 +14,4 @@ module ApplicationHelper
   def second_or_third_person(user)
     user == current_user ? "you" : user.try(:professional_name)
   end
-
-  def flash_class_from_type(type)
-    case type
-    when "alert"
-      "error"
-    when "notice"
-      "success"
-    end
-  end
 end
