@@ -1,0 +1,30 @@
+@import 'bootstrap/mixins';
+@import 'bootstrap/variables';
+@import 'variables';
+
+body.devise {
+  padding-top: 100px;
+
+  .container {
+    width: 400px;
+  }
+}
+
+.devise_box {
+  margin: 10px auto;
+  padding: 20px;
+  border: 1px solid $grayLighter;
+  @include border-radius($standardRadius);
+  @include box-shadow(0 0 4px #666);
+  background: #fff;
+
+  h3 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .actions {
+    margin-top: 10px;
+    text-align: center;
+  }
+}

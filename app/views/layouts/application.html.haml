@@ -3,7 +3,7 @@
   %head
     %meta{:charset => "utf-8"}
 
-    %title= content_for?(:title) ? yield(:title) : "App_Name"
+    %title= content_for?(:title) ? yield(:title) : "Update Me"
 
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
     %meta{:name => "description", :content => ""}
@@ -20,6 +20,7 @@
   %body
     .container#outer
       %header
+        = link_to "sign out", destroy_user_session_path, method: :delete
       .container#inner
         %nav.top_nav
           = link_to select_user_students_path(current_user), remote: true, class: "nav_new_update" do
@@ -36,6 +37,7 @@
           .span4
             .aside
               = yield(:aside)
-    :javascript
-      window.App = {}
-    = javascript_include_tag "application"
+
+  :javascript
+    window.App = {}
+  = javascript_include_tag "application"

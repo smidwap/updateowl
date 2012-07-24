@@ -1,0 +1,54 @@
+@import 'bootstrap/mixins';
+@import 'bootstrap/variables';
+@import 'variables';
+
+.container#outer {
+  margin-top: 20px;
+  width: 982px;
+
+  .container#inner {
+    padding: 20px;
+    border: 1px solid $grayLighter;
+    @include border-radius($standardRadius);
+    @include box-shadow(0 0 4px #666);
+    background: #fff;
+  }
+}
+
+.container#inner {
+  .main {
+    margin-right: 40px;
+  }
+}
+
+nav.top_nav {
+  margin-bottom: 25px;
+
+  a {
+    margin-right: 15px;
+    color: #000;
+    opacity: 0.4;
+    text-shadow: #fff 0 1px;
+
+    &.nav_new_update {
+      font-weight: bold;
+      padding-right: 15px;
+      border-right: 1px solid #ccc;
+
+      i {
+        margin-top: 2px;
+      }
+    }
+  }
+
+  &:hover {
+    a {
+      opacity: 0.7;
+      text-decoration: none;
+
+      &:hover {
+        opacity: 1.0;
+      }
+    }
+  }
+}
