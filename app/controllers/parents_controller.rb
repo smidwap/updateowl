@@ -16,6 +16,8 @@ class ParentsController < ApplicationController
 
   def update
     @parent.update_attributes!(params[:parent])
+
+    flash[:notice] = "You successfully updated the parent's contact."
   rescue ActiveRecord::RecordInvalid
   end
 
