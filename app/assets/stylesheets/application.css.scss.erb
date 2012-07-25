@@ -12,21 +12,31 @@ $baseFontSize: 14px;
 
 body {
   background: url(<%= image_path('ricepaper.png') %>);
+  padding-top: 20px;
+}
+
+header.top_bar {
+  width: 982px;
+  margin-bottom: 20px;
+
+  #search {
+    float: right;
+
+    input {
+      width: 250px;
+      height: 25px;
+      padding-left: 8px;
+    }
+  }
 }
 
 
-
-.container#outer {
-  margin-top: 20px;
-  width: 982px;
-
-  .container#inner {
-    padding: 20px;
-    border: 1px solid $grayLighter;
-    @include border-radius($standardRadius);
-    @include box-shadow(0 0 4px #666);
-    background: #fff;
-  }
+.container#inner {
+  padding: 20px;
+  border: 1px solid $grayLighter;
+  @include border-radius($standardRadius);
+  @include box-shadow(0 0 4px #666);
+  background: #fff;
 }
 
 .container#inner {

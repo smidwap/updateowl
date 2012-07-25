@@ -13,7 +13,6 @@ class App.SecondTierPage extends Backbone.View
     @trigger_ready_notification()
 
   remove: ->
-    console.log 'hide modal'
     @$el.modal 'hide'
     super()
 

@@ -8,6 +8,8 @@
 //= require_tree .
 
 $ ->
+  App.vent = _.extend {}, Backbone.Events
+
   App.page = new App.Page
   App.main = new App.Main
 

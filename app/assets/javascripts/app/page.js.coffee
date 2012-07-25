@@ -9,7 +9,6 @@ class App.Page extends Backbone.View
     super options
 
   show_second_tier_page: (element) ->
-    console.log 'show_second_tier_page'
     @$el.append(element)
     @second_tier_page
       .update(element)

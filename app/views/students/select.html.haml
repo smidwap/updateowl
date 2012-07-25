@@ -4,7 +4,7 @@
   %h3 New Update
 
 .autocomplete_container
-  = text_field_tag("autocomplete", nil, data: {students: autocomplete_data_for_students(@user.students)}, placeholder: "Send an update for...")
+  = text_field_tag("autocomplete", nil, autofocus: true, data: {behavior: "autocomplete autocomplete_selectable_link", source: message_autocomplete_data_for_students(@user.students), remote: true}, placeholder: "Send an update for...")
 
 - if @user.messages.count == 0
   .no_previous_messages.call_to_action
