@@ -1,1 +1,4 @@
-= render "shared/message_list", messages: @student.messages
+%section.messages{id: "student_#{@student.id}_all_messages"}
+  = render "header", student: @student
+  
+  = render "shared/message_list", messages: @student.messages

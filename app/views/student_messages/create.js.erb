@@ -5,3 +5,5 @@ $('.events_list').prepend('<%= escape_javascript(render "shared/event_message", 
 $('#user_<%= @message.user_id %>_all_messages table.messages tbody').prepend('<%= escape_javascript(render "shared/message", message: @message) %>');
 
 $('#user_<%= @message.user_id %>_unchecked_messages table.messages tbody').prepend('<%= escape_javascript(render "shared/message", message: @message) %>');
+
+$('#student_<%= @message.student_id %>_all_messages table.messages tbody').prepend('<%= escape_javascript(render "shared/message", message: @message) %>');

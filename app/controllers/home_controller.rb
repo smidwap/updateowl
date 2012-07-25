@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
+  layout "users"
+
   def dashboard
-    sign_in(:user, User.first)
+    @user = current_user
   end
 end
