@@ -19,13 +19,33 @@ header.top_bar {
   width: 982px;
   margin-bottom: 20px;
 
-  #search {
+  .logo {
+    float: left;
+  }
+
+  .right_bar {
     float: right;
 
-    input {
-      width: 250px;
-      height: 25px;
-      padding-left: 8px;
+    nav {
+      text-align: right;
+      margin-bottom: 5px;
+
+      a {
+        color: $textColor;
+        font-size: 12px;
+
+        &:not(:last-child) {
+          margin-right: 10px;
+        }
+      }
+    }
+
+    #global_search {
+      input {
+        width: 250px;
+        height: 25px;
+        padding-left: 8px;
+      }
     }
   }
 }
@@ -45,7 +65,7 @@ header.top_bar {
   }
 }
 
-nav.top_nav {
+nav.inner_nav {
   margin-bottom: 25px;
 
   a {

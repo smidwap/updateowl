@@ -19,11 +19,14 @@
 
   %body
     %header.container.top_bar
-      = link_to "sign out", destroy_user_session_path, method: :delete
-      #search
-        = text_field_tag("autocomplete", nil, data: {behavior: "autocomplete autocomplete_selectable_link", source: global_autocomplete_data_for_students(current_user.students)}, placeholder: "Jump to a student...")
+      .right_bar
+        %nav
+          = link_to "Account", "#"
+          = link_to "Logout", destroy_user_session_path, method: :delete
+        #global_search
+          = text_field_tag("autocomplete", nil, data: {behavior: "autocomplete autocomplete_selectable_link", source: global_autocomplete_data_for_students(current_user.students)}, placeholder: "Jump to a student...")
     .container#inner
-      %nav.top_nav
+      %nav.inner_nav
         = link_to select_user_students_path(current_user), remote: true, class: "nav_new_update" do
           %i.icon-plus-sign
           New Update
