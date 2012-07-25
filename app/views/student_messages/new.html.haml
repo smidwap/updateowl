@@ -13,7 +13,7 @@
       .choices
         = f.submit "Send this Message", class: "btn btn-success btn-small"
         or
-        = link_to "Cancel", "#", data: {dismiss: "modal"}
+        = link_to "Cancel", select_user_students_path(current_user), remote: true
 - else
   Brian has no parents! You should probably add some.
 
