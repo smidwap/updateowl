@@ -2,11 +2,11 @@
 
 - content_for :secondary_title do
   %h3= link_to @student.full_name, student_messages_path(@student)
-  = render "shared/student_edit_nav", student: @student
+  = render "shared/students/edit_nav", student: @student
 
-= render "shared/student_stats", student: @student
+= render "shared/students/stats", student: @student
 
-= render "shared/recent_messages", student: @student
+= render "shared/messages/recent", student: @student
 
 %p.next_steps
   - if @student.messages.count > 0

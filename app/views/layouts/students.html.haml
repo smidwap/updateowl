@@ -2,6 +2,6 @@
   .sidebox.student_overview
     %header #{@student.first_name}'s Overview
     .sidebox_body
-      = render "shared/student_stats", student: @student
+      = render "shared/students/stats", student: @student
 
 = render template: "layouts/application"

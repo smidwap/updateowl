@@ -1,4 +1,4 @@
 %section.messages{id: "user_#{@user.id.to_s}_all_messages"}
   = render "header"
   
-  = render "shared/message_list", messages: @user.messages
+  = render "shared/messages/list", messages: @user.messages

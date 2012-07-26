@@ -3,4 +3,4 @@
     %h3 Recent Activity
   .events_list
     - current_user.messages.each do |message|
-      = render "shared/event_message", message: message
+      = render "shared/events/message", message: message
