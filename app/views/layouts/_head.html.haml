@@ -1,0 +1,16 @@
+- title ||= "Update Me"
+%meta{:charset => "utf-8"}
+
+%title= title
+
+%meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+%meta{:name => "description", :content => ""}
+  
+= stylesheet_link_tag "application", :media => "all"
+
+/[if lt IE 9]
+  %script{:src => "https://html5shim.googlecode.com/svn/trunk/html5.js", :type => "text/javascript"}
+
+= csrf_meta_tags
+
+= yield(:head)

@@ -1,0 +1,4 @@
+- alert_class ||= "alert-success"
+.alert{class: alert_class}
+  = link_to "&times;".html_safe, "#", class: "close", "data-dismiss" => "alert"
+  = message.html_safe

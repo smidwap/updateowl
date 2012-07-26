@@ -2,9 +2,9 @@ class Parent < ActiveRecord::Base
   has_many :student_parents
   has_many :students, through: :student_parents
 
-  validates_inclusion_of :preference, in: %w(email phone)
-  validates_as_phone_number :phone, message: "is not valid. Here's an example: 219-309-0213", allow_nil: true
-  validates :email, email: true
+  validates_inclusion_of :preference, in: %w(email phone), message: "is required to be either email or phone."
+  validates_as_phone_number :phone, message: "is not valid. Here's a valid example: 219-309-0213 or 2193090213", allow_nil: true
+  validates :email, email: true, allow_blank: true
 
   audited
 

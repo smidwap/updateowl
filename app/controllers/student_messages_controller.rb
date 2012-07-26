@@ -32,6 +32,6 @@ class StudentMessagesController < ApplicationController
 
     @message.save!
   rescue ActiveRecord::RecordInvalid
-    render :new
+    render_resource_invalid @message
   end
 end

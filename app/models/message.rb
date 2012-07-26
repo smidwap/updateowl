@@ -4,6 +4,8 @@ class Message < ActiveRecord::Base
   belongs_to :user
   belongs_to :student
 
+  validates :body, presence: true
+
   scope :from_user, lambda { |users| where(user_id: ids_from(users)) }
   scope :for_student, lambda { |students| where(student_id: ids_from(students)) }
   scope :last_week, lambda { weeks_ago(1) }

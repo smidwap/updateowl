@@ -3,8 +3,10 @@ class ParentsController < ApplicationController
   load_and_authorize_resource except: :create
 
   def create
-    @parent = @student.parents.create!(params[:parent])
+    @parent = @student.parents.new(params[:parent])
+    @student.save!
   rescue ActiveRecord::RecordInvalid
+    render_resource_invalid @parent
   end
 
   def toggle_preference
@@ -12,6 +14,7 @@ class ParentsController < ApplicationController
 
     render :update
   rescue ActiveRecord::RecordInvalid
+    render_resource_invalid @parent
   end
 
   def update
@@ -19,7 +22,7 @@ class ParentsController < ApplicationController
 
     flash[:notice] = "You successfully updated the parent's contact."
   rescue ActiveRecord::RecordInvalid
-    flash[:alert] = @parent.errors.full_messages.to_sentence
+    render_resource_invalid @parent
   end
 
   def destroy
