@@ -5,6 +5,7 @@
 //= require underscore
 //= require backbone
 //= require jquery.closest_descendant
+//= require jquery.autogrow
 //= require_tree .
 
 $ ->
