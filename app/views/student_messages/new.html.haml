@@ -9,7 +9,7 @@
       = @message.errors.full_messages.to_sentence
       = f.hidden_field :user_id
       .inner_box
-        = f.text_area :body, placeholder: "Write an update to #{@student.first_name}'s parents...", data: {"message-field" => true}
+        = f.text_area :body, placeholder: "Write an update to #{@student.first_name}'s parents...", data: {"message-field" => true}, autofocus: true
       .choices
         = f.submit "Send this Message", class: "btn btn-success btn-small"
         or
