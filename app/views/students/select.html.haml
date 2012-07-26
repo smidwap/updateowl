@@ -3,16 +3,26 @@
 - content_for :secondary_title do
   %h3 New Update
 
-.autocomplete_container
-  = text_field_tag("autocomplete", nil, autofocus: true, data: {behavior: "autocomplete autocomplete_selectable_link", source: message_autocomplete_data_for_students(@user.students), remote: true}, placeholder: "Send an update for...")
+- if @user.students.with_registered_parents.all.count > 0
+  .autocomplete_container
+    = text_field_tag("autocomplete", nil, autofocus: true, data: {behavior: "autocomplete autocomplete_selectable_link", source: message_autocomplete_data_for_students(@user.students.with_registered_parents), remote: true}, placeholder: "Send an update for...")
 
-- if @user.messages.count == 0
-  .no_previous_messages.call_to_action
+  - if @user.messages.count == 0
+    .no_previous_messages.call_to_action
+      %header
+        %h3 Ready to send your first update?
+      .call_to_action_body
+        %p It's easy!
+        %ol
+          %li Find the student whose parents you want to update
+          %li Write a <u>short update</u> to send the student's parents
+          %li The update will be <u>automatically delivered</u> to the parents by phone or email, depending on their preference
+- else
+  .no_registered_parents.call_to_action
     %header
-      %h3 Ready to send your first update?
+      %h3 No parents have registered yet!
     .call_to_action_body
-      %p It's easy!
-      %ol
-        %li Find the student whose parents you want to update
-        %li Write a <u>short update</u> to send the student's parents
-        %li The update will be <u>automatically delivered</u> to the parents by phone or email, depending on their preference
+      %p To send an update to a student, here or she must have parent contact details. To get started, you can
+      %ul
+        %li Contact [INSERT SUPPORT EMAIL HERE] to get help contacting parents to register.
+        %li If you know any parents' phone numbers or emails, you can select a student and edit contact details on the #{link_to "students page", user_students_path(@user)}.
