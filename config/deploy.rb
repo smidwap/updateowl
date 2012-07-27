@@ -10,7 +10,7 @@ default_run_options[:pty] = true
 # bundler bootstrap
 require 'bundler/capistrano'
 
-set :application, 'update-me'
+set :application, 'updateme'
 
 set :repository,  'ssh://git@github.com/developertown/update-me.git'
 set :scm, :git
