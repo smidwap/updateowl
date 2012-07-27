@@ -16,7 +16,11 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  database: updateme_prod
+  username: updateme
+  password: emetadpu
+  host: dtcentral01.cnzo2nas7x7t.us-east-1.rds.amazonaws.com
   pool: 5
   timeout: 5000

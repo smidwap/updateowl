@@ -10,24 +10,19 @@ default_run_options[:pty] = true
 # bundler bootstrap
 require 'bundler/capistrano'
 
-# CONFIGURE THIS - VERY IMPORTANT THAT THERE ARE NO SPACES
-set :application, 'App_Name'
+set :application, 'update-me'
 
-# CONFIGURE THIS
-set :repository,  'ssh://git@github.com/developertown/repo.git'
+set :repository,  'ssh://git@github.com/developertown/update-me.git'
 set :scm, :git
 
-# CONFIGURE THIS
-set :deploy_to, '/srv/www/appname'
-# CONFIGURE THIS
-set :user, 'appname'
+set :deploy_to, '/srv/www/updateme'
+set :user, 'updateme'
 set :use_sudo, false
-# CONFIGURE THIS
-set :scm_username, 'appname'
+set :scm_username, 'updateme'
 
 # support multiple deployment targets
-set :default_stage, 'ci'
-set :stages, %w(ci cat)
+set :default_stage, 'production'
+set :stages, %w(production)
 require 'capistrano/ext/multistage'
 
 # Rails 3.1+ needs this...
