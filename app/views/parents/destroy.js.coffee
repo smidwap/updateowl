@@ -1,1 +1,0 @@
-$('#parent_<%= @parent.id %>').remove()

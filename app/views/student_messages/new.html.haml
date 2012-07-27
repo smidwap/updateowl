@@ -15,6 +15,6 @@
         or
         = link_to "Cancel", select_user_students_path(current_user), remote: true
 - else
-  Brian has no parents! You should probably add some.
+  #{@student.first_name} has no parents! You should probably add some.
 
 = render "shared/messages/recent", student: @student
