@@ -1,4 +1,5 @@
 %li.parent{id: "parent_#{parent.id}"}
+  = render_flash
   .who_last_edited
     - other_choice = parent.prefers_email? ? 'phone' : 'email'
     = link_to  "Make #{other_choice} this parent's preference.", toggle_preference_parent_path(parent), remote: true, method: :post, "data-no-second-tier" => true, confirm: "Are you sure you want to change this parent's communication preference?"
