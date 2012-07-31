@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  belongs_to :school
   has_many :classroom_relationships
   has_many :students, through: :classroom_relationships
 
