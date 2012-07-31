@@ -120,6 +120,9 @@ ActiveRecord::Schema.define(:version => 20120731014012) do
 
   create_table "users", :force => true do |t|
     t.integer  "school_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "title"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "email",                  :default => "", :null => false
