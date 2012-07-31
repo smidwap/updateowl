@@ -6,7 +6,7 @@ class Student < ActiveRecord::Base
 
   has_many :classroom_relationships
   has_many :users, through: :classroom_relationships
-  accepts_nested_attributes_for :classroom_relationships
+  accepts_nested_attributes_for :classroom_relationships, allow_destroy: true
   
   has_many :family_ties
   has_many :parents, through: :family_ties

@@ -22,6 +22,9 @@ ActiveAdmin.register Student do
       f.input :grade_level, collection: GradeLevel.all.map { |gl| [gl.name + " - " + gl.school.name, gl.id] }
 
       f.has_many :classroom_relationships do |classroom_relationship|
+        if !classroom_relationship.object.nil?
+          classroom_relationship.input :_destroy, :as => :boolean, :label => "Remove this teacher's access?"
+        end
         classroom_relationship.input :user, collection: User.all.map { |u| [u.email, u.id] }
       end
     end
