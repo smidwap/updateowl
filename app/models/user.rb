@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :school
+  
   has_many :classroom_relationships
   has_many :students, through: :classroom_relationships
 
