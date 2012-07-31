@@ -5,3 +5,6 @@
   %td.actions
     - if student.has_parents?
       = link_to "New Update", new_student_message_path(student), remote: true
+      = link_to "Edit Parent Contacts", edit_student_path(student), remote: true
+    - else
+      = link_to "Add a Parent Contact", edit_student_path(student), remote: true
