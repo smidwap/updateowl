@@ -74,6 +74,13 @@ ActiveRecord::Schema.define(:version => 20120731014012) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "family_ties", :force => true do |t|
+    t.integer  "student_id"
+    t.integer  "parent_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "grade_levels", :force => true do |t|
     t.string   "name"
     t.integer  "school_id"
@@ -99,13 +106,6 @@ ActiveRecord::Schema.define(:version => 20120731014012) do
 
   create_table "schools", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "student_parents", :force => true do |t|
-    t.integer  "student_id"
-    t.integer  "parent_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

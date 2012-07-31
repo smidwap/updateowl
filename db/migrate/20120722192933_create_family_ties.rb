@@ -1,6 +1,6 @@
-class CreateStudentParents < ActiveRecord::Migration
+class CreateFamilyTies < ActiveRecord::Migration
   def change
-    create_table :student_parents do |t|
+    create_table :family_ties do |t|
       t.references :student
       t.references :parent
 
