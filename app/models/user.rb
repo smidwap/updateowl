@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   include HasManyMessages
 
+  TITLES = ['Mr.', 'Mrs', 'Ms.', 'Miss', 'Dr.', 'Coach', 'Professor']
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable

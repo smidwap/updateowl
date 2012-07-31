@@ -20,7 +20,7 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs do
       f.input :school
-      f.input :title
+      f.input :title, as: :select, collection: User::TITLES
       f.input :first_name
       f.input :last_name
       f.input :email
