@@ -57,6 +57,7 @@ gem "audited-activerecord"
 gem "simple_form"
 gem 'validates_as_phone_number'
 gem "valid_email"
+gem "resque"
 
 group :development, :test do
   gem "yard", :require => false

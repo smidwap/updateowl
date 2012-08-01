@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Message do
   before(:each) do
-    @message = build_stubbed(:user)
+    @message = build_stubbed(:message)
   end
 
   describe "scopes" do
@@ -15,6 +15,14 @@ describe Message do
 
         Message.weeks_ago(1).should == [message_last_week]
       end
+    end
+  end
+
+  describe "#queue_delivery_setup" do
+    it "should queue the DeliverySetup worker" do
+      Resque.should_receive(:enqueue).with(DeliverySetup, message_id: @message.id)
+
+      @message.send(:queue_delivery_setup)
     end
   end
 end

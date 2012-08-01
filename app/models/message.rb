@@ -4,6 +4,8 @@ class Message < ActiveRecord::Base
   belongs_to :user
   belongs_to :student
 
+  has_many :deliveries
+
   validates :body, presence: true
 
   scope :from_user, lambda { |users| where(user_id: ids_from(users)) }
@@ -25,5 +27,11 @@ class Message < ActiveRecord::Base
 
   def checked?
     true
+  end
+
+  private
+
+  def queue_delivery_setup
+    Resque.enqueue(DeliverySetup, message_id: id)
   end
 end
