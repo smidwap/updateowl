@@ -7,3 +7,5 @@ $('#user_<%= @message.user_id %>_all_messages table.messages tbody').prepend('<%
 $('#user_<%= @message.user_id %>_unchecked_messages table.messages tbody').prepend('<%= escape_javascript(render "shared/messages/message", message: @message) %>');
 
 $('#student_<%= @message.student_id %>_all_messages table.messages tbody').prepend('<%= escape_javascript(render "shared/messages/message", message: @message) %>');
+
+$('.no_messages').remove();
