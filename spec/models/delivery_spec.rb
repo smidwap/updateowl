@@ -6,6 +6,17 @@ describe Delivery do
   end
 
   describe "#deliver" do
+    context "when the parent prefers email" do
+      it "should send an email to the student's parent" do
+        @delivery.parent = build_stubbed(:parent_prefers_email)
+
+        @delivery.deliver
+
+        email = ActionMailer::Base.deliveries.last
+        email.should_not == nil
+        email['to'].to_s.should == @delivery.parent.email
+      end
+    end
   end
 
   describe "#should_deliver_immediately?" do

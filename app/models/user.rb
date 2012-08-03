@@ -20,4 +20,8 @@ class User < ActiveRecord::Base
   def has_student?(student)
     students.include?(student)
   end
+
+  def professional_name
+    "#{try(:title)}" + " #{try(:last_name)}"
+  end
 end

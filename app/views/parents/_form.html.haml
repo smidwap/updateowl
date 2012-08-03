@@ -4,7 +4,7 @@
   = form_for([student, parent], remote: true) do |form|
     %p <b>Provide one or both:</b>
     %div= form.text_field :email, placeholder: "Email"
-    %div= form.text_field :phone, placeholder: "Phone number, e.g. 219-309-0213"
+    %div= form.text_field :phone, placeholder: "Phone, e.g. 219-309-0213"
     %p <b>The parent's communication preference:</b>
     = form.label :preference_email, class: "radio" do
       = form.radio_button :preference, 'email'

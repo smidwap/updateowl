@@ -13,7 +13,7 @@ describe DeliverySetup do
 
       message = create(:message, student: student)
       
-      DeliverySetup.perform(message_id: message.id)
+      DeliverySetup.perform(message.id)
 
       [parent_1, parent_2].each { |parent| parent.deliveries.count.should == 1 }
     end

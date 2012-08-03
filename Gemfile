@@ -71,6 +71,7 @@ group :development, :test do
   gem "pry"
   gem "pry-nav"
   gem "rack-bridge"
+  gem "letter_opener"
 end
 
 group :test do
