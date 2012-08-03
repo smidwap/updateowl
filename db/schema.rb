@@ -75,11 +75,12 @@ ActiveRecord::Schema.define(:version => 20120801020738) do
   end
 
   create_table "deliveries", :force => true do |t|
+    t.string   "access_code"
     t.integer  "parent_id"
     t.integer  "message_id"
-    t.boolean  "read",       :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "success",     :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "family_ties", :force => true do |t|

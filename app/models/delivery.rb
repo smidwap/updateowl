@@ -4,6 +4,7 @@ class Delivery < ActiveRecord::Base
 
   attr_accessible :parent, :message
 
+  before_create :set_access_code
   after_create :deliver, if: :should_deliver_immediately?
 
   def deliver
@@ -22,5 +23,9 @@ class Delivery < ActiveRecord::Base
   end
 
   def delivery_via_phone
+  end
+
+  def set_access_code
+    self.access_code = UUID.new.generate
   end
 end
