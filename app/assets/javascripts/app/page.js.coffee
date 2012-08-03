@@ -2,7 +2,7 @@ class App.Page extends Backbone.View
   el: 'body'
 
   events:
-    'ajax:success a:not([data-no-second-tier])': 'show_second_tier_page_from_remote',
+    'ajax:success a:not([data-no-second-tier]), form:not([data-no-second-tier])': 'show_second_tier_page_from_remote',
     'ajax:error': 'handle_error'
 
   initialize: (options) ->

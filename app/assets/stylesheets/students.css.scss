@@ -55,36 +55,23 @@ table.students > tbody > tr {
 .parent {
   padding-left: 10px;
 
-  &:not(:last-child) {
-    padding-bottom: 10px;
-    border-bottom: 1px solid $grayLighter;
+  .current_contact, .actions {
+    padding: 10px;
   }
 
-  &:not(:first-child) {
-    margin-top: 10px;
-  }
-
-  .who_last_edited {
-    padding: 8px;
-    @include border-radius($standardRadius);
-    background: $grayLighter;
-    color: $gray;
-    font-weight: bold;
-
-    a {
-      font-weight: normal;
+  .current_contact {
+    span.preference {
+      font-weight: bold;
     }
   }
 
-  .contact, .remove {
-    margin-left: 15px;
+  .actions {
+    @include border-radius($standardRadius);
+    background: $grayLighter;
+    color: $grayLight;
   }
 
-  .contact {
-    margin-top: 15px;
-  }
-
-  .remove > a {
+  a.remove {
     color: $grayLight;
 
     &:hover {

@@ -1,0 +1,6 @@
+- @second_tier_page_class = 'new_parent'
+
+- content_for :secondary_title do
+  %h3 Add a Parent for #{@student.full_name}
+  
+= render "form", student: @student, parent: @parent

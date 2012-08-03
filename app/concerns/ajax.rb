@@ -6,7 +6,7 @@ module Ajax
   end
 
   def render_resource_invalid(resource)
-    message = "Whoops, an error occured: " + resource.errors.full_messages.to_sentence
+    message = "Something's wrong with your form: " + resource.errors.full_messages.to_sentence
     render text: message, status: 403
   end
 

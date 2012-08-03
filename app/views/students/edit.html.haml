@@ -3,16 +3,17 @@
 - content_for :secondary_title do
   %h3= @student.full_name
 
-%section.student_parents_edit{data: {behavior: "expandable"}}
+= render_flash
+
+%section.student_parents_edit
   %header
-    %h3 #{@student.first_name}'s Parents (#{@student.parents.count})
+    %h3 #{@student.first_name}'s Parents
     .circle_icon_nav.add_parent
-      = link_to "#", "data-expander" => true do
+      = link_to new_student_parent_path(@student), remote: true do
         .circle_icon
           %i.icon-plus.icon-black
         %span Add contact details for a new parent
   %ol.parents#parents
     - @student.parents.each do |parent|
-      = render "shared/parents/parent", parent: parent
-    %li.parent.hide#new_parent{"data-expansion" => true}
-      = render "new_parent", student: @student
+      %li.parent{id: "parent_#{parent.id}"}
+        = render "shared/parents/parent", student: @student, parent: parent

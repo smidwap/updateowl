@@ -15,7 +15,7 @@ UpdateMe::Application.routes.draw do
       get :unchecked, on: :collection
     end
 
-    resources :parents, only: :create
+    resources :parents
   end
 
   resources :users do
@@ -28,9 +28,5 @@ UpdateMe::Application.routes.draw do
       get :unchecked, on: :collection
       get :student, on: :collection
     end
-  end
-
-  resources :parents, only: [:update, :destroy] do
-    post :toggle_preference, on: :member
   end
 end

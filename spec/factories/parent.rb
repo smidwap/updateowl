@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :parent do
     preference "email"
+    email "matt@developertown.com"
   end
 
   factory :parent_prefers_email, parent: :parent do

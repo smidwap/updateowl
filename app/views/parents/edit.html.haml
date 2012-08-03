@@ -1,0 +1,6 @@
+- @second_tier_page_class = 'edit_parent'
+
+- content_for :secondary_title do
+  %h3 Parent Contact Details
+
+= render "form", student: @student, parent: @parent
