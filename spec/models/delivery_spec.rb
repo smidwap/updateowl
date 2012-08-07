@@ -19,6 +19,14 @@ describe Delivery do
     end
   end
 
+  describe "#checked" do
+    it "should mark the delivery has having been successfully delivered" do
+      @delivery.checked!
+
+      @delivery.success.should == true
+    end
+  end
+
   describe "#should_deliver_immediately?" do
     it "should return true if the parent's communication prefernece is email" do
       @delivery.parent = build_stubbed(:parent_prefers_email)

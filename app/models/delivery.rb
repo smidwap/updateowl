@@ -12,6 +12,11 @@ class Delivery < ActiveRecord::Base
     deliver_via_phone if parent.prefers_phone?
   end
 
+  def checked!
+    self.success = true
+    save!
+  end
+
   private
 
   def should_deliver_immediately?
