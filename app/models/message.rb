@@ -25,6 +25,8 @@ class Message < ActiveRecord::Base
 
   attr_accessible :body, :user_id, :student_id
 
+  after_create :queue_delivery_setup
+
   def checked?
     true
   end
@@ -32,6 +34,6 @@ class Message < ActiveRecord::Base
   private
 
   def queue_delivery_setup
-    Resque.enqueue(DeliverySetup, message_id: id)
+    Resque.enqueue(DeliverySetup, id)
   end
 end

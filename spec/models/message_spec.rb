@@ -20,7 +20,7 @@ describe Message do
 
   describe "#queue_delivery_setup" do
     it "should queue the DeliverySetup worker" do
-      Resque.should_receive(:enqueue).with(DeliverySetup, message_id: @message.id)
+      Resque.should_receive(:enqueue).with(DeliverySetup, @message.id)
 
       @message.send(:queue_delivery_setup)
     end
