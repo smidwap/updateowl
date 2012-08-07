@@ -1,0 +1,7 @@
+.email_delivery_container.container
+  %header
+    .from= @delivery.message.user.professional_name
+    .to= @delivery.message.student.full_name
+  .email_delivery_body= @delivery.message.body
+  %footer
+    %time Sent #{@delivery.message.created_at.strftime('%b %e @ %l:%M%P')}

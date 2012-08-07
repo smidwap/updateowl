@@ -29,4 +29,8 @@ UpdateMe::Application.routes.draw do
       get :student, on: :collection
     end
   end
+
+  namespace :email do
+    match "deliveries/:access_code" => "deliveries#show", as: :delivery, via: :get
+  end
 end

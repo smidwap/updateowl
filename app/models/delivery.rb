@@ -19,7 +19,7 @@ class Delivery < ActiveRecord::Base
   end
 
   def deliver_via_email
-    MessageMailer.notification(message, parent).deliver
+    MessageMailer.notification(self).deliver
   end
 
   def delivery_via_phone

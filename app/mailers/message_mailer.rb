@@ -1,8 +1,7 @@
 class MessageMailer < ActionMailer::Base
-  def notification(message, parent)
-    @message = message
-    @parent = parent
+  def notification(delivery)
+    @delivery = delivery
 
-    mail(to: @parent.email, from: "#{message.student.grade_level.school.name} <no-reply@updatemeapp.com>")
+    mail(to: @delivery.parent.email, from: "#{@delivery.message.student.grade_level.school.name} <no-reply@updatemeapp.com>")
   end
 end
