@@ -51,7 +51,10 @@ UpdateMe::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { :host => 'update-me.developertown.com' }
-  config.action_mailer.smtp_settings = { :enable_starttls_auto => false }
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => false,
+    :openssl_verify_mode => 'none'
+  }
 
 
   # Enable threaded mode
