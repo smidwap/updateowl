@@ -13,7 +13,7 @@
             .description LAST WEEK
         .stat_container
           .stat
-            .number= blank_or_link_for_stat(@user.num_messages_unchecked, "#")
+            .number= blank_or_link_for_stat(@user.num_messages_unchecked, unchecked_user_messages_path(@user))
             .description UNCHECKED
 
 = render template: "layouts/application"

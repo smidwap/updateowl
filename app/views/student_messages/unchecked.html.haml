@@ -1,0 +1,6 @@
+%section.messages{id: "student_#{@student.id}_unchecked_messages"}
+  = render "header", student: @student
+
+  .filter_alert These are #{@student.first_name}'s <b>unchecked updates</b>. #{link_to "View all of #{@student.first_name}'s updates", student_messages_path(@student)} instead
+
+  = render "shared/messages/list", messages: @student.messages.unchecked

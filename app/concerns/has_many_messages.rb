@@ -6,10 +6,10 @@ module HasManyMessages
   end
 
   def num_messages_last_week
-    messages.last_week.count
+    messages.last_week.all.count
   end
   
   def num_messages_unchecked
-    1
+    messages.unchecked.count
   end
 end

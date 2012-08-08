@@ -1,0 +1,6 @@
+%section.messages{id: "user_#{@user.id.to_s}_unchecked_messages"}
+  = render "header"
+  
+  .filter_alert These are your updates <b>unchecked by parents</b>. #{link_to "View all updates", user_messages_path(@user)} instead
+
+  = render "shared/messages/list", messages: @user.messages.unchecked

@@ -60,6 +60,10 @@ gem "valid_email"
 gem "resque"
 gem "uuid"
 
+group :development do
+  gem "letter_opener"
+end
+
 group :development, :test do
   gem "yard", :require => false
   gem "simplecov", :require => false
@@ -72,7 +76,6 @@ group :development, :test do
   gem "pry"
   gem "pry-nav"
   gem "rack-bridge"
-  gem "letter_opener"
 end
 
 group :test do

@@ -16,6 +16,25 @@ describe Message do
         Message.weeks_ago(1).should == [message_last_week]
       end
     end
+
+    describe "checked" do
+      it "should return only messages that have one or more successful deliveries" do
+        successful_delivery = create(:delivery, success: true)
+        unsuccessful_delivery = create(:delivery, success: false)
+
+        Message.checked.should == [successful_delivery.message]
+      end
+    end
+
+    describe "unchecked" do
+      it "should return only messages that have no successful deliveries" do
+        message_without_delivery = create(:message)
+        message_with_unsuccessful_delivery = create(:delivery, success: false).message
+        message_with_successful_delivery = create(:delivery, success: true).message
+
+        Message.unchecked.should include message_without_delivery, message_with_unsuccessful_delivery
+      end
+    end
   end
 
   describe "#queue_delivery_setup" do

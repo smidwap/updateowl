@@ -2,6 +2,8 @@ class Delivery < ActiveRecord::Base
   belongs_to :parent
   belongs_to :message
 
+  scope :checked, where(success: true)
+
   attr_accessible :parent, :message
 
   before_create :set_access_code

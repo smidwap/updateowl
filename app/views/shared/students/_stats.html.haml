@@ -9,5 +9,5 @@
       .description SENT BY YOU
   .stat_container
     .stat
-      .number= current_user.messages.for_student(student).unchecked.count
+      .number= blank_or_link_for_stat(student.num_messages_unchecked, unchecked_student_messages_path(student))
       .description UNCHECKED

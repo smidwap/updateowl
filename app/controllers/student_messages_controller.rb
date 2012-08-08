@@ -15,6 +15,10 @@ class StudentMessagesController < ApplicationController
     render layout: "students"
   end
 
+  def unchecked
+    render layout: "students"
+  end
+
   def new
     @student = Student.find(params[:student_id])
     @message = Message.new

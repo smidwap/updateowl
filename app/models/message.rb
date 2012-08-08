@@ -20,15 +20,25 @@ class Message < ActiveRecord::Base
   scope :in_date_range, lambda { |start_date, end_date|
     where(created_at: start_date..end_date)
   }
-  scope :checked
-  scope :unchecked
+  scope :checked, lambda {
+     joins(:deliveries)
+    .where(deliveries: { success: true })
+    .select("messages.*, count(messages.id) as n_successful_deliveries")
+    .group("messages.id")
+    .having("n_successful_deliveries > 0")
+
+  }
+  scope :unchecked, lambda {
+    checked_ids = ids_from(checked.all)
+    where("id NOT IN (?)", checked_ids.blank? ? '' : checked_ids)
+  }
 
   attr_accessible :body, :user_id, :student_id
 
   after_create :queue_delivery_setup
 
   def checked?
-    true
+    deliveries.checked.count > 0
   end
 
   private
