@@ -10,7 +10,7 @@ FactoryGirl.define do
   end
 
   factory :parent_prefers_phone, parent: :parent do
-    phone "12193090213"
+    phone "+12193090213"
     preference "phone"
   end
 end
