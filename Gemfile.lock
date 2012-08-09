@@ -304,7 +304,6 @@ GEM
     valid_email (0.0.4)
       activemodel
       mail
-    validates_as_phone_number (0.7.5)
     vegas (0.1.11)
       rack (>= 1.0.0)
     warden (1.2.1)
@@ -356,5 +355,4 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   uuid
   valid_email
-  validates_as_phone_number
   yard

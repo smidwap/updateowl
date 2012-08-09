@@ -55,7 +55,6 @@ gem "thin", :require => false
 gem "jquery-ui-rails"
 gem "audited-activerecord"
 gem "simple_form"
-gem 'validates_as_phone_number'
 gem "valid_email"
 gem "resque"
 gem "uuid"

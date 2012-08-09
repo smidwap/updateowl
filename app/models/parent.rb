@@ -1,10 +1,12 @@
-class Parent < ActiveRecord::Base  
+class Parent < ActiveRecord::Base
+  include Phoneable
+
   has_many :family_ties
   has_many :students, through: :family_ties
   has_many :deliveries
 
   validates_inclusion_of :preference, in: %w(email phone), message: "is required to be either email or phone"
-  validates_as_phone_number :phone, message: "is not valid. Here's a valid example: 219-309-0213 or 2193090213", allow_nil: true
+  #validates_as_phone_number :phone, message: "is not valid. Here's a valid example: 219-309-0213 or 2193090213", allow_nil: true
   validates :email, email: true, allow_blank: true
   validate :sufficient_contact_details
 
@@ -27,8 +29,16 @@ class Parent < ActiveRecord::Base
   private
 
   def sufficient_contact_details
-    if (prefers_phone? && phone.blank?) || (prefers_email? && email.blank?)
+    unless has_and_prefers_phone? || has_and_prefers_email?
       errors[:base] << "Contact details must be provided for the parent's communication preference."
     end
+  end
+
+  def has_and_prefers_phone?
+    prefers_phone? && !phone.blank?
+  end
+
+  def has_and_prefers_email?
+    prefers_email? && !email.blank?
   end
 end
