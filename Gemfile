@@ -58,6 +58,7 @@ gem "simple_form"
 gem "valid_email"
 gem "resque"
 gem "uuid"
+gem "twilio-ruby"
 
 group :development do
   gem "letter_opener"

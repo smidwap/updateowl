@@ -1,0 +1,9 @@
+test:
+  sid: "ACb2a6a4428ac048c8b518c7004dcac736"
+  auth_token: "c3bf7ad7601b8e86e142317375666591"
+development:
+  sid: "ACb2a6a4428ac048c8b518c7004dcac736"
+  auth_token: "c3bf7ad7601b8e86e142317375666591"
+production:
+  sid: "ACb2a6a4428ac048c8b518c7004dcac736"
+  auth_token: "c3bf7ad7601b8e86e142317375666591"
