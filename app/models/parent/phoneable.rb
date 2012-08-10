@@ -5,7 +5,7 @@ module Parent::Phoneable
     attr_writer :phone_area_code, :phone_three_digits, :phone_four_digits
     attr_accessible :phone_area_code, :phone_three_digits, :phone_four_digits
 
-    before_save :set_phone
+    before_validation :set_phone
 
     validates :phone_area_code, presence: true, length: { is: 3 }, if: :should_validate_phone_parts?
     validates :phone_three_digits, presence: true, length: { is: 3 }, if: :should_validate_phone_parts?
