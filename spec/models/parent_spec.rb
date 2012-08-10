@@ -1,6 +1,17 @@
 require 'spec_helper'
 
 describe Parent do
+  describe "scopes" do
+    describe "with_unchecked_messages" do
+      it "should return only parents that have undelivered messages" do
+        parent_with_unchecked_message = create(:parent_with_unchecked_message)
+        parent_with_checked_message = create(:parent_with_checked_message)
+
+        Parent.with_unchecked_messages.all.should == [parent_with_unchecked_message]
+      end
+    end
+  end
+
   describe "#prefers_email?" do
     it "should return true if the parent prefers email" do
       build_stubbed(:parent_prefers_email).prefers_email?.should == true

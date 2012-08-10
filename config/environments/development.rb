@@ -37,4 +37,7 @@ UpdateMe::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # For twilio callbacks
+  config.root_url = 'http://updateme.oncloud.org'
 end

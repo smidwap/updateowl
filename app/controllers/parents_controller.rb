@@ -10,6 +10,7 @@ class ParentsController < ApplicationController
 
   def create
     @parent = @student.parents.new(params[:parent])
+    @parent.school = @student.school
 
     @student.save!
 

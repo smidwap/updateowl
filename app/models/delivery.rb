@@ -9,11 +9,10 @@ class Delivery < ActiveRecord::Base
   attr_accessible :parent, :message
 
   before_create :set_access_code
-  after_create :deliver, if: :should_deliver_immediately?
+  after_create :deliver_via_email, if: :should_deliver_immediately?
 
-  def deliver
-    deliver_via_email if parent.prefers_email?
-    deliver_via_phone if parent.prefers_phone?
+  def deliver_via_email
+    MessageMailer.notification(self).deliver
   end
 
   def checked!
@@ -25,13 +24,6 @@ class Delivery < ActiveRecord::Base
 
   def should_deliver_immediately?
     parent.preference == 'email'
-  end
-
-  def deliver_via_email
-    MessageMailer.notification(self).deliver
-  end
-
-  def delivery_via_phone
   end
 
   def set_access_code

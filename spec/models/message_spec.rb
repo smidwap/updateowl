@@ -38,21 +38,16 @@ describe Message do
   end
 
   describe "checked?" do
-    before(:each) do
-      @message = create(:message)
-    end
-
     it "should return true if one or more deliveries of this message is successul" do
-      create(:successful_delivery, message: @message)
-      create(:unsuccessful_delivery, message: @message)
+      message = create(:delivered_message)
 
-      @message.checked?.should == true
+      message.checked?.should == true
     end
 
     it "should return false if none of the deliveries is successful" do
-      create(:unsuccessful_delivery, message: @message)
+      message = create(:undelivered_message)
 
-      @message.checked?.should == false
+      message.checked?.should == false
     end
   end
 
