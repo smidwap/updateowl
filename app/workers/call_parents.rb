@@ -2,7 +2,7 @@ class CallParents
   @queue = :call_parents
 
   def self.perform
-    Parent.with_unchecked_messages.each do |parent|
+    Parent.with_unchecked_messages.prefers_phone.each do |parent|
       call(parent)
     end
   end
