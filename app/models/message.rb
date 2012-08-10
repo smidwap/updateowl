@@ -38,7 +38,7 @@ class Message < ActiveRecord::Base
   after_create :queue_delivery_setup
 
   def checked?
-    deliveries.checked.count > 0
+    deliveries.successful.count > 0
   end
 
   private

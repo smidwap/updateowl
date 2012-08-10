@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe DeliverySetup do
+  before(:each) do
+    # Stub to avoid the job being performed on callbacks
+    Resque.stub(:enqueue)
+  end
+  
   describe "self.perform" do
     it "should" do
       student = create(:student)

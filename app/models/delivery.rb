@@ -1,8 +1,10 @@
 class Delivery < ActiveRecord::Base
   belongs_to :parent
   belongs_to :message
+  has_one :user, through: :message
 
-  scope :checked, where(success: true)
+  scope :successful, where(success: true)
+  scope :unsuccessful, where(success: false)
 
   attr_accessible :parent, :message
 

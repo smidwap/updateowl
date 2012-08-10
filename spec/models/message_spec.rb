@@ -37,6 +37,25 @@ describe Message do
     end
   end
 
+  describe "checked?" do
+    before(:each) do
+      @message = create(:message)
+    end
+
+    it "should return true if one or more deliveries of this message is successul" do
+      create(:successful_delivery, message: @message)
+      create(:unsuccessful_delivery, message: @message)
+
+      @message.checked?.should == true
+    end
+
+    it "should return false if none of the deliveries is successful" do
+      create(:unsuccessful_delivery, message: @message)
+
+      @message.checked?.should == false
+    end
+  end
+
   describe "#queue_delivery_setup" do
     it "should queue the DeliverySetup worker" do
       Resque.should_receive(:enqueue).with(DeliverySetup, @message.id)
