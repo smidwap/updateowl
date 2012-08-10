@@ -3,6 +3,7 @@ class Student < ActiveRecord::Base
   include HasManyMessages
 
   belongs_to :grade_level
+  has_one :school, through: :grade_level
 
   has_many :classroom_relationships
   has_many :users, through: :classroom_relationships

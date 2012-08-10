@@ -1,6 +1,7 @@
 class Parent < ActiveRecord::Base
   include Phoneable
 
+  belongs_to :school
   has_many :family_ties
   has_many :students, through: :family_ties
   has_many :deliveries
