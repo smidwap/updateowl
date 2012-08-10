@@ -71,5 +71,5 @@ UpdateMe::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # For twilio callbacks
-  config.root_url = config.action_mailer.default_url_options[:host]
+  config.root_url = 'http://' + config.action_mailer.default_url_options[:host]
 end
