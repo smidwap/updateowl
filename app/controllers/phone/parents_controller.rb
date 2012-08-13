@@ -14,8 +14,5 @@ module Phone
 
       raise ParentNotFound, "The parent with number '#{params[:To]}' is not in the database." unless @parent
     end
-
-    def parent_phone
-    end
   end
 end

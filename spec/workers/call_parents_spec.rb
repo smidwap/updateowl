@@ -11,4 +11,18 @@ describe CallParents do
       CallParents.perform
     end
   end
+
+  describe "self.from_phone" do
+    it "should return '+17132346203' if the Rails environment is production" do
+      Rails.stub(:env).and_return "production"
+
+      CallParents.from_phone.should == '+17132346203'
+    end
+
+    it "should return '+13174947897' if the Rails environment is not production" do
+      Rails.stub(:env).and_return "development"
+
+      CallParents.from_phone.should == '+13174947897'
+    end
+  end
 end
