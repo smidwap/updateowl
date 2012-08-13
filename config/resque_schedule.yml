@@ -1,0 +1,2 @@
+CallParents:
+  every: "0 20 * * * Etc/GMT-5" # 8pm Eastern time every day

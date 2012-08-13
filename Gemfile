@@ -57,6 +57,7 @@ gem "audited-activerecord"
 gem "simple_form"
 gem "valid_email"
 gem "resque"
+gem "resque-scheduler", require: "resque_scheduler"
 gem "uuid"
 gem "twilio-ruby"
 
