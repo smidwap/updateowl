@@ -1,0 +1,10 @@
+<% content_for :message do %>
+  <Say>To start receiving updates on the phone you are calling from, please enter the five digit pin number provided.</Say>
+<% end %>
+
+<Gather numDigits="5" action="<%= phone_parents_path %>" method="POST" timeout="20">
+  <%= yield :message %>
+  <Pause length="8" />
+  <%= yield :message %>
+</Gather>
+<Say>I'm sorry, a pin number was not received. Please hang up and try again.</Say>

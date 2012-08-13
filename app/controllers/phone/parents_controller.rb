@@ -1,18 +1,31 @@
 module Phone
   class ParentsController < BaseController
-    before_filter :load_and_authorize_parent
-
     def answer
-      redirect_to phone_parent_deliveries_path(@parent)
-    end
-
-    private
-
-    def load_and_authorize_parent
       phone = params[:Direction] == "outbound-api" ? params[:To] : params[:From]
       @parent = Parent.find_by_phone(phone)
 
-      raise ParentNotFound, "The parent with number '#{params[:To]}' is not in the database." unless @parent
+      if @parent
+        redirect_to phone_parent_deliveries_path(@parent)
+      else
+        redirect_to new_phone_parent_path
+      end
+    end
+
+    def new
+    end
+
+    def create
+      @student = Student.find_by_pin(params[:Digits])
+
+      if @student
+        @parent = @student.parents.new \
+          phone: params[:From],
+          preference: 'phone'
+        @parent.school = @student.school
+        @student.save!
+      else
+        render "invalid_pin"
+      end
     end
   end
 end

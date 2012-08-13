@@ -27,11 +27,20 @@ class Student < ActiveRecord::Base
   }
   scope :ordered_by_name, order("last_name ASC, first_name ASC")
 
+  after_create :create_pin
+
   def full_name
     "#{try(:first_name)}" + (last_name? ? " #{try(:last_name)}" : "")
   end
 
   def has_parents?
     parents.count > 0
+  end
+
+  private
+
+  def create_pin
+    self.pin = sprintf('%05d', id * 11 + id)
+    self.save!
   end
 end

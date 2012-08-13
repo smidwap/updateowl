@@ -1,11 +1,15 @@
 class Parent < ActiveRecord::Base
   include Phoneable
+  include ArrayMaker
 
   belongs_to :school
   has_many :family_ties
   has_many :students, through: :family_ties
   has_many :deliveries
 
+  scope :school, lambda { |schools|
+    where(school_id: ids_from(schools))
+  }
   scope :with_unchecked_messages, lambda {
      joins(:deliveries)
     .where(deliveries: { success: false })
