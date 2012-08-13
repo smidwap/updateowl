@@ -14,13 +14,19 @@ class Student < ActiveRecord::Base
 
   attr_accessible :first_name, :last_name, :classroom_relationships_attributes, :grade_level_id
 
+  scope :not_these, lambda { |students|
+    student_ids = ids_from(students)
+    where("students.id NOT IN (?)", student_ids.blank? ? '' : student_ids)
+  }
   scope :with_registered_parents, lambda {
-     joins(:family_ties)
+     joins(:parents)
     .select("students.*, count(students.id) as n_parents")
     .group("students.id")
     .having("n_parents > 0")
   }
-  scope :without_registered_parents, includes(:family_ties).where(family_ties: {id: nil})
+  scope :without_registered_parents, lambda {
+    not_these(with_registered_parents.all)
+  }
   scope :with_parent, lambda { |parents|
      joins(:family_ties)
     .where(family_ties: {parent_id: ids_from(parents)})

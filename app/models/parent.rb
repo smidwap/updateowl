@@ -3,7 +3,7 @@ class Parent < ActiveRecord::Base
   include ArrayMaker
 
   belongs_to :school
-  has_many :family_ties
+  has_many :family_ties, dependent: :destroy
   has_many :students, through: :family_ties
   has_many :deliveries
 
