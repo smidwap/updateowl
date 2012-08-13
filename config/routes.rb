@@ -39,9 +39,15 @@ UpdateMe::Application.routes.draw do
   end
 
   namespace :phone do
-    resources :deliveries do
+    resources :deliveries, only: :show do
       get :route, on: :member
       get :next, on: :member
+    end
+
+    resources :parents do
+      get :answer, on: :collection
+
+      resources :deliveries, only: :index
     end
   end
 end
