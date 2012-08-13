@@ -1,8 +1,16 @@
 class Delivery < ActiveRecord::Base
+  include ArrayMaker
+
   belongs_to :parent
   belongs_to :message
   has_one :user, through: :message
+  has_one :student, through: :message
 
+  scope :recipient, lambda { |parents| where(parent_id: ids_from(parents)) }
+  scope :not_these, lambda { |deliveries|
+    delivery_ids = ids_from(deliveries)
+    where("id NOT IN (?)", delivery_ids.blank? ? '' : delivery_ids)
+  }
   scope :successful, where(success: true)
   scope :unsuccessful, where(success: false)
 
@@ -18,6 +26,14 @@ class Delivery < ActiveRecord::Base
   def checked!
     self.success = true
     save!
+  end
+
+  def next_delivery?
+    !next_delivery.nil?
+  end
+
+  def next_delivery
+    Delivery.recipient(parent).not_these(self).unsuccessful.first
   end
 
   private

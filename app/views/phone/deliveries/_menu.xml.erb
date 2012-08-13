@@ -1,0 +1,15 @@
+<% content_for :options do %>
+  <Say>To repeat this update, press 1.</Say>
+
+  <% if delivery.next_delivery? %>
+  <Say>To hear the next update, press 2.</Say>
+  <% else %>
+  <Say>Otherwise, you can hang up at anytime.</Say>
+  <% end %>
+<% end %>
+
+<Gather numDigits="1" method="GET" action="<%= route_phone_delivery_path(delivery) %>" timeout="20">
+  <%= yield :options %>
+  <Pause length="8" />
+  <%= yield :options %>
+</Gather>
