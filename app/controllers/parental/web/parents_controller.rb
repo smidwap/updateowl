@@ -15,7 +15,7 @@ module Parental
             email: params[:email],
             preference: 'email'
           @parent.school = @student.school
-          @parent.save!
+          @student.save!
         else
           redirect_to new_parental_web_parent_path, alert: "The pin number you entered is not valid. Check to make sure you entered the right pin!"
         end
