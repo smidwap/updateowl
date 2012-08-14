@@ -1,9 +1,18 @@
-%h3 Sign in to <strong>Update Me</strong>
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |form|
-  = form.text_field :email, placeholder: "Email", autofocus: true
-  = form.password_field :password, placeholder: "Password"
-  = form.label :remember_me do
-    = form.check_box :remember_me
-    Remember me?
-  .actions
-    = form.submit "Sign In", class: "btn btn-success"
+- content_for :left_panel do
+  .welcome_box
+    %h2 Are you a parent?
+    = link_to "Register to Receive Updates", new_parental_web_parent_path
+
+
+.devise_box
+  %h3 Sign in to <strong>Update Me</strong>
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |form|
+    = form.text_field :email, placeholder: "Email", autofocus: true
+    = form.password_field :password, placeholder: "Password"
+    = form.label :remember_me do
+      = form.check_box :remember_me
+      Remember me?
+    .actions
+      = form.submit "Sign In", class: "btn btn-success"
+          
+= render "devise/shared/links"

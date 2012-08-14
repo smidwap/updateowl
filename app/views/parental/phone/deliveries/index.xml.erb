@@ -10,7 +10,7 @@
 
   </Say>
 
-  <Gather numDigits="1" method="GET" action="<%= phone_delivery_path(@parent.deliveries.unsuccessful.first) %>">
+  <Gather numDigits="1" method="GET" action="<%= parental_phone_delivery_path(@parent.deliveries.unsuccessful.first) %>">
     <Say>To hear your new <%= @parent.deliveries.unsuccessful.count > 1 ? "updaes" : "update" %>, press 1</Say>
   </Gather>
 <% else %>

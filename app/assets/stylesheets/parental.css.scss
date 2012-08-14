@@ -45,3 +45,24 @@
     font-weight: bold;
   }
 }
+
+.how_it_works_for_parents, .thank_parent_for_registering {
+  padding-right: 20px;
+
+  ol {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    li {
+      font-size: 18px;
+      line-height: 30px;
+    }
+  }
+}
+
+.thank_parent_for_registering {
+  p {
+    font-size: 18px;
+    line-height: 30px;
+  }
+}

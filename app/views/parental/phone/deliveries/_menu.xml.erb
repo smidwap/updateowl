@@ -8,7 +8,7 @@
   <% end %>
 <% end %>
 
-<Gather numDigits="1" method="GET" action="<%= route_phone_delivery_path(delivery) %>" timeout="20">
+<Gather numDigits="1" method="GET" action="<%= route_parental_phone_delivery_path(delivery) %>" timeout="20">
   <%= yield :options %>
   <Pause length="8" />
   <%= yield :options %>

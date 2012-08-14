@@ -1,0 +1,15 @@
+- content_for :left_panel do
+  .how_it_works_for_parents
+    %h2 Here's How UpdateOwl Works
+    %ol
+      %li Enter your child's 5 digit pin number, enter your email address, and register
+      %li When a teacher sends an update for your child, you'll automatically receive an email with the update
+      %li That's it! It's that easy to stay in the loop
+    %p If you'd prefer to receive updates by phone, just call (713) 234-6203
+
+.devise_box.how_it_works_for_parents
+  = form_tag parental_web_parents_path do
+    = text_field_tag :pin, nil, placeholder: "Student's Pin", class: "fat_input", maxLength: 5
+    = text_field_tag :email, nil, placeholder: "Your Email", class: "fat_input"
+    .actions
+      = submit_tag "Register", class: "btn btn-primary btn-large"

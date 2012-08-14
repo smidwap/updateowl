@@ -4,13 +4,31 @@ body.devise {
   padding-top: 100px;
 
   .container {
-    width: 400px;
+    .left_panel, .right_panel {
+      width: 50%;
+      float: left;
+      min-height: 1px;
+    }
+  }
+}
+
+.welcome_box {
+  padding: 20px;
+  text-align: center;
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  a {
+    font-size: 18px;
   }
 }
 
 .devise_box {
-  margin: 10px auto;
+  width: 400px;
   padding: 20px;
+  margin-bottom: 10px;
   border: 1px solid $grayLighter;
   @include border-radius($standardRadius);
   @include box-shadow(0 0 4px #666);

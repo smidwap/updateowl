@@ -2,7 +2,7 @@
   <Say>To start receiving updates on the phone you are calling from, please enter the five digit pin number provided.</Say>
 <% end %>
 
-<Gather numDigits="5" action="<%= phone_parents_path %>" method="POST" timeout="20">
+<Gather numDigits="5" action="<%= parental_phone_parents_path %>" method="POST" timeout="20">
   <%= yield :message %>
   <Pause length="8" />
   <%= yield :message %>

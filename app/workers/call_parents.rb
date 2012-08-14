@@ -18,7 +18,7 @@ class CallParents
   end
 
   def self.callback_url(parent)
-    Rails.application.config.root_url + Rails.application.routes.url_helpers.phone_parent_deliveries_path(parent)
+    Rails.application.config.root_url + Rails.application.routes.url_helpers.parental_phone_parent_deliveries_path(parent)
   end
 
   def self.from_phone

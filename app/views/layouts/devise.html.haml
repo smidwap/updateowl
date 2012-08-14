@@ -6,10 +6,9 @@
   %body.devise
     .container
       = render_flash
-
-      .devise_box
+      .left_panel
+        = yield :left_panel if content_for?(:left_panel)
+      .right_panel
         = yield
-        
-      = render "devise/shared/links"
 
   = render "layouts/javascript"

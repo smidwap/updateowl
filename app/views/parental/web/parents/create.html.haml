@@ -1,0 +1,5 @@
+- content_for :left_panel do
+  .thank_parent_for_registering
+    %h2 Thanks!
+    %p We've got you registered to receive updates for <b>#{@student.full_name}</b>.
+    %p Stay tuned for updates on #{@student.first_name}'s progress at #{@student.school.name}

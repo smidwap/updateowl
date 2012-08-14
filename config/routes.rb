@@ -34,20 +34,24 @@ UpdateMe::Application.routes.draw do
     end
   end
 
-  namespace :email do
-    match "deliveries/:access_code" => "deliveries#show", as: :delivery, via: :get
-  end
+  namespace :parental do
+    namespace :web do
+      match "deliveries/:access_code" => "deliveries#show", as: :delivery, via: :get
 
-  namespace :phone do
-    resources :deliveries, only: :show do
-      get :route, on: :member
-      get :next, on: :member
+      resources :parents
     end
 
-    resources :parents do
-      get :answer, on: :collection
+    namespace :phone do
+      resources :deliveries, only: :show do
+        get :route, on: :member
+        get :next, on: :member
+      end
 
-      resources :deliveries, only: :index
+      resources :parents do
+        get :answer, on: :collection
+
+        resources :deliveries, only: :index
+      end
     end
   end
 end
