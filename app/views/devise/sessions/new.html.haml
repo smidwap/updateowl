@@ -3,9 +3,8 @@
     %h2 Are you a parent?
     = link_to "Register to Receive Updates", new_parental_web_parent_path
 
-
 .devise_box
-  %h3 Sign in to <strong>Update Me</strong>
+  %h3 Sign in to <strong>UpdateOwl</strong>
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |form|
     = form.text_field :email, placeholder: "Email", autofocus: true
     = form.password_field :password, placeholder: "Password"
