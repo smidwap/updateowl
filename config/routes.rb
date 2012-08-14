@@ -1,9 +1,13 @@
 require 'resque/server'
 
 UpdateMe::Application.routes.draw do
-  mount Resque::Server => "/resque"
-  
   ActiveAdmin.routes(self)
+  
+  match('/resque/admin/login' => redirect('/admin/login'))
+  authenticate(:admin_user) do
+    # routes to Resque web
+    mount Resque::Server.new, :at => "/resque"
+  end
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
