@@ -60,6 +60,7 @@ gem "resque"
 gem "resque-scheduler", require: "resque_scheduler"
 gem "uuid"
 gem "twilio-ruby"
+gem "exceptional"
 
 group :development do
   gem "letter_opener"
