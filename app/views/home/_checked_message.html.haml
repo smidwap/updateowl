@@ -1,5 +1,0 @@
-.event_container.checked_message
-  %header
-    .subject
-      #{event.message.student.full_name}'s parent checked an update #{link_to "sent #{time_ago_in_words(event.message.created_at)} ago", "#"}
-    %time= time_or_date_format(event.time)

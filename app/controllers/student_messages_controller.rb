@@ -35,6 +35,8 @@ class StudentMessagesController < ApplicationController
     authorize! :manage, @message
 
     @message.save!
+
+    @event = Event::NewMessage.new(@message)
   rescue ActiveRecord::RecordInvalid
     render_resource_invalid @message
   end

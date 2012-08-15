@@ -1,0 +1,5 @@
+.event_container.checked_message
+  %header
+    .subject
+      #{event.message.student.full_name}'s parent checked #{link_to truncate(event.message.body, length: 30), "#"}
+    %time= time_or_date_format(event.time)
