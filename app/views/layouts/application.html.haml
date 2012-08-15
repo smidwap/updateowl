@@ -4,13 +4,20 @@
     = render "layouts/head"
 
   %body
-    %header.container.top_bar
-      .right_bar
-        %nav
-          = link_to "Account", "#"
-          = link_to "Logout", destroy_user_session_path, method: :delete
-        #global_search
-          = text_field_tag("autocomplete", nil, data: {behavior: "autocomplete autocomplete_selectable_link", source: global_autocomplete_data_for_students(current_user.students)}, placeholder: "Jump to a student...")
+    %header.navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          = link_to "UpdateOwl", root_path, class: "brand"
+          .navbar-search{style: "margin-left: 225px;"}
+            = text_field_tag("autocomplete", nil, data: {behavior: "autocomplete autocomplete_selectable_link", source: global_autocomplete_data_for_students(current_user.students)}, placeholder: "Jump to a student...", class: "search-query span3")
+          %ul.nav.pull-right
+            %li.dropdown
+              = link_to "#", class: "dropdown-toggle", "data-toggle" => "dropdown" do
+                = current_user.professional_name
+                %b.caret
+              %ul.dropdown-menu
+                %li= link_to "Account", "#"
+                %li= link_to "Logout", destroy_user_session_path, method: :delete
     .container#inner
       %nav.inner_nav
         = link_to select_user_students_path(current_user), remote: true, class: "nav_new_update" do

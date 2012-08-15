@@ -5,6 +5,7 @@
 */
 /* Insert any bootstrap overrides -here- before the bootstrap @import */
 $baseFontSize: 14px;
+$navbarSearchPlaceholderColor: #999;
 
 @import "variables";
 @import "bootstrap";
@@ -12,43 +13,8 @@ $baseFontSize: 14px;
 
 body {
   background: url(<%= image_path('ricepaper.png') %>);
-  padding-top: 20px;
+  padding-top: 60px;
   padding-bottom: 20px;
-}
-
-header.top_bar {
-  width: 982px;
-  margin-bottom: 20px;
-
-  .logo {
-    float: left;
-  }
-
-  .right_bar {
-    float: right;
-
-    nav {
-      text-align: right;
-      margin-bottom: 5px;
-
-      a {
-        color: $textColor;
-        font-size: 12px;
-
-        &:not(:last-child) {
-          margin-right: 10px;
-        }
-      }
-    }
-
-    #global_search {
-      input {
-        width: 250px;
-        height: 25px;
-        padding-left: 8px;
-      }
-    }
-  }
 }
 
 .container#inner {

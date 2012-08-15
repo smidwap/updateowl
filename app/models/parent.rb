@@ -27,7 +27,7 @@ class Parent < ActiveRecord::Base
 
   audited
 
-  attr_accessible :phone, :email, :preference
+  attr_accessible :phone, :email, :preference      
 
   def prefers_email?
     preference == 'email'
