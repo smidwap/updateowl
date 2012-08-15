@@ -12,7 +12,8 @@ class CallParents
       from: from_phone,
       to: parent.phone,
       url: callback_url(parent),
-      method: "GET"
+      method: "GET",
+      ifMachine: "Hangup"
     )
   end
 
