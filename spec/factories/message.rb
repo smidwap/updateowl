@@ -13,7 +13,6 @@ FactoryGirl.define do
 
   factory :delivered_message, parent: :message do
     after(:build) do |message|
-      # message.deliveries << build(:delivered_delivery, message: message)
       message.deliveries << build(:delivered_delivery, message: message)
     end
   end

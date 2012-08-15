@@ -2,5 +2,5 @@
   %header
     %h3 Recent Activity
   .events_list
-    - current_user.messages.each do |message|
-      = render "shared/events/message", message: message
+    - current_user.events.each do |event|
+      = partial_for_event(event)

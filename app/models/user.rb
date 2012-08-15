@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   
   has_many :classroom_relationships
   has_many :students, through: :classroom_relationships
+  has_many :parents, through: :students
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :title, :school_id
@@ -23,5 +24,9 @@ class User < ActiveRecord::Base
 
   def professional_name
     "#{try(:title)}" + " #{try(:last_name)}"
+  end
+
+  def events
+    Event::Builder.new(self).events
   end
 end

@@ -3,6 +3,7 @@ module HasManyMessages
 
   included do
     has_many :messages, order: "created_at DESC"
+    has_many :deliveries, through: :messages
   end
 
   def num_messages_last_week

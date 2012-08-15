@@ -7,6 +7,7 @@
   > header {
     @include clearfix();
     font-weight: bold;
+    padding-bottom: 10px;
 
     .subject {
       float: left;
@@ -22,10 +23,11 @@
 
   .event_body {
     padding: 10px;
+    padding-top: 0;
   }
 }
 
-.event_container.message {
+.event_container.new_message {
   > .event_body {
     color: $grayLight;
   }
