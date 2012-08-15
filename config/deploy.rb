@@ -9,15 +9,15 @@ default_run_options[:pty] = true
 # bundler bootstrap
 require 'bundler/capistrano'
 
-set :application, 'updateme'
+set :application, 'updateowl'
 
 set :repository,  'ssh://git@github.com/developertown/update-me.git'
 set :scm, :git
 
-set :deploy_to, '/srv/www/updateme'
-set :user, 'updateme'
+set :deploy_to, '/srv/www/updateowl'
+set :user, 'updateowl'
 set :use_sudo, false
-set :scm_username, 'updateme'
+set :scm_username, 'updateowl'
 
 # support multiple deployment targets
 set :default_stage, 'production'
