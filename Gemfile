@@ -51,7 +51,7 @@ gem "capistrano-helpers", :require => false
 gem "capistrano_colors", :require => false
 gem "therubyracer", :require => false
 gem "foreman", :require => false
-gem "thin", :require => false
+gem "puma", :require => false
 gem "jquery-ui-rails"
 gem "audited-activerecord"
 gem "simple_form"
@@ -61,6 +61,7 @@ gem "resque-scheduler", require: "resque_scheduler"
 gem "uuid"
 gem "twilio-ruby"
 gem "exceptional"
+gem "rvm-capistrano"
 
 group :development do
   gem "letter_opener"
