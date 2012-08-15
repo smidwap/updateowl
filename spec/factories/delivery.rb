@@ -6,10 +6,9 @@ FactoryGirl.define do
   end
 
   factory :delivered_delivery, parent: :delivery do
-    success true
+    delivered_at Time.now
   end
 
   factory :undelivered_delivery, parent: :delivery do
-    success false
   end
 end

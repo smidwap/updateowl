@@ -19,8 +19,8 @@ describe Message do
 
     describe "checked" do
       it "should return only messages that have one or more successful deliveries" do
-        successful_delivery = create(:delivery, success: true)
-        unsuccessful_delivery = create(:delivery, success: false)
+        successful_delivery = create(:delivered_delivery)
+        unsuccessful_delivery = create(:undelivered_delivery)
 
         Message.checked.should == [successful_delivery.message]
       end
@@ -29,8 +29,8 @@ describe Message do
     describe "unchecked" do
       it "should return only messages that have no successful deliveries" do
         message_without_delivery = create(:message)
-        message_with_unsuccessful_delivery = create(:delivery, success: false).message
-        message_with_successful_delivery = create(:delivery, success: true).message
+        message_with_unsuccessful_delivery = create(:undelivered_delivery).message
+        message_with_successful_delivery = create(:delivered_delivery).message
 
         Message.unchecked.should include message_without_delivery, message_with_unsuccessful_delivery
       end

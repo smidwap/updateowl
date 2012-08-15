@@ -21,7 +21,7 @@ describe Delivery do
     it "should mark the delivery has having been successfully delivered" do
       @delivery.checked!
 
-      @delivery.success.should == true
+      @delivery.delivered_at.should_not == nil
     end
   end
 

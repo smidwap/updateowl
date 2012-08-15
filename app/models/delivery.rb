@@ -11,8 +11,8 @@ class Delivery < ActiveRecord::Base
     delivery_ids = ids_from(deliveries)
     where("id NOT IN (?)", delivery_ids.blank? ? '' : delivery_ids)
   }
-  scope :successful, where(success: true)
-  scope :unsuccessful, where(success: false)
+  scope :successful, where("delivered_at IS NOT NULL")
+  scope :unsuccessful, where(delivered_at: nil)
 
   attr_accessible :parent, :message
 
@@ -24,7 +24,7 @@ class Delivery < ActiveRecord::Base
   end
 
   def checked!
-    self.success = true
+    self.delivered_at = Time.now
     save!
   end
 

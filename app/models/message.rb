@@ -22,7 +22,7 @@ class Message < ActiveRecord::Base
   }
   scope :checked, lambda {
      joins(:deliveries)
-    .where(deliveries: { success: true })
+    .where("deliveries.delivered_at IS NOT NULL")
     .select("messages.*, count(messages.id) as n_successful_deliveries")
     .group("messages.id")
     .having("n_successful_deliveries > 0")

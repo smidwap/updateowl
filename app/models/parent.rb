@@ -12,7 +12,7 @@ class Parent < ActiveRecord::Base
   }
   scope :with_unchecked_messages, lambda {
      joins(:deliveries)
-    .where(deliveries: { success: false })
+    .where(deliveries: {delivered_at: nil})
     .select("parents.*, count(parents.id) as n_delivered_messages")
     .group("parents.id")
     .having("n_delivered_messages > 0")
