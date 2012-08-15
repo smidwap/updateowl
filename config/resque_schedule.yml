@@ -1,2 +1,2 @@
 CallParents:
-  cron: "10 23 * * * America/New_York" # 8pm Eastern time every day
+  cron: "0 20 * * * America/New_York" # 8pm Eastern time every day
