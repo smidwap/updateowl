@@ -7,6 +7,7 @@ describe Delivery do
 
   describe "#deliver_via_email" do
     it "should send an email to the student's parent" do
+      @delivery = build(:delivery)
       @delivery.parent = build_stubbed(:parent_prefers_email)
 
       @delivery.deliver_via_email
