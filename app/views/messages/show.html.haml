@@ -1,0 +1,6 @@
+- content_for :secondary_title do
+  %h3 #{time_or_date_format(@message.created_at)} for #{@message.student.full_name}
+
+= render "shared/messages/list", messages: [@message]
+
+= render "shared/messages/next_steps", student: @message.student

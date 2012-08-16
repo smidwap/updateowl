@@ -38,6 +38,8 @@ UpdateMe::Application.routes.draw do
     end
   end
 
+  resources :messages, only: :show
+
   namespace :parental do
     namespace :web do
       match "deliveries/:access_code" => "deliveries#show", as: :delivery, via: :get

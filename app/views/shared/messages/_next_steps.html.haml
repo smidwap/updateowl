@@ -1,0 +1,5 @@
+%p.next_steps
+  - if student.messages.count > 0
+    = link_to "See more of #{student.first_name}'s updates", student_messages_path(student)
+    or
+  = link_to "Send #{student.first_name} a new update", new_student_message_path(student), remote: true
