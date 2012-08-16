@@ -1,0 +1,9 @@
+development:
+  access_key_id: 'AKIAJIMCMCYRCWZ6UQMQ'
+  secret_access_key: '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'
+test:
+  access_key_id: 'AKIAJIMCMCYRCWZ6UQMQ'
+  secret_access_key: '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'
+production:
+  access_key_id: 'AKIAJIMCMCYRCWZ6UQMQ'
+  secret_access_key: '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'
