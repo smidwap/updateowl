@@ -14,8 +14,8 @@ class MixpanelEventBuilder
   #
   # See http://mixpanel.com/api/ for further detail.
   def build_and_queue_event(event, properties={})
-    user_properties.merge!(properties)
     properties["token"] = @token
+    properties = user_properties.merge(properties)
 
     if !properties.has_key?("token")
       raise "Token is required"
