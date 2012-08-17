@@ -14,6 +14,8 @@ class ParentsController < ApplicationController
 
     @student.save!
 
+    track_create
+
     flash[:notice] = "The parent's contact details have been saved."
     render "students/edit", layout: "second_tier_page"
   rescue ActiveRecord::RecordInvalid
@@ -27,6 +29,8 @@ class ParentsController < ApplicationController
   def update
     @parent.update_attributes!(params[:parent])
 
+    track_update
+
     flash[:notice] = "The parent's contact details have been saved."
     render "students/edit", layout: "second_tier_page"
   rescue ActiveRecord::RecordInvalid
@@ -35,5 +39,21 @@ class ParentsController < ApplicationController
 
   def destroy
     @parent.destroy
+
+    track_destroy
+  end
+
+  private
+
+  def track_create
+    track_event "Parent: Create"
+  end
+
+  def track_update
+    track_event "Parent: Update"
+  end
+
+  def track_destroy
+    track_event "Parent: Delete"
   end
 end
