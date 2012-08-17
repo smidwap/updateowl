@@ -5,7 +5,7 @@ class Parent < ActiveRecord::Base
   belongs_to :school
   has_many :family_ties, dependent: :destroy
   has_many :students, through: :family_ties
-  has_many :deliveries
+  has_many :deliveries, dependent: :destroy
 
   scope :school, lambda { |schools|
     where(school_id: ids_from(schools))
