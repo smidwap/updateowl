@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Ajax
+  include CurrentUser
     
   protect_from_forgery
 

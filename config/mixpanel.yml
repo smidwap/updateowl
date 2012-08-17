@@ -1,0 +1,6 @@
+test:
+  token: "c42e41049510b88b25888da81c7a4d04"
+development:
+  token: "c42e41049510b88b25888da81c7a4d04"
+production:
+  token: "475e92b17cf24a128f0eef6f2e92c557"

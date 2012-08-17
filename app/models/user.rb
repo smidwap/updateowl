@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include HasManyMessages
+  include Nameable
 
   TITLES = ['Mr.', 'Mrs', 'Ms.', 'Miss', 'Dr.', 'Coach', 'Professor']
 
