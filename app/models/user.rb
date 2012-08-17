@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   belongs_to :school
   
-  has_many :classroom_relationships
+  has_many :classroom_relationships, dependent: :destroy
   has_many :students, through: :classroom_relationships
   has_many :parents, through: :students
 
