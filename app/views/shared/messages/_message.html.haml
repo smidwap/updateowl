@@ -2,6 +2,7 @@
   %td.message
     %span.student= message.student.full_name
     %span.message_body= "- #{message.body}"
+    %span.from= "#{second_or_third_person(message.user).titleize}"
   %td.time= time_or_date_format(message.created_at)
   %td.status
     - if message.checked?

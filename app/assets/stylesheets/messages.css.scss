@@ -21,6 +21,15 @@ table.messages {
       span.message_body {
         color: $grayLight;
       }
+
+      span.from {
+        background: $grayLighter;
+        padding: 5px;
+        @include border-radius($standardRadius);
+        color: $grayLight;
+        font-size: 12px;
+        font-weight: bold;
+      }
     }
 
     &.time {
