@@ -10,7 +10,7 @@ class Event::Builder
   end
 
   def unordered
-    new_messages + checked_deliveries
+    new_messages + checked_deliveries + new_parents
   end
 
   private
@@ -21,5 +21,9 @@ class Event::Builder
 
   def checked_deliveries
     @user.deliveries.successful.all.map { |delivery| Event::CheckedMessage.new(delivery) }
+  end
+
+  def new_parents
+    @user.parents.map { |parent| Event::NewParent.new(@user, parent) }
   end
 end

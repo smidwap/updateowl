@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Event::Builder do
   describe "#events" do
-    it "should sort new messages and checked message events by most recent first" do
+    it "should sort unordered events by most recent first" do
       @user = build_stubbed(:user)
       builder = Event::Builder.new(@user)
 
@@ -22,16 +22,25 @@ describe Event::Builder do
   end
   
   describe "#unordered" do
-    it "should aggregate new message and checked delivery events" do
+    it "should aggregate new message, checked delivery, and new parent events" do
       @user = create(:user)
 
+      # Create data for new message & checked delivery events
       checked_message = create(:delivered_message, user: @user)
       @user.messages << checked_message
+
+      # Create data for new parent events
+      student = create(:student)
+      @user.students << student
+
+      parent = create(:parent)
+      student.parents << parent
 
       unordered_events = Event::Builder.new(@user).unordered
 
       unordered_events[0].should be_instance_of(Event::NewMessage)
       unordered_events[1].should be_instance_of(Event::CheckedMessage) 
+      unordered_events[2].should be_instance_of(Event::NewParent)
     end
   end
 end
