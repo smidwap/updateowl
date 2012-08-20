@@ -1,4 +1,6 @@
 class MixpanelEventBuilder
+  include Analytics
+
   attr_accessor :current_user, :token
 
   def initialize(token)
@@ -30,7 +32,7 @@ class MixpanelEventBuilder
     current_user = Thread.current[:user]
     if current_user
       {
-        "distinct_id" => current_user.id,
+        "distinct_id" => user_distinct_id(current_user),
         "mp_name_tag" => current_user.full_name
       }
     else
