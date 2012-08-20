@@ -1,7 +1,7 @@
 class UserObserver < ActiveRecord::Observer
   def after_create(user)
     track_event "User: Registered", {
-      "distinct_id" => user_distinct_id(user)
+      "distinct_id" => user_distinct_id(user),
       "mp_name_tag" => user.full_name
     }
     track_event "$signup", {
