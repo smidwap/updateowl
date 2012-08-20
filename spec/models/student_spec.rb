@@ -8,9 +8,7 @@ describe Student do
   describe "scopes" do
     describe "parent scopes" do
       before(:each) do
-        @student_with_parent = create(:student)
-        @student_with_parent.parents << create(:parent)
-
+        @student_with_parent = create(:student_with_parent)
         @student_without_parent = create(:student)
       end
 

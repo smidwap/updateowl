@@ -1,6 +1,6 @@
 .event_container.new_message
   %header
     .subject
-      You sent an update for #{link_to(event.message.student.full_name, preview_student_path(event.message.student), remote: true)}
+      #{second_or_third_person(event.message.user).titleize} sent an update for #{link_to(event.message.student.full_name, preview_student_path(event.message.student), remote: true)}
     %time= time_or_date_format(event.time)
   .event_body= event.message.body

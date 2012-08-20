@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   has_many :classroom_relationships, dependent: :destroy
   has_many :students, through: :classroom_relationships
   has_many :parents, through: :students
+  has_many :student_messages, through: :students, class_name: 'Message', source: :messages
+
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :title, :school_id

@@ -6,17 +6,12 @@ class Event::Builder
   end
 
   def events
+    unordered = new_messages + checked_deliveries + new_parents
     unordered.sort_by { |event| -event.time.to_i }
   end
 
-  def unordered
-    new_messages + checked_deliveries + new_parents
-  end
-
-  private
-
   def new_messages
-    @user.messages.map { |message| Event::NewMessage.new(message) }
+    @user.student_messages.map { |message| Event::NewMessage.new(message) }
   end
 
   def checked_deliveries

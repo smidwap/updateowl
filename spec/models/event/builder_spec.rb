@@ -12,7 +12,8 @@ describe Event::Builder do
       checked_message = Event::CheckedMessage.new(build_stubbed(:delivered_delivery))
       checked_message.time = Time.now
 
-      builder.stub(:unordered).and_return [new_message, checked_message]
+      builder.stub(:new_messages).and_return [new_message]
+      builder.stub(:checked_deliveries).and_return [checked_message]
 
       events = builder.events
 
@@ -21,26 +22,50 @@ describe Event::Builder do
     end
   end
   
-  describe "#unordered" do
-    it "should aggregate new message, checked delivery, and new parent events" do
+  describe "event types" do
+    before(:each) do
       @user = create(:user)
 
-      # Create data for new message & checked delivery events
-      checked_message = create(:delivered_message, user: @user)
-      @user.messages << checked_message
+      @builder = Event::Builder.new(@user)
+    end
 
-      # Create data for new parent events
-      student = create(:student)
-      @user.students << student
+    describe "#new_messages" do
+      it "should return new message events for each message sent for the user's students" do
+        student = create(:student)
 
-      parent = create(:parent)
-      student.parents << parent
+        message_from_user = create(:message, student: student, user: @user)
+        message_from_another_user = create(:message, student: student)
 
-      unordered_events = Event::Builder.new(@user).unordered
+        @user.students << student
 
-      unordered_events[0].should be_instance_of(Event::NewMessage)
-      unordered_events[1].should be_instance_of(Event::CheckedMessage) 
-      unordered_events[2].should be_instance_of(Event::NewParent)
+        @builder.new_messages.count.should == 2
+        @builder.new_messages.each do |event|
+          event.should be_instance_of(Event::NewMessage)
+        end
+      end
+    end
+
+    describe "#checked_deliveries" do
+      it "should return checked delivery events for each successful delivery of the user's messages" do
+        checked_message = create(:delivered_message, user: @user)
+
+        @builder.checked_deliveries.count.should == checked_message.deliveries.successful.count
+        @builder.checked_deliveries.each do |event|
+          event.should be_instance_of(Event::CheckedMessage)
+        end
+      end
+    end
+
+    describe "#new_parents" do
+      it "should return new parent events for each accessible parent" do
+        student = create(:student_with_parent)
+        @user.students << student
+
+        @builder.new_parents.count.should == student.parents.count
+        @builder.new_parents.each do |event|
+          event.should be_instance_of(Event::NewParent)
+        end
+      end
     end
   end
 end
