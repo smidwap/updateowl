@@ -23,12 +23,8 @@ table.messages {
       }
 
       span.from {
-        background: $grayLighter;
-        padding: 5px;
-        @include border-radius($standardRadius);
         color: $grayLight;
-        font-size: 12px;
-        font-weight: bold;
+        font-size: 11px;
       }
     }
 
