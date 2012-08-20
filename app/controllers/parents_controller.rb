@@ -46,14 +46,14 @@ class ParentsController < ApplicationController
   private
 
   def track_create
-    track_event "Parent: Create"
+    track_event "Parent Contact: Create"
   end
 
   def track_update
-    track_event "Parent: Update"
+    track_event "Parent Contact: Save"
   end
 
   def track_destroy
-    track_event "Parent: Delete"
+    track_event "Parent Contact: Delete"
   end
 end
