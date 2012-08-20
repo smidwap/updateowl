@@ -17,6 +17,6 @@
       = form.radio_button :preference, 'phone'
       Phone
     .choices
-      = form.submit class: "btn btn-small"
+      = form.submit class: "btn btn-small", disable_with: "Saving..."
       or
       = link_to "Cancel", edit_student_path(student), remote: true
