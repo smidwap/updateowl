@@ -8,7 +8,8 @@ class UserObserver < ActiveRecord::Observer
         "$first_name" => user.first_name,
         "$last_name" => user.last_name,
         "$email" => user.email,
-        "$created" => user.created_at
+        "$created" => user.created_at,
+        "School" => user.school.name
       })
     end
   end
