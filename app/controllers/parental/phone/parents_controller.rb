@@ -27,6 +27,18 @@ module Parental
         else
           render "invalid_pin"
         end
+
+        track_create
+      end
+
+      private
+
+      def track_create
+        track_event("Parent: Sign Up via Phone", {
+          "distinct_id" => parent_distinct_id(@parent),
+          "mp_name_tag" => parent_name_tag(@parent),
+          "School" => @parent.try(:school).try(:name)
+        })
       end
     end
   end

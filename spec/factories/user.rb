@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :user do
     email
+    school
     password "password"
   end
   

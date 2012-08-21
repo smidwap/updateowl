@@ -34,6 +34,10 @@ module Analytics
   def parent_distinct_id(parent)
     "Parent - #{parent.id}"
   end
+
+  def parent_name_tag(parent)
+    "Parent #{parent.current_contact}"
+  end
 end
 
 ActiveRecord::Base.send(:include, Analytics)

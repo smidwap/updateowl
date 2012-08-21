@@ -18,11 +18,20 @@ describe Delivery do
     end
   end
 
-  describe "#checked" do
+  describe "#checked!" do
     it "should mark the delivery has having been successfully delivered" do
       @delivery.checked!
 
       @delivery.delivered_at.should_not == nil
+    end
+
+    it "should not change the delivered_at timestamp if the delivery is already successful" do
+      time = 3.weeks.ago
+      @delivery.delivered_at = time
+
+      @delivery.checked!
+
+      @delivery.delivered_at.should == time
     end
   end
 

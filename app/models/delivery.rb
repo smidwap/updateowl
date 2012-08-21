@@ -24,6 +24,7 @@ class Delivery < ActiveRecord::Base
   end
 
   def checked!
+    return if delivered_at?
     self.delivered_at = Time.now
     save!
   end
