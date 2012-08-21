@@ -5,5 +5,7 @@ class MessageObserver < ActiveRecord::Observer
       "Student Name" => message.student.full_name,
       "Message Length" => message.body.length
     }
+
+    increment_people_property("Updates Sent")
   end
 end

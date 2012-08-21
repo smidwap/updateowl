@@ -1,20 +1,27 @@
 class UserObserver < ActiveRecord::Observer
   def after_create(user)
-    track_event "User: Registered", {
-      "distinct_id" => user_distinct_id(user),
-      "mp_name_tag" => user.full_name
-    }
-    track_event "$signup", {
-      "distinct_id" => user_distinct_id(user),
-      "mp_name_tag" => user.full_name
-    }
+    with_current_user(user) do
+      track_event "User: Registered"
+      track_event "$signup"
+
+      set_people_properties({
+        "$first_name" => user.first_name,
+        "$last_name" => user.last_name,
+        "$email" => user.email,
+        "$created" => user.created_at
+      })
+    end
   end
 
   def after_update(user)
     if user.last_sign_in_at_changed?
-      track_event "User: Sign In", {
-        "distinct_id" => user_distinct_id(user) # No current user is saved in a thread yet
-      }
+      with_current_user(user) do
+        track_event "User: Sign In"
+
+        set_people_properties({
+          "$last_login" => Time.now
+        })
+      end
     end
   end
 end

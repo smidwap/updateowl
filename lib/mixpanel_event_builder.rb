@@ -1,20 +1,13 @@
 class MixpanelEventBuilder
   include Analytics
 
-  attr_accessor :current_user, :token
+  attr_accessor :token
+  attr_writer :current_user
 
   def initialize(token)
     @token = token
   end
 
-  # A simple function for asynchronously logging to the mixpanel.com API.
-  # This function requires `curl`.
-  #
-  # event: The overall event/category you would like to log this data under
-  # properties: A hash of key-value pairs that describe the event. Must include 
-  # the Mixpanel API token as 'token'
-  #
-  # See http://mixpanel.com/api/ for further detail.
   def build_and_queue_event(event, properties={})
     properties["token"] = @token
     properties = user_properties.merge(properties)
@@ -26,14 +19,38 @@ class MixpanelEventBuilder
     Resque.enqueue(MixpanelEventTracker, event, properties) unless Rails.env.test?
   end
 
+  def build_and_queue_people_data(data = {})
+    data["$token"] = @token
+    data = people_data.merge(data)
+
+    if !data.has_key?("$token")
+      raise "Token is required"
+    end
+
+    Resque.enqueue(MixpanelPeopleData, data) unless Rails.env.test?
+  end
+
+  def current_user
+    @current_user ||= Thread.current[:user]
+  end
+
   private
 
   def user_properties
-    current_user = Thread.current[:user]
     if current_user
       {
-        "distinct_id" => user_distinct_id(current_user),
-        "mp_name_tag" => current_user.full_name
+        "distinct_id" => user_distinct_id(@current_user),
+        "mp_name_tag" => @current_user.full_name
+      }
+    else
+      {}
+    end
+  end
+
+  def people_data
+    if current_user
+      {
+        "$distinct_id" => user_distinct_id(@current_user)
       }
     else
       {}
