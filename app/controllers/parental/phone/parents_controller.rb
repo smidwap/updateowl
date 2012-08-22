@@ -34,9 +34,10 @@ module Parental
       private
 
       def track_create
-        track_event("Parent: Sign Up via Phone", {
+        track_event("Parent: Sign Up", {
           "distinct_id" => parent_distinct_id(@parent),
           "mp_name_tag" => parent_name_tag(@parent),
+          "Prefernece" => @parent.preference
           "School" => @parent.try(:school).try(:name)
         })
       end
