@@ -31,7 +31,7 @@ module Parental
         track_event("Parent: Sign Up", {
           "distinct_id" => parent_distinct_id(@parent),
           "mp_name_tag" => parent_name_tag(@parent),
-          "Preference" => @parent.preference
+          "Preference" => @parent.preference,
           "School" => @parent.try(:school).try(:name)
         })
       end

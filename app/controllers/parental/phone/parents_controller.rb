@@ -2,7 +2,6 @@ module Parental
   module Phone
     class ParentsController < BaseController
       def answer
-        phone = params[:Direction] == "outbound-api" ? params[:To] : params[:From]
         @parent = Parent.find_by_phone(phone)
 
         if @parent
@@ -13,6 +12,7 @@ module Parental
       end
 
       def new
+        track_new
       end
 
       def create
@@ -24,21 +24,50 @@ module Parental
             preference: 'phone'
           @parent.school = @student.school
           @student.save!
+
+          track_create
         else
+          track_invalid_pin
+
           render "invalid_pin"
         end
-
-        track_create
       end
 
       private
+
+      def phone
+        phone = params[:Direction] == "outbound-api" ? params[:To] : params[:From]
+      end
 
       def track_create
         track_event("Parent: Sign Up", {
           "distinct_id" => parent_distinct_id(@parent),
           "mp_name_tag" => parent_name_tag(@parent),
-          "Prefernece" => @parent.preference
+          "Preference" => @parent.preference,
           "School" => @parent.try(:school).try(:name)
+        })
+
+        track_presignup_event "Phone Call: Registered"
+      end
+
+      def track_new
+        track_presignup_event "Phone Call: Welcome"
+      end
+
+      def track_invalid_pin
+        track_presignup_event "Phone Call: Invalid Pin"
+      end
+
+      def track_answer
+        track_event("Phone Call", {
+          "distinct_id" => parent
+        })
+      end
+
+      def track_presignup_event(event)
+        track_event(event, {
+          "distinct_id" => phone,
+          "mp_name_tag" => phone
         })
       end
     end
