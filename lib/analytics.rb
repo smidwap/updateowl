@@ -13,6 +13,17 @@ module Analytics
     $mixpanel_event_builder.current_user = nil
   end
 
+  def track_parent_event(parent, event, properties = {})
+    default_properties = {
+      "distinct_id" => "Parent - #{parent.id}",
+      "mp_name_tag" => "Parent #{parent.current_contact}",
+      "Preference" => parent.preference,
+      "School" => @parent.try(:school).try(:name)
+    }
+
+    track_event(event, default_properties.merge(properties))
+  end
+
   def set_people_properties(properties = {})
     $mixpanel_event_builder.build_and_queue_people_data({
       "$set" => properties
@@ -29,14 +40,6 @@ module Analytics
 
   def user_distinct_id(user)
     "User - #{user.id}"
-  end
-
-  def parent_distinct_id(parent)
-    "Parent - #{parent.id}"
-  end
-
-  def parent_name_tag(parent)
-    "Parent #{parent.current_contact}"
   end
 end
 

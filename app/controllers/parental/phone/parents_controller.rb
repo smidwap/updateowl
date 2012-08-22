@@ -40,12 +40,7 @@ module Parental
       end
 
       def track_create
-        track_event("Parent: Sign Up", {
-          "distinct_id" => parent_distinct_id(@parent),
-          "mp_name_tag" => parent_name_tag(@parent),
-          "Preference" => @parent.preference,
-          "School" => @parent.try(:school).try(:name)
-        })
+        track_parent_event @parent, "Parent: Sign Up"
 
         track_presignup_event "Phone Call: Registered"
       end
@@ -56,12 +51,6 @@ module Parental
 
       def track_invalid_pin
         track_presignup_event "Phone Call: Invalid Pin"
-      end
-
-      def track_answer
-        track_event("Phone Call", {
-          "distinct_id" => parent
-        })
       end
 
       def track_presignup_event(event)
