@@ -1,5 +1,28 @@
 @import 'includes';
 
+
+.message {      
+  span.student {
+    color: #000;
+    font-weight: bold;
+  }
+
+  span.message_body {
+    color: $grayLight;
+  }
+
+  span.from {
+    color: $grayLight;
+    font-size: 11px;
+  }
+
+  &.single {
+    span.message_body {
+      color: $textColor;
+    }
+  }
+}
+
 table.messages {
   tbody > tr > td {
     border-bottom: 1px solid $grayLighter;
@@ -10,22 +33,6 @@ table.messages {
 
     &:last-child {
       @include border-radius(0 $standardRadius $standardRadius 0);
-    }
-
-    &.message {      
-      span.student {
-        color: #000;
-        font-weight: bold;
-      }
-
-      span.message_body {
-        color: $grayLight;
-      }
-
-      span.from {
-        color: $grayLight;
-        font-size: 11px;
-      }
     }
 
     &.time {
@@ -94,5 +101,11 @@ section.messages {
         resize: none;
       }
     }
+  }
+}
+
+.modal.message_preview {
+  span.to {
+    font-weight: bold;
   }
 }

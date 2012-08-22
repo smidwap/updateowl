@@ -1,15 +1,12 @@
 - @second_tier_page_class = 'new_message'
 
-- content_for :secondary_title do
-  %h3 New Update for #{@student.full_name}
-
 - if @student.has_parents?
   .new_message_container
     = form_for([@student, @message], url: student_messages_path(@student), remote: true, html: {data: {"close-on-success" => true, "no-second-tier" => true}}) do |f|
       = @message.errors.full_messages.to_sentence
       = f.hidden_field :user_id
       .inner_box
-        = f.text_area :body, placeholder: "Write an update to #{@student.first_name}'s parents...", data: {"message-field" => true, behavior: "autogrow"}, autofocus: true
+        = f.text_area :body, placeholder: "Write an update to #{@student.full_name}'s parents...", data: {"message-field" => true, behavior: "autogrow"}, autofocus: true
       .choices
         = f.submit "Send this Message", class: "btn btn-success btn-small", disable_with: "Sending..."
         or
