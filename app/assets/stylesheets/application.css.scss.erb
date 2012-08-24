@@ -12,16 +12,127 @@ $navbarSearchPlaceholderColor: #999;
 @import "mixins";
 
 body {
-  background: url(<%= image_path('ricepaper.png') %>);
-  padding-top: 60px;
+  //background: url(<%= image_path('ricepaper.png') %>);
+  background: #FDF9F2;
+  padding-top: 70px;
   padding-bottom: 20px;
 }
 
+//
+// Global Nav
+//
+$nav_height: 50px;
+body > header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+
+  a.brand, ul.main_menu, .search {
+    float: left;
+    line-height: 50px;
+  }
+
+  ul.personal_menu {
+    float: right;
+  }
+
+  a.brand {
+    line-height: 50px;
+    color: #666;
+    font-size: 24px;
+    padding: 0 20px;
+    text-decoration: none;
+  }
+
+  ul.menu {
+    margin-bottom: 0;
+
+    > li {
+      float: left;
+
+      > a {
+        display: inline-block;
+        line-height: $nav_height;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      &.dropdown {
+        b.caret {
+          margin-top: 22px;
+          opacity: 1.0;
+        }
+
+        &:hover b.caret {
+          opacity: 0.3;
+        }
+      }
+    }
+  }
+
+  ul.main_menu {
+    > li {
+      border-right: 1px solid #ccc;
+
+      &:first-child {
+        border-left: 1px solid #ccc;
+      }
+
+      > a {
+        padding: 0 20px;
+        font-weight: bold;
+
+        &.new_update {
+          color: $green;
+        }
+
+        &:hover {
+          background: $grayLighter;
+        }
+      }
+    }
+  }
+
+  .search {
+    padding: 0 100px;
+
+    input {
+      @include border-radius(10px);
+      padding-left: 10px;
+      margin-top: 4px;
+    }
+  }
+
+  ul.personal_menu {
+    > li {
+      > a {
+        padding: 0 7px;
+        color: #333;
+      }
+
+      &.dropdown {
+        > a:hover {
+          background: $grayLighter;
+        }
+
+        > ul.dropdown-menu {
+          left: -135px;
+        }
+      }
+    }
+  }
+}
+
+//
+// Main Container
+//
 .container#inner {
   padding: 20px;
-  border: 1px solid $grayLighter;
-  @include border-radius($standardRadius);
-  @include box-shadow(0 0 4px #666);
+  border: 1px solid #ccc;
+  @include border-radius(2px);
+  @include box-shadow(0 0 6px #ccc);
   background: #fff;
 }
 
@@ -31,38 +142,9 @@ body {
   }
 }
 
-nav.inner_nav {
-  margin-bottom: 25px;
-
-  a {
-    margin-right: 15px;
-    color: #000;
-    opacity: 0.4;
-    text-shadow: #fff 0 1px;
-
-    &.nav_new_update {
-      font-weight: bold;
-      padding-right: 15px;
-      border-right: 1px solid #ccc;
-
-      i {
-        margin-top: 2px;
-      }
-    }
-  }
-
-  &:hover {
-    a {
-      opacity: 0.7;
-      text-decoration: none;
-
-      &:hover {
-        opacity: 1.0;
-      }
-    }
-  }
-}
-
+//
+// Global styles
+//
 .call_to_action {
   padding: 10px;
   background: $red;
@@ -83,9 +165,7 @@ nav.inner_nav {
   > header {
     padding: 5px 5px 5px 15px;
     background: $grayLighter;
-    //text-align: center;
     font-weight: bold;
-    //border-top: 1px solid $grayLight;
     @include border-radius($standardRadius $standardRadius);
   }
 
@@ -175,6 +255,10 @@ form {
 
   &.green {
     background: $green;
+  }
+
+  i {
+    margin-top: 1px;
   }
 }
 

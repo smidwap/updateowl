@@ -4,28 +4,26 @@
     = render "layouts/head"
 
   %body
-    %header.navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          = link_to "UpdateOwl", root_path, class: "brand"
-          .navbar-search{style: "margin-left: 225px;"}
-            = text_field_tag("autocomplete", nil, data: {behavior: "autocomplete autocomplete_selectable_link", source: global_autocomplete_data_for_students(current_user.students)}, placeholder: "Jump to a student...", class: "search-query span3")
-          %ul.nav.pull-right
-            %li.dropdown
-              = link_to "#", class: "dropdown-toggle", "data-toggle" => "dropdown" do
-                = current_user.professional_name
-                %b.caret
-              %ul.dropdown-menu
-                %li= link_to "Account", "#"
-                %li= link_to "Logout", destroy_user_session_path, method: :delete
+    %header
+      .container
+        = link_to "UpdateOwl", root_path, class: "brand"
+        %ul.menu.main_menu.unstyled
+          %li
+            = link_to select_user_students_path(current_user), remote: true, class: "new_update" do
+              .circle_icon.green
+                %i.icon-edit.icon-white{style: "margin-top: 1px;"}
+              %span{style: "margin-left: 3px;"} Update
+          %li= link_to "Students", user_students_path(current_user)
+        .search
+          = text_field_tag("autocomplete", nil, data: {behavior: "autocomplete autocomplete_selectable_link", source: global_autocomplete_data_for_students(current_user.students)}, placeholder: "Jump to a student...", class: "span3")
+        %ul.menu.personal_menu.unstyled
+          %li= link_to current_user.professional_name, user_messages_path(current_user)
+          %li.dropdown
+            = link_to "#", class: "dropdown-toggle", data: {toggle: "dropdown"} do
+              %b.caret
+            %ul.dropdown-menu
+              %li= link_to "Logout", destroy_user_session_path, method: :delete
     .container#inner
-      %nav.inner_nav
-        = link_to select_user_students_path(current_user), remote: true, class: "nav_new_update" do
-          %i.icon-plus-sign
-          New Update
-        = link_to "Recent Activity", root_path, class: "nav_recent_activity"
-        = link_to "Archive", user_messages_path(current_user), class: "nav_updates"
-        = link_to "Students", user_students_path(current_user), class: "nav_students"
       .row
         .span8
           .main
