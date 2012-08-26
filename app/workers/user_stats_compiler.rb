@@ -10,7 +10,7 @@ class UserStatsCompiler
           num_registered = user.students.with_registered_parents.length
           percentage = num_registered.to_f / num_students.to_f
 
-          Analytics.Analytics.set_people_properties({
+          Analytics.set_people_properties({
             "Students" => num_students,
             "Students with Registered Parents" => num_registered,
             "Percentage Students with Registered Parents" => percentage
