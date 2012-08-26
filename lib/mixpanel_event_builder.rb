@@ -1,6 +1,4 @@
 class MixpanelEventBuilder
-  include Analytics
-
   attr_accessor :token
   attr_writer :current_user
 
@@ -39,7 +37,7 @@ class MixpanelEventBuilder
   def user_properties
     if current_user
       {
-        "distinct_id" => user_distinct_id(current_user),
+        "distinct_id" => Analytics.user_distinct_id(current_user),
         "mp_name_tag" => current_user.full_name
       }
     else
@@ -50,7 +48,7 @@ class MixpanelEventBuilder
   def people_data
     if current_user
       {
-        "$distinct_id" => user_distinct_id(current_user)
+        "$distinct_id" => Analytics.user_distinct_id(current_user)
       }
     else
       {}

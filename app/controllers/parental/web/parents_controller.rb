@@ -28,7 +28,7 @@ module Parental
       private
 
       def track_create
-        track_parent_event @parent, "Parent: Sign Up"
+        Analytics.track_parent_event @parent, "Parent: Sign Up"
       end
     end
   end

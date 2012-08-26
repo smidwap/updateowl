@@ -1,2 +1,4 @@
 CallParents:
   cron: "0 20 * * * America/New_York" # 8pm Eastern time every day
+UserStatsCompiler:
+  cron: "0 23 * * * America/New_York" # 11pm EST each day

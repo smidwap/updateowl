@@ -40,7 +40,7 @@ module Parental
       end
 
       def track_create
-        track_parent_event @parent, "Parent: Sign Up"
+        Analytics.track_parent_event @parent, "Parent: Sign Up"
 
         track_presignup_event "Phone Call: Registered"
       end
@@ -54,7 +54,7 @@ module Parental
       end
 
       def track_presignup_event(event)
-        track_event(event, {
+        Analytics.track_event(event, {
           "distinct_id" => phone,
           "mp_name_tag" => phone
         })

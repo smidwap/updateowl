@@ -38,19 +38,19 @@ module Parental
       private
 
       def track_index
-        track_parent_event @parent, "Phone Call: Main Menu"
+        Analytics.track_parent_event @parent, "Phone Call: Main Menu"
       end
 
       def track_show
-        track_parent_event @delivery.parent, "Phone Call: Hear Update"
+        Analytics.track_parent_event @delivery.parent, "Phone Call: Hear Update"
       end
 
       def track_repeat
-        track_parent_event @delivery.parent, "Phone Call: Repeat Update"
+        Analytics.track_parent_event @delivery.parent, "Phone Call: Repeat Update"
       end
 
       def track_next
-        track_parent_event @delivery.parent, "Phone Call: Next Update"
+        Analytics.track_parent_event @delivery.parent, "Phone Call: Next Update"
       end
     end
   end
