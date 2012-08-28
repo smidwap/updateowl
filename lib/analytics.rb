@@ -14,7 +14,7 @@ module Analytics
       "distinct_id" => "Parent - #{parent.id}",
       "mp_name_tag" => "Parent #{parent.current_contact}",
       "Preference" => parent.preference,
-      "School" => @parent.try(:school).try(:name)
+      "School" => parent.try(:school).try(:name)
     }
 
     track_event(event, default_properties.merge(properties))
