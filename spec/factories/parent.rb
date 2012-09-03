@@ -25,4 +25,8 @@ FactoryGirl.define do
       parent.deliveries << build(:delivered_delivery, parent: parent)
     end
   end
+
+  factory :spanish_parent, parent: :parent do
+    spanish_speaking true
+  end
 end

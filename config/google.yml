@@ -1,0 +1,6 @@
+test:
+  api_key: "AIzaSyADr5CfRMz4IKMIIz9LdX2s4HC4PKuvARY"
+development:
+  api_key: "AIzaSyADr5CfRMz4IKMIIz9LdX2s4HC4PKuvARY"
+production:
+  api_key: "AIzaSyADr5CfRMz4IKMIIz9LdX2s4HC4PKuvARY"

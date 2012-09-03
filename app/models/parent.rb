@@ -19,6 +19,7 @@ class Parent < ActiveRecord::Base
   }
   scope :prefers_phone, where(preference: 'phone')
   scope :prefers_email, where(preference: 'email')
+  scope :spanish_speaking, where(spanish_speaking: true)
 
   validates_inclusion_of :preference, in: %w(email phone), message: "is required to be either email or phone"
   #validates_as_phone_number :phone, message: "is not valid. Here's a valid example: 219-309-0213 or 2193090213", allow_nil: true
@@ -45,7 +46,7 @@ class Parent < ActiveRecord::Base
     deliveries.group_by { |delivery| delivery.user }
   end
 
-  private
+private
 
   def sufficient_contact_details
     unless has_and_prefers_phone? || has_and_prefers_email?

@@ -1,4 +1,4 @@
-<Say>
+<Say voice="woman" language="es">
   Sent by <%= @delivery.user.professional_name %> <%= time_ago_in_words(@delivery.message.created_at) %> ago for <%= @delivery.student.first_name %>.
   <%= @delivery.message.body %>
 </Say>

@@ -1,8 +1,10 @@
 class Message < ActiveRecord::Base
   include ArrayMaker
+  include Translatable
 
   belongs_to :user
   belongs_to :student
+  has_many :recipients, through: :student, source: :parents, class_name: 'Parent'
 
   has_many :deliveries
 

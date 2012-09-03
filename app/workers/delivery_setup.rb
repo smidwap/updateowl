@@ -4,7 +4,7 @@ class DeliverySetup
   def self.perform(message_id)
     message = Message.find(message_id)
 
-    message.student.parents.each do |parent|
+    message.recipients.each do |parent|
       parent.deliveries.create(message: message)
     end
   end

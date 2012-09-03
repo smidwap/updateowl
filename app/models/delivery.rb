@@ -11,6 +11,7 @@ class Delivery < ActiveRecord::Base
     delivery_ids = ids_from(deliveries)
     where("id NOT IN (?)", delivery_ids.blank? ? '' : delivery_ids)
   }
+  #TODO: rename to checked/unchecked to fit domain vocab
   scope :successful, where("delivered_at IS NOT NULL")
   scope :unsuccessful, where(delivered_at: nil)
 

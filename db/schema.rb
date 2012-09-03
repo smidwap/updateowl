@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120815042508) do
+ActiveRecord::Schema.define(:version => 20120903185704) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -101,23 +101,26 @@ ActiveRecord::Schema.define(:version => 20120815042508) do
     t.integer  "user_id"
     t.integer  "student_id"
     t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.text     "spanish_body"
   end
 
   create_table "parents", :force => true do |t|
     t.string   "phone"
     t.string   "email"
     t.string   "preference"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.integer  "school_id"
+    t.boolean  "spanish_speaking", :default => false
   end
 
   create_table "schools", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "twilio_phone"
   end
 
   create_table "students", :force => true do |t|

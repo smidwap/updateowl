@@ -63,6 +63,7 @@ gem "twilio-ruby"
 gem "exceptional"
 gem "rvm-capistrano"
 gem "aws-ses", require: 'aws/ses'
+gem "to_lang"
 
 group :development do
   gem "letter_opener"
