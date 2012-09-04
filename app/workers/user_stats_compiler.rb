@@ -13,7 +13,9 @@ class UserStatsCompiler
           Analytics.set_people_properties({
             "Students" => num_students,
             "Students with Registered Parents" => num_registered,
-            "Percentage Students with Registered Parents" => percentage
+            "Percentage Students with Registered Parents" => percentage,
+            "Updates Unchecked" => user.messages.unchecked.count,
+            "Updates Last Week" => user.messages.last_week.count
           })
         end
       end
