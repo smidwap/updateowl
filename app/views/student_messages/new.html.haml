@@ -1,17 +1,16 @@
 - @second_tier_page_class = 'new_message'
 
-- if @student.has_parents?
-  .new_message_container
-    = form_for([@student, @message], url: student_messages_path(@student), remote: true, html: {data: {"close-on-success" => true, "no-second-tier" => true}}) do |f|
-      = @message.errors.full_messages.to_sentence
-      = f.hidden_field :user_id
-      .inner_box
-        = f.text_area :body, placeholder: "Write an update to #{@student.full_name}'s parents...", data: {"message-field" => true, behavior: "autogrow"}, autofocus: true
-      .choices
-        = f.submit "Send this Message", class: "btn btn-success btn-small", disable_with: "Sending..."
-        or
-        = link_to "Cancel", "#", data: {dismiss: "modal"}
-- else
-  #{@student.first_name} has no parents! You should probably add some.
+.new_message_container
+  = form_for([@student, @message], url: student_messages_path(@student), remote: true, html: {data: {"close-on-success" => true, "no-second-tier" => true}}) do |f|
+    = @message.errors.full_messages.to_sentence
+    = f.hidden_field :user_id
+    .inner_box
+      - if @student.parents.spanish_speaking.count > 0
+        .translation_note This update will be <b>translated to Spanish</b>. Keep it simple!
+      = f.text_area :body, placeholder: "Update #{@student.full_name}'s parents...", data: {"message-field" => true, behavior: "autogrow"}, autofocus: true
+    .choices
+      = f.submit "Send this Message", class: "btn btn-success btn-small", disable_with: "Sending..."
+      or
+      = link_to "Cancel", "#", data: {dismiss: "modal"}
 
 = render "shared/messages/recent", student: @student

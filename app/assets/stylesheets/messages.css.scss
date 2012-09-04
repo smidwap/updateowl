@@ -91,6 +91,11 @@ section.messages {
       padding: 10px;
       @include border-radius($standardRadius);
 
+      .translation_note {
+        font-size: 12px;
+        margin-bottom: 15px;
+      }
+
       textarea {
         @include box-sizing('border-box');
         width: 100%;
@@ -99,6 +104,7 @@ section.messages {
         @include box-shadow(none);
         border: none;
         resize: none;
+        padding: 0;
       }
     }
   }
