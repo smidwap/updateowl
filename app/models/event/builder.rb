@@ -15,7 +15,7 @@ class Event::Builder
   end
 
   def checked_deliveries
-    @user.deliveries.successful.all.map { |delivery| Event::CheckedMessage.new(delivery) }
+    @user.deliveries.checked.all.map { |delivery| Event::CheckedMessage.new(delivery) }
   end
 
   def new_parents

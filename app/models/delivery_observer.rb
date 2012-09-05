@@ -11,8 +11,8 @@ class DeliveryObserver < ActiveRecord::Observer
 
   private
 
-  # Is this the first successful delivery of this message 
+  # Is this the first checked delivery of this message 
   def should_track_check?(delivery)
-    delivery.delivered_at_changed? && delivery.message.deliveries.successful.count == 1
+    delivery.delivered_at_changed? && delivery.message.deliveries.checked.count == 1
   end
 end

@@ -25,9 +25,9 @@ class Message < ActiveRecord::Base
   scope :checked, lambda {
      joins(:deliveries)
     .where("deliveries.delivered_at IS NOT NULL")
-    .select("messages.*, count(messages.id) as n_successful_deliveries")
+    .select("messages.*, count(messages.id) as n_checked_deliveries")
     .group("messages.id")
-    .having("n_successful_deliveries > 0")
+    .having("n_checked_deliveries > 0")
 
   }
   scope :unchecked, lambda {
@@ -40,7 +40,7 @@ class Message < ActiveRecord::Base
   after_create :queue_delivery_setup
 
   def checked?
-    deliveries.successful.count > 0
+    deliveries.checked.count > 0
   end
 
   private

@@ -12,8 +12,8 @@ class Delivery < ActiveRecord::Base
     where("id NOT IN (?)", delivery_ids.blank? ? '' : delivery_ids)
   }
   #TODO: rename to checked/unchecked to fit domain vocab
-  scope :successful, where("delivered_at IS NOT NULL")
-  scope :unsuccessful, where(delivered_at: nil)
+  scope :checked, where("delivered_at IS NOT NULL")
+  scope :unchecked, where(delivered_at: nil)
 
   attr_accessible :parent, :message
 
@@ -35,7 +35,7 @@ class Delivery < ActiveRecord::Base
   end
 
   def next_delivery
-    Delivery.recipient(parent).not_these(self).unsuccessful.first
+    Delivery.recipient(parent).not_these(self).unchecked.first
   end
 
   private

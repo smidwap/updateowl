@@ -46,10 +46,10 @@ describe Event::Builder do
     end
 
     describe "#checked_deliveries" do
-      it "should return checked delivery events for each successful delivery of the user's messages" do
+      it "should return checked delivery events for each checked delivery of the user's messages" do
         checked_message = create(:delivered_message, user: @user)
 
-        @builder.checked_deliveries.count.should == checked_message.deliveries.successful.count
+        @builder.checked_deliveries.count.should == checked_message.deliveries.checked.count
         @builder.checked_deliveries.each do |event|
           event.should be_instance_of(Event::CheckedMessage)
         end

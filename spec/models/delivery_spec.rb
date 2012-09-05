@@ -19,13 +19,13 @@ describe Delivery do
   end
 
   describe "#checked!" do
-    it "should mark the delivery has having been successfully delivered" do
+    it "should mark the delivery has having been checkedly delivered" do
       @delivery.checked!
 
       @delivery.delivered_at.should_not == nil
     end
 
-    it "should not change the delivered_at timestamp if the delivery is already successful" do
+    it "should not change the delivered_at timestamp if the delivery is already checked" do
       time = 3.weeks.ago
       @delivery.delivered_at = time
 
@@ -51,11 +51,11 @@ describe Delivery do
 
   describe "#next_delivery" do
     it "should return the parent's next undelivered delivery" do
-      first_unsuccessful_delivery = create(:undelivered_delivery)
-      successful_delivery = create(:delivered_delivery, parent: first_unsuccessful_delivery.parent)
-      next_unsuccessful_delivery = create(:undelivered_delivery, parent: first_unsuccessful_delivery.parent)
+      first_unchecked_delivery = create(:undelivered_delivery)
+      checked_delivery = create(:delivered_delivery, parent: first_unchecked_delivery.parent)
+      next_unchecked_delivery = create(:undelivered_delivery, parent: first_unchecked_delivery.parent)
 
-      first_unsuccessful_delivery.next_delivery.should == next_unsuccessful_delivery
+      first_unchecked_delivery.next_delivery.should == next_unchecked_delivery
     end
   end
 
