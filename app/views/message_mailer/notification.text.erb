@@ -1,3 +1,5 @@
-A new update has been sent from <%= @delivery.message.user.professional_name %> for <%= @delivery.message.student.first_name %>.
+<%= t 'parental.email.notification',
+    teacher: @delivery.message.user.professional_name,
+    student: @delivery.message.student.first_name %>
 
-Click here to view the update: <%= parental_web_delivery_url(@delivery.access_code) %>
+<%= t 'parental.email.click_to_access' %> <%= parental_web_delivery_url(@delivery.access_code) %>

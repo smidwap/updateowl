@@ -1,3 +1,5 @@
-<p>A new update has been sent from <%= @delivery.message.user.professional_name %> for <%= @delivery.message.student.first_name %>.</p>
+<p><%= t 'parental.email.notification',
+        teacher: @delivery.message.user.professional_name,
+        student: @delivery.message.student.first_name %></p>
 
-<p><%= link_to"Read the update", parental_web_delivery_url(@delivery.access_code) %></p>
+<p><%= link_to t('parental.email.read'), parental_web_delivery_url(@delivery.access_code) %></p>

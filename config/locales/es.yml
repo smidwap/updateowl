@@ -1,0 +1,6 @@
+es:
+  parental:
+    web:
+      sent: 'Sent %{time}'
+    phone:
+    email:

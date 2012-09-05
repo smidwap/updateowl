@@ -10,7 +10,7 @@ class MessageTranslator
     self
   end
 
-  def translate
+  def translate!
     @message.spanish_body = translation
     @message.save!
   end
@@ -22,6 +22,6 @@ class MessageTranslator
   def self.perform(id)
     message = Message.find(id)
 
-    self.new(message).translate
+    self.new(message).translate!
   end
 end

@@ -2,6 +2,6 @@
   %header
     .from= @delivery.message.user.professional_name
     .to= @delivery.message.student.full_name
-  .email_delivery_body= @delivery.message.body
+  .email_delivery_body= @delivery.message_body
   %footer
-    %time Sent #{@delivery.message.created_at.strftime('%b %e @ %l:%M%P')}
+    %time= t 'parental.web.sent', time: @delivery.message.created_at.strftime('%b %e @ %l:%M%P')

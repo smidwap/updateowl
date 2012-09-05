@@ -10,9 +10,9 @@ describe MessageTranslator do
     @message_translator.message.body.stub(:to_spanish).and_return @spanish_translation
   end
 
-  describe "#translate" do
+  describe "#translate!" do
     it "should set the message's spanish_body to the spanish translation" do
-      @message_translator.translate
+      @message_translator.translate!
 
       @message_translator.message.reload.spanish_body.should == @spanish_translation
     end

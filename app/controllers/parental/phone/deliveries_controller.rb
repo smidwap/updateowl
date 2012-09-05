@@ -1,6 +1,8 @@
 module Parental
   module Phone
     class DeliveriesController < BaseController
+      after_filter :set_locale
+
       def index
         @parent = Parent.find(params[:parent_id])
 
@@ -36,6 +38,11 @@ module Parental
       end
 
       private
+
+      def set_locale
+        I18n.locale = @parent.present? ? @parent.locale : @delivery.parent.locale
+        I18n.locale = :en
+      end
 
       def track_index
         Analytics.track_parent_event @parent, "Phone Call: Main Menu"

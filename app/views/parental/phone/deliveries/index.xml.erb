@@ -1,21 +1,15 @@
-<Say>This is <%= @parent.school.name %> updates.</Say>
+<Say><%= t 'parental.phone.hello', school: @parent.school.name %></Say>
 
-<% if @parent.deliveries.unsuccessful.count > 0 %>
-  <Say>You have
-
-  <% @parent.user_grouped_deliveries.each do |user, deliveries| %>
-    <%= deliveries.count %> new <%= deliveries.count == 1 ? "update" : "updates" %> from <%= user.professional_name %>
-    <%= ", and " unless user == @parent.user_grouped_deliveries.sort.last[0] %>
-  <% end %>
-
+<% if @parent.deliveries.unchecked.count > 0 %>
+  <Say><%= t 'parental.phone.unchecked', count: @parent.deliveries.unchecked.count %>
   </Say>
 
-  <Gather numDigits="1" method="GET" action="<%= parental_phone_delivery_path(@parent.deliveries.unsuccessful.first) %>">
-    <Say>To hear your new <%= @parent.deliveries.unsuccessful.count > 1 ? "updaes" : "update" %>, press 1</Say>
+  <Gather numDigits="1" method="GET" action="<%= parental_phone_delivery_path(@parent.deliveries.unchecked.first) %>">
+    <Say><%= t 'parental.phone.listen', count: @parent.deliveries.unchecked.count %></Say>
   </Gather>
 <% else %>
-  <Say>You have no new updates.</Say>
+  <Say><%= t 'parental.phone.no_new_updates' %></Say>
   <Pause length="1" />
-  <Say>Thank you, and good bye</Say>
+  <Say><%= t 'parental.phone.goodbye' %></Say>
   <Hangup />
 <% end %>

@@ -1,10 +1,10 @@
 <% content_for :options do %>
-  <Say>To repeat this update, press 1.</Say>
+  <Say><%= t 'parental.phone.repeat' %></Say>
 
   <% if delivery.next_delivery? %>
-  <Say>To hear the next update, press 2.</Say>
+  <Say><%= t 'parental.phone.next' %></Say>
   <% else %>
-  <Say>Otherwise, you can hang up at anytime.</Say>
+  <Say><%= t 'parental.phone.otherwise' %></Say>
   <% end %>
 <% end %>
 

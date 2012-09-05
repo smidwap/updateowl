@@ -38,6 +38,11 @@ class Delivery < ActiveRecord::Base
     Delivery.recipient(parent).not_these(self).unchecked.first
   end
 
+  def message_body
+    return message.spanish_body if parent.spanish_speaking?
+    return message.body
+  end
+
   private
 
   def should_deliver_immediately?

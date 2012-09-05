@@ -6,7 +6,7 @@
     = f.hidden_field :user_id
     .inner_box
       - if @student.parents.spanish_speaking.count > 0
-        .translation_note This update will be <b>translated to Spanish</b>. Keep it simple!
+        .translation_note.alert.alert-warn This update will be <b>translated to Spanish</b>. Keep it simple!
       = f.text_area :body, placeholder: "Update #{@student.full_name}'s parents...", data: {"message-field" => true, behavior: "autogrow"}, autofocus: true
     .choices
       = f.submit "Send this Message", class: "btn btn-success btn-small", disable_with: "Sending..."

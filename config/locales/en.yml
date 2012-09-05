@@ -1,5 +1,23 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  parental:
+    web:
+      sent: 'Sent %{time}'
+    phone:
+      hello: 'This is %{school} updates.'
+      unchecked:
+        one: 'You have one new update.'
+        other: 'You have %{count} new updates.'
+      listen:
+        one: 'To hear your new update, press 1.'
+        other: 'To hear your new updates, press 1.'
+      no_new_updates: 'You have no new updates.'
+      goodbye: 'Thank you, and good bye.'
+      repeat: 'To repeat this update, press 1.'
+      next: 'To hear the next update, press 2.'
+      otherwise: 'Otherwise, you can hang up at anytime.'
+      bad_route: 'Sorry, I did not understand your response.'
+      sent: 'Sent by %{by} %{time_ago} for %{for}.'
+    email:
+      notification: 'A new update has been sent from %{teacher} for %{student}.'
+      click_to_access: 'Click here to view the update:'
+      read: 'Read the update'

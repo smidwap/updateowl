@@ -1,6 +1,9 @@
-<Say voice="woman" language="es">
-  Sent by <%= @delivery.user.professional_name %> <%= time_ago_in_words(@delivery.message.created_at) %> ago for <%= @delivery.student.first_name %>.
-  <%= @delivery.message.body %>
+<Say>
+  <%= t 'parental.phone.sent',
+      by: @delivery.user.professional_name,
+      time_ago: time_ago_in_words(@delivery.message.created_at),
+      for: @delivery.student.first_name %>
+  <%= @delivery.message_body %>
 </Say>
 <Pause length="1" />
 <%= render "menu", delivery: @delivery %>
