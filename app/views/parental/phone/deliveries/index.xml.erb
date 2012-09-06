@@ -1,15 +1,13 @@
-<Say><%= t 'parental.phone.hello', school: @parent.school.name %></Say>
-
+<%= say do %><%= t 'parental.phone.hello', school: @parent.school.name %><% end %>
 <% if @parent.deliveries.unchecked.count > 0 %>
-  <Say><%= t 'parental.phone.unchecked', count: @parent.deliveries.unchecked.count %>
-  </Say>
+  <%= say do %><%= t 'parental.phone.unchecked', count: @parent.deliveries.unchecked.count %><% end %>
 
   <Gather numDigits="1" method="GET" action="<%= parental_phone_delivery_path(@parent.deliveries.unchecked.first) %>">
-    <Say><%= t 'parental.phone.listen', count: @parent.deliveries.unchecked.count %></Say>
+    <%= say do %><%= t 'parental.phone.listen', count: @parent.deliveries.unchecked.count %><% end %>
   </Gather>
 <% else %>
-  <Say><%= t 'parental.phone.no_new_updates' %></Say>
+  <%= say do %><%= t 'parental.phone.no_new_updates' %><% end %>
   <Pause length="1" />
-  <Say><%= t 'parental.phone.goodbye' %></Say>
+  <%= say do %><%= t 'parental.phone.goodbye' %><% end %>
   <Hangup />
 <% end %>

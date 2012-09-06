@@ -1,6 +1,60 @@
 es:
   parental:
     web:
-      sent: 'Sent %{time}'
+      sent: 'Enviado %{time}'
     phone:
+      hello: 'Estos son mensajes de %{school}.'
+      unchecked:
+        one: 'Usted tiene un nuevo mensaje.'
+        other: 'Usted tiene %{count} nuevos mensajes.'
+      listen:
+        one: 'Para escuchcar su nuevo mensaje, presione uno.'
+        other: 'Para escuchcar sus nuevos mensajes, presione uno.'
+      no_new_updates: 'No tiene nuevos mensajes.'
+      goodbye: 'Gracias, y adios.'
+      repeat: 'Para repetir este mensaje, presione uno.'
+      next: 'Para escuchar el proximo mensaje, presione dos.'
+      otherwise: 'O, puede colgar en cualquier momento.'
+      bad_route: 'Lo siento, no entendi su respuesta.'
+      sent: 'Enviado por %{by} %{time_ago} para %{for}.'
     email:
+      notification: 'Un nuevo mensaje ha sido enviado por %{teacher} para %{student}.'
+      click_to_access: 'Presione aqui para ver el mensaje:'
+      read: 'Lea el mensaje'
+      subject: 'Nuevo Mensaje para %{student} - %{time}'
+  datetime:
+      distance_in_words:
+        half_a_minute: "un medio minuto"
+        less_than_x_seconds:
+          one:   "menos que un segundo"
+          other: "menos que %{count} segundos"
+        x_seconds:
+          one:   "1 segundo"
+          other: "%{count} segundos"
+        less_than_x_minutes:
+          one:   "menos que un minuto"
+          other: "menos que %{count} minutos"
+        x_minutes:
+          one:   "1 minuto"
+          other: "%{count} minutos"
+        about_x_hours:
+          one:   "alrededor 1 hora"
+          other: "alrededor %{count} horas"
+        x_days:
+          one:   "1 dia"
+          other: "%{count} dias"
+        about_x_months:
+          one:   "alrededor 1 mes"
+          other: "alrededor %{count} meses"
+        x_months:
+          one:   "un mes"
+          other: "%{count} meses"
+        about_x_years:
+          one:   "alrededor 1 año"
+          other: "alrededor %{count} año"
+        over_x_years:
+          one:   "mas de 1 año"
+          other: "mas de %{count} años"
+        almost_x_years:
+          one:   "casi 1 año"
+          other: "casi %{count} años"

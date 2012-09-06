@@ -1,30 +1,28 @@
 module Parental
   module Phone
     class DeliveriesController < BaseController
-      after_filter :set_locale
+      load_resource except: :index
+      before_filter :set_locale_from_delivery, except: :index
 
       def index
         @parent = Parent.find(params[:parent_id])
+
+        set_locale_of @parent
 
         track_index
       end
 
       def show
-        @delivery = Delivery.find(params[:id])
         @delivery.checked!
 
         track_show
       end
 
       def next
-        @delivery = Delivery.find(params[:id])
-
         redirect_to parental_phone_delivery_path(@delivery.next_delivery)
       end
 
       def route
-        @delivery = Delivery.find(params[:id])
-
         case params[:Digits]
         when "1"
           track_repeat
@@ -34,14 +32,17 @@ module Parental
           track_next
 
           redirect_to next_parental_phone_delivery_path(@delivery)
-        end        
+        end
       end
 
-      private
+    private
 
-      def set_locale
-        I18n.locale = @parent.present? ? @parent.locale : @delivery.parent.locale
-        I18n.locale = :en
+      def set_locale_from_delivery
+        set_locale_of @delivery.parent
+      end
+
+      def set_locale_of(parent)
+        I18n.locale = parent.locale
       end
 
       def track_index
