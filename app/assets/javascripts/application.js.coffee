@@ -17,7 +17,8 @@ $ ->
 
   App.register_behaviors $('body')
 
-  Placeholders.init()
+  Placeholders.init
+    live: true
 
 
 App.register_behaviors = ($el) ->
