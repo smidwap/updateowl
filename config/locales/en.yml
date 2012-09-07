@@ -22,3 +22,4 @@ en:
       notification: 'A new update has been sent from %{teacher} for %{student}.'
       click_to_access: 'Click here to view the update:'
       read: 'Read the update'
+      subject: 'New Update for %{student} - %{time}'
