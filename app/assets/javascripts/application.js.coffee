@@ -6,6 +6,7 @@
 //= require backbone
 //= require jquery.closest_descendant
 //= require jquery.auto_resize
+//= require placeholders
 //= require_tree .
 
 $ ->
@@ -15,6 +16,8 @@ $ ->
   App.main = new App.Main
 
   App.register_behaviors $('body')
+
+  Placeholders.init()
 
 
 App.register_behaviors = ($el) ->
