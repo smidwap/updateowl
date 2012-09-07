@@ -1,4 +1,4 @@
-<%= say do %><%= t 'parental.phone.hello', school: @parent.school.name %><% end %>
+<%= say language: :en do %>This is <%= @parent.school.name %> updates.<% end %>
 <% if @parent.deliveries.unchecked.count > 0 %>
   <%= say do %><%= t 'parental.phone.unchecked', count: @parent.deliveries.unchecked.count %><% end %>
 

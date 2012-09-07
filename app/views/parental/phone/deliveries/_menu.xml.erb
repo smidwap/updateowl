@@ -1,10 +1,14 @@
 <% content_for :options do %>
-  <%= say do %><%= t 'parental.phone.repeat' %><% end %>
+  <%= say do %><%= t 'parental.phone.menu.repeat' %><% end %>
 
   <% if delivery.next_delivery? %>
-  <%= say do %><%= t 'parental.phone.next' %><% end %>
+  <%= say do %><%= t 'parental.phone.menu.next' %><% end %>
   <% else %>
-  <%= say do %><%= t 'parental.phone.otherwise' %><% end %>
+  <%= say do %><%= t 'parental.phone.menu.otherwise' %><% end %>
+  <% end %>
+
+  <% if delivery.parent.spanish_speaking? %>
+    <%= say do %><%= t 'parental.phone.menu.translation_feedback' %><% end %>
   <% end %>
 <% end %>
 

@@ -42,8 +42,9 @@ UpdateMe::Application.routes.draw do
 
   namespace :parental do
     namespace :web do
-      match "deliveries/:access_code" => "deliveries#show", as: :delivery, via: :get
-
+      resources :deliveries do
+        get :feedback, on: :member
+      end
       resources :parents
     end
 
@@ -51,6 +52,7 @@ UpdateMe::Application.routes.draw do
       resources :deliveries, only: :show do
         get :route, on: :member
         get :next, on: :member
+        get :feedback, on: :member
       end
 
       resources :parents do

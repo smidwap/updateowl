@@ -12,9 +12,10 @@ en:
         other: 'To hear your new updates, press 1.'
       no_new_updates: 'You have no new updates.'
       goodbye: 'Thank you, and good bye.'
-      repeat: 'To repeat this update, press 1.'
-      next: 'To hear the next update, press 2.'
-      otherwise: 'Otherwise, you can hang up at anytime.'
+      menu:
+        repeat: 'To repeat this update, press 1.'
+        next: 'To hear the next update, press 2.'
+        otherwise: 'Otherwise, you can hang up at anytime.'
       bad_route: 'Sorry, I did not understand your response.'
       sent: 'Sent by %{by} %{time_ago} for %{for}.'
     email:

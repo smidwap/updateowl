@@ -22,6 +22,10 @@ module Parental
         redirect_to parental_phone_delivery_path(@delivery.next_delivery)
       end
 
+      def feedback
+        track_feedback
+      end
+
       def route
         case params[:Digits]
         when "1"
@@ -32,6 +36,8 @@ module Parental
           track_next
 
           redirect_to next_parental_phone_delivery_path(@delivery)
+        when "3"
+          redirect_to feedback_parental_phone_delivery_path(@delivery)
         end
       end
 
@@ -59,6 +65,10 @@ module Parental
 
       def track_next
         Analytics.track_parent_event @delivery.parent, "Phone Call: Next Update"
+      end
+
+      def track_feedback
+        Analytics.track_parent_event @delivery.parent, "Update: Poor Translation"
       end
     end
   end
