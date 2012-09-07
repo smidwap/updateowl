@@ -81,11 +81,11 @@ group :development, :test do
   gem "pry"
   gem "pry-nav"
   gem "rack-bridge"
+  gem "rspec-rails"
 end
 
 group :test do
   gem "sqlite3"
-  gem "rspec-rails"
   gem "database_cleaner"
   gem "factory_girl_rails"
 end
