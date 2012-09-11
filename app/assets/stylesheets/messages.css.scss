@@ -106,5 +106,26 @@ section.messages {
         padding: 0;
       }
     }
+
+    > footer {
+      .choices {
+        float: left;
+      }
+
+      .limit_countdown {
+        float: right;
+        line-height: 28px;
+        font-size: 12px;
+
+        &.getting_close {
+          color: $orange;
+        }
+      }
+    }
+
+    .alert.limit_exceeded {
+      margin-top: 10px;
+      font-size: 12px;
+    }
   }
 }

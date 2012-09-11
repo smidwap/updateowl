@@ -17,9 +17,9 @@ $ ->
 
   App.register_behaviors $('body')
 
+  # Fix for IE placeholders
   Placeholders.init
     live: true
-
 
 App.register_behaviors = ($el) ->
   $('[data-behavior]', $el).each ->
