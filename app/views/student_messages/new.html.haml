@@ -15,7 +15,7 @@
         = link_to "Cancel", "#", data: {dismiss: "modal"}
       .limit_countdown{style: "display: none", "data-countdown" => true}
     .alert.limit_exceeded{style: "display: none", "data-length-exceeded" => true}
-      %p We recommend keeping updates to 200 characters or less. (#{why_limit_length_link}) Otherwise, a call home or an email may be more appropriate. For your convenience, here are the contact details of the student's parent(s):
+      %p We recommend keeping updates to 250 characters or less. (#{why_limit_length_link}) Otherwise, a call home or an email may be more appropriate. For your convenience, here are the contact details of the student's parent(s):
       %ul
         - @student.parents.each do |parent|
           - contact = parent.prefers_email? ? link_to(parent.email, "mailto: #{parent.email}") : parent.phone
