@@ -13,7 +13,7 @@ class CallParents
       to: parent.phone,
       url: callback_url(parent),
       method: "GET",
-      ifMachine: "Hangup"
+      ifMachine: "continue"
     )
   end
 
