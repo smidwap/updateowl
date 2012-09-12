@@ -5,7 +5,7 @@
 //= require underscore
 //= require backbone
 //= require jquery.closest_descendant
-//= require jquery.auto_resize
+//= require jquery.autosize
 //= require placeholders
 //= require_tree .
 
