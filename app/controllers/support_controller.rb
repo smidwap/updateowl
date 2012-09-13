@@ -3,4 +3,11 @@ class SupportController < ApplicationController
   
   def new
   end
+
+  def create
+    SupportMailer.support_request(
+      requestor: current_user,
+      request: params[:request]
+    ).deliver
+  end
 end

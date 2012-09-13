@@ -7,6 +7,6 @@
 
 %p Tell us about the specifics of your question or comment. The more details, the better we can answer your question.
 
-= form_tag(support_path, {method: :post, remote: true, "no-second-tier" => true}) do
+= form_tag(support_path, {method: :post, remote: true, data: {"close-on-success" => true, "no-second-tier" => true}}) do
   = text_area_tag :request
-  = submit_tag "Send the support request", class: "btn btn-primary"
+  = submit_tag "Send the support request", class: "btn btn-primary",  disable_with: "Sending..."
