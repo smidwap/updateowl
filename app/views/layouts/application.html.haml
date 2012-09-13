@@ -17,7 +17,7 @@
         .search
           = text_field_tag("autocomplete", nil, data: {behavior: "autocomplete autocomplete_selectable_link", source: global_autocomplete_data_for_students(current_user.students)}, placeholder: "Jump to a student...", class: "span3")
         %ul.menu.personal_menu.unstyled
-          %li= link_to "Support", "#"
+          %li= link_to "Support", support_path, remote: true
           %li= link_to current_user.professional_name, user_messages_path(current_user)
           %li.dropdown
             = link_to "#", class: "dropdown-toggle", data: {toggle: "dropdown"} do

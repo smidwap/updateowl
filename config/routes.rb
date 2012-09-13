@@ -64,4 +64,7 @@ UpdateMe::Application.routes.draw do
       end
     end
   end
+
+  match "support" => "support#new", via: :get, as: :support
+  match "support" => "support#create", via: :post, as: :support
 end

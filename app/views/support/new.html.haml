@@ -1,0 +1,12 @@
+- @second_tier_page_class = 'support_request'
+
+- content_for :secondary_title do
+  %h3 Question or comment? Let us know.
+
+%p Encountered a nasty bug? Have a question regarding how to use UpdateOwl? Just want to say <span data-behavior="tooltip" title="Hi!">hello?</span>
+
+%p Tell us about the specifics of your question or comment. The more details, the better we can answer your question.
+
+= form_tag(support_path, {method: :post, remote: true, "no-second-tier" => true}) do
+  = text_area_tag :request
+  = submit_tag "Send the support request", class: "btn btn-primary"
