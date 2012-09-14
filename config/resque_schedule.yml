@@ -1,4 +1,4 @@
 CallParents:
   cron: "0 20 * * * America/New_York" # 8pm Eastern time every day
 UserStatsCompiler:
-  cron: "0 */4 * * * America/New_York" # Every 4 hours
+  cron: "0 */1 * * * America/New_York" # Every hour
