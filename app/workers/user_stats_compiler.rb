@@ -9,6 +9,7 @@ class UserStatsCompiler
         if num_students > 0
           num_registered = user.students.with_registered_parents.length
           percentage = num_registered.to_f / num_students.to_f
+          last_update_sent = user.messages.count > 0 ? user.messages.last.created_at : nil
 
           Analytics.set_people_properties({
             "Students" => num_students,
@@ -17,7 +18,7 @@ class UserStatsCompiler
             "Updates Unchecked" => user.messages.unchecked.count,
             "Updates Last Week" => user.messages.last_week.count,
             "Updates Sent" => user.messages.count,
-            "Last Update Sent" => user.messages.last.created_at
+            "Last Update Sent" => last_update_sent
           })
         end
       end
