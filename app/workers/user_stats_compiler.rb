@@ -15,7 +15,9 @@ class UserStatsCompiler
             "Students with Registered Parents" => num_registered,
             "Percentage Students with Registered Parents" => percentage,
             "Updates Unchecked" => user.messages.unchecked.count,
-            "Updates Last Week" => user.messages.last_week.count
+            "Updates Last Week" => user.messages.last_week.count,
+            "Updates Sent" => user.messages.count,
+            "Last Update Sent" => user.messages.last.created_at
           })
         end
       end

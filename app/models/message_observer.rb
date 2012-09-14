@@ -6,11 +6,5 @@ class MessageObserver < ActiveRecord::Observer
       "Message Length" => message.body.length,
       "School" => message.user.school.name
     }
-
-    Analytics.increment_people_property("Updates Sent")
-
-    Analytics.set_people_properties({
-      "Last Update Sent" => message.created_at
-    })
   end
 end
