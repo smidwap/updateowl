@@ -4,7 +4,7 @@
   = form_for([student, parent], remote: true) do |form|
     %p <b>Provide one or both:</b>
     = form.label :email, "Email"
-    = form.text_field :email, placeholder: "Email"
+    = form.text_field :email
     = form.label :phone, "Phone"
     = form.text_field :phone_area_code, class: 'span1', maxLength: 3
     = form.text_field :phone_three_digits, class: 'span1', maxLength: 3
