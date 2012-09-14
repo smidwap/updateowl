@@ -1,4 +1,16 @@
 ActiveAdmin.register Student do
+  index do
+    column :id
+    column :first_name
+    column :last_name
+    column :school do |student|
+      student.school.name if student.grade_level
+    end
+    column :grade_level do |student|
+      student.grade_level.name if student.grade_level
+    end
+    default_actions
+  end
   show do |student|
     attributes_table do
       row :first_name
