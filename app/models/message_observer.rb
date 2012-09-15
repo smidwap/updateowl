@@ -4,7 +4,9 @@ class MessageObserver < ActiveRecord::Observer
       "Student ID" => message.student_id,
       "Student Name" => message.student.full_name,
       "Message Length" => message.body.length,
-      "School" => message.user.school.name
+      "School" => message.school.name,
+      "Grade Level" => "#{message.school.name} - #{message.grade_level.name}",
+      "Teacher" => message.user.full_name
     }
   end
 end

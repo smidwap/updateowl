@@ -3,8 +3,10 @@ class Message < ActiveRecord::Base
   include Translatable
 
   belongs_to :user
+  has_one :school, through: :user
   belongs_to :student
   has_many :recipients, through: :student, source: :parents, class_name: 'Parent'
+  has_one :grade_level, through: :student
 
   has_many :deliveries
 
