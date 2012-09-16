@@ -20,17 +20,15 @@ class StudentMessagesController < ApplicationController
   end
 
   def new
-    @student = Student.find(params[:student_id])
-    @message = Message.new#FIX
-    @message.student = @student
+    @message = @student.messages.new #FIX
     @message.user = current_user
 
     authorize! :manage, @message
   end
 
   def create
-    @student = Student.find(params[:student_id])
-    @message = @student.messages.new(params[:message])
+    @message = Message.new(params[:message])
+    @message.students << @student
 
     authorize! :manage, @message
 

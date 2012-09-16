@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     can :manage, Message do |message|
-      message.user_id == user.id && user.has_student?(message.student)
+      message.user_id == user.id #&& user.has_student?(message.student)#FIX
     end
 
     can :manage, User, id: user.id
