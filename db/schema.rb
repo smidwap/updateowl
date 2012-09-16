@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120903185704) do
+ActiveRecord::Schema.define(:version => 20120916133236) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20120903185704) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.datetime "delivered_at"
+    t.integer  "student_id"
   end
 
   create_table "family_ties", :force => true do |t|
@@ -99,12 +100,19 @@ ActiveRecord::Schema.define(:version => 20120903185704) do
 
   create_table "messages", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "student_id"
     t.text     "body"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.text     "spanish_body"
   end
+
+  create_table "messages_students", :force => true do |t|
+    t.integer "message_id"
+    t.integer "student_id"
+  end
+
+  add_index "messages_students", ["message_id", "student_id"], :name => "index_messages_students_on_message_id_and_student_id"
+  add_index "messages_students", ["student_id", "message_id"], :name => "index_messages_students_on_student_id_and_message_id"
 
   create_table "parents", :force => true do |t|
     t.string   "phone"
@@ -118,9 +126,8 @@ ActiveRecord::Schema.define(:version => 20120903185704) do
 
   create_table "schools", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.string   "twilio_phone"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "students", :force => true do |t|
