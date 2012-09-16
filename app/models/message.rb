@@ -34,7 +34,7 @@ class Message < ActiveRecord::Base
     where("messages.id NOT IN (?)", checked_ids.blank? ? '' : checked_ids)
   }
 
-  attr_accessible :body, :user_id, :student_id
+  attr_accessible :body, :user_id
 
   after_create :queue_delivery_setup
 

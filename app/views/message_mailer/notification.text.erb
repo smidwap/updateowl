@@ -1,5 +1,5 @@
 <%= t 'parental.email.notification',
     teacher: @delivery.message.user.professional_name,
-    student: @delivery.message.student.first_name %>
+    student: @delivery.student.first_name %>
 
 <%= t 'parental.email.click_to_access' %> <%= parental_web_delivery_url(@delivery.access_code) %>

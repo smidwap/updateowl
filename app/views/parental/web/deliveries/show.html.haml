@@ -1,7 +1,7 @@
 .email_delivery_container.container
   %header
     .from= @delivery.message.user.professional_name
-    .to= @delivery.message.student.full_name
+    .to= @delivery.student.full_name
   .email_delivery_body
     = @delivery.message_body
   - if @delivery.parent.spanish_speaking?

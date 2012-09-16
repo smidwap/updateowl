@@ -14,8 +14,6 @@ class Delivery < ActiveRecord::Base
   scope :checked, where("delivered_at IS NOT NULL")
   scope :unchecked, where(delivered_at: nil)
 
-  attr_accessible :parent, :message
-
   before_create :set_access_code
   after_create :deliver_via_email, if: :should_deliver_immediately?
 
