@@ -33,8 +33,8 @@ describe Event::Builder do
       it "should return new message events for each message sent for the user's students" do
         student = create(:student)
 
-        message_from_user = create(:message, student: student, user: @user)
-        message_from_another_user = create(:message, student: student)
+        student.messages << create(:message, user: @user)
+        student.messages << create(:message) # Different user
 
         @user.students << student
 

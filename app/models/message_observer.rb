@@ -1,11 +1,11 @@
 class MessageObserver < ActiveRecord::Observer
   def after_create(message)
+    grade_level = message.students.first.grade_level
+
     Analytics.track_event "Update: Sent", {
-      "Student ID" => message.student_id,
-      "Student Name" => message.student.full_name,
       "Message Length" => message.body.length,
       "School" => message.school.name,
-      "Grade Level" => "#{message.school.name} - #{message.grade_level.name}",
+      "Grade Level" => "#{message.school.name} - #{grade_level}",
       "Teacher" => message.user.full_name
     }
   end

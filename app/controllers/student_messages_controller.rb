@@ -21,7 +21,7 @@ class StudentMessagesController < ApplicationController
 
   def new
     @student = Student.find(params[:student_id])
-    @message = Message.new
+    @message = Message.new#FIX
     @message.student = @student
     @message.user = current_user
 

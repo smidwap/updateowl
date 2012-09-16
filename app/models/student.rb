@@ -3,6 +3,8 @@ class Student < ActiveRecord::Base
   include HasManyMessages
   include Nameable
 
+  has_and_belongs_to_many :messages, order: 'created_at DESC'
+
   belongs_to :grade_level
   has_one :school, through: :grade_level
 

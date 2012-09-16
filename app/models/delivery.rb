@@ -2,9 +2,9 @@ class Delivery < ActiveRecord::Base
   include ArrayMaker
 
   belongs_to :parent
+  belongs_to :student
   belongs_to :message
   has_one :user, through: :message
-  has_one :student, through: :message
 
   scope :recipient, lambda { |parents| where(parent_id: ids_from(parents)) }
   scope :not_these, lambda { |deliveries|

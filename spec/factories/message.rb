@@ -1,8 +1,11 @@
 FactoryGirl.define do
   factory :message do
     user
-    student
     body "message body"
+
+    after_build do |message|
+      message.students << build(:student)
+    end
   end
 
   factory :undelivered_message, parent: :message do

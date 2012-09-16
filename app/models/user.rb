@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
 
   belongs_to :school
   
+  has_many :messages, order: 'created_at DESC'
+  has_many :deliveries, through: :messages
   has_many :classroom_relationships, dependent: :destroy
   has_many :students, through: :classroom_relationships
   has_many :parents, through: :students

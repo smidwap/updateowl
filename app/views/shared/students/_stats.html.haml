@@ -5,7 +5,7 @@
       .description TOTAL SENT
   .stat_container
     .stat
-      .number= blank_or_link_for_stat(current_user.messages.for_student(student).count, user_student_messages_path(student, user_id: current_user.id))
+      .number= blank_or_link_for_stat(student.messages.from_user(current_user).count, user_student_messages_path(student, user_id: current_user.id))
       .description SENT BY YOU
   .stat_container
     .stat

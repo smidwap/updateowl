@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
   before(:each) do
-    @user = build_stubbed(:user)
+    @user = build(:user)
   end
 
   describe "scopes" do

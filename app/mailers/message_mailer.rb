@@ -6,7 +6,7 @@ class MessageMailer < ActionMailer::Base
 
     mail \
       to: @delivery.parent.email,
-      from: "#{@delivery.message.student.grade_level.school.name} <no-reply@updateowl.com>",
+      from: "#{@delivery.message.school.name} <no-reply@updateowl.com>",
       subject: t('parental.email.subject', student: @delivery.student.first_name, time: @delivery.created_at.strftime('%B %e at %l:%M%P'))
   end
 end
