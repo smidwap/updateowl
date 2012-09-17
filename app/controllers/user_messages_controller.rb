@@ -11,4 +11,14 @@ class UserMessagesController < ApplicationController
 
   def unchecked
   end
+
+  def new_mass
+    @message = @user.messages.new
+    @message.user = @user
+    @message.students << @user.students
+
+    authorize! :manage, @message
+
+    render layout: "second_tier_page"
+  end
 end

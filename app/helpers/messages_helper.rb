@@ -11,4 +11,17 @@ module MessagesHelper
       placement: 'top'
     }
   end
+
+  def message_translation_note(message)
+    note = if message.individual?
+        "This update will be <b>translated to Spanish</b>. Keep it simple!"
+      else
+        "This update will be <b>translated to Spanish</b> for some parents. Keep it simple!"
+      end
+    note.html_safe
+  end
+
+  def message_placeholder(message)
+    message.individual? ? "Update #{message.students.first.full_name}'s parents" : "Update everyone's parents..."
+  end
 end

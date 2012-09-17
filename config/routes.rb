@@ -35,10 +35,11 @@ UpdateMe::Application.routes.draw do
       get :last_week, on: :collection
       get :unchecked, on: :collection
       get :student, on: :collection
+      get :new_mass, on: :collection
     end
   end
 
-  resources :messages, only: :show
+  resources :messages, only: [:show, :create]
 
   namespace :parental do
     namespace :web do

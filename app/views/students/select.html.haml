@@ -12,9 +12,7 @@
     .select_who_container
       .select_who_inner.group_messages
         Or,
-        = link_to "Update All Students", "#"
-
-
+        = link_to "Update All Students", new_mass_user_messages_path(@user), remote: true
 
   - if @user.messages.count == 0
     .no_previous_messages.call_to_action

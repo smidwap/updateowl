@@ -17,6 +17,10 @@ class Parent < ActiveRecord::Base
     .group("parents.id")
     .having("n_delivered_messages > 0")
   }
+  scope :of_students, lambda { |students|
+     joins(:students)
+    .where(students: {id: students})
+  }
   scope :prefers_phone, where(preference: 'phone')
   scope :prefers_email, where(preference: 'email')
   scope :spanish_speaking, where(spanish_speaking: true)

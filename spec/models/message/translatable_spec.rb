@@ -37,35 +37,35 @@ describe Message::Translatable do
     end
   end
 
-  describe "#should_translate?" do
-    it "should return true if one or more recipients are spanish speaking" do
-      @message.student.parents << create(:parent, spanish_speaking: true)
+  describe "#requires_translation?" do
+    it "should return true if one or more of the students' parents are spanish speaking" do
+      @message.students.first.parents << create(:parent, spanish_speaking: true)
 
-      @message.send(:should_translate?).should == true
+      @message.send(:requires_translation?).should == true
     end
 
     it "should return false if no recipients are spanish speaking" do
-      @message.send(:should_translate?).should == false
+      @message.send(:requires_translation?).should == false
     end
   end
 
   describe "#should_retranslate?" do
-    it "should return true if should_translate? is true and the message body has changed" do
-      @message.stub(:should_translate?).and_return true
+    it "should return true if requires_translation? is true and the message body has changed" do
+      @message.stub(:requires_translation?).and_return true
       @message.body = "hey i've changed"
 
       @message.send(:should_retranslate?).should == true
     end
 
-    it "should return false if should_translate? is false" do
-      @message.stub(:should_translate?).and_return false
+    it "should return false if requires_translation? is false" do
+      @message.stub(:requires_translation?).and_return false
       @message.body = "hey i've changed"
 
       @message.send(:should_retranslate?).should == false
     end
 
     it "should return false if the message body hasn't changed" do
-      @message.stub(:should_translate?).and_return true
+      @message.stub(:requires_translation?).and_return true
 
       @message.send(:should_retranslate?).should == false
     end

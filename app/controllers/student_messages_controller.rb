@@ -20,8 +20,9 @@ class StudentMessagesController < ApplicationController
   end
 
   def new
-    @message = @student.messages.new #FIX
+    @message = @student.messages.new
     @message.user = current_user
+    @message.students << @student
 
     authorize! :manage, @message
   end

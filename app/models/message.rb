@@ -39,7 +39,11 @@ class Message < ActiveRecord::Base
   after_create :queue_delivery_setup
 
   def student
-    students.first
+    students.first#FIX
+  end
+
+  def individual?
+    students.length == 1
   end
 
   def checked?

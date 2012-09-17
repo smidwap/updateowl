@@ -2,7 +2,7 @@ module Message::Translatable
   extend ActiveSupport::Concern
 
   included do
-    after_create :translate, if: :should_translate?
+    after_create :translate, if: :requires_translation?
     after_update :translate, if: :should_retranslate?
   end
 
@@ -14,13 +14,13 @@ module Message::Translatable
     self[:spanish_body] || MessageTranslator.new(self).translation
   end
 
-private
-
-  def should_translate?
-    recipients.spanish_speaking.count > 0
+  def requires_translation?
+    Parent.of_students(students).spanish_speaking.count > 0
   end
 
+private
+
   def should_retranslate?
-    should_translate? && body_changed?
+    requires_translation? && body_changed?
   end
 end

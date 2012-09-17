@@ -1,23 +1,5 @@
 - @second_tier_page_class = 'new_message'
 
-.new_message_container{data: {behavior: "text_length_limit", limit: 300, show_countdown_at: 250, warn_at: 270}}
-  = form_for([@student, @message], url: student_messages_path(@student), remote: true, html: {data: {"close-on-success" => true, "no-second-tier" => true}}) do |f|
-    = @message.errors.full_messages.to_sentence
-    = f.hidden_field :user_id
-    .inner_box
-      - if @student.parents.spanish_speaking.count > 0
-        .translation_note.alert.alert-warn This update will be <b>translated to Spanish</b>. Keep it simple!
-      = f.text_area :body, placeholder: "Update #{@student.full_name}'s parents...", data: {limited_input: true, behavior: "autogrow"}, autofocus: true
-    %footer.clearfix
-      .choices{style: "float: left;"}
-        = f.submit "Send this Message", class: "btn btn-success btn-small", disable_with: "Sending..."
-        or
-        = link_to "Cancel", "#", data: {dismiss: "modal"}
-      .limit_countdown{style: "display: none", "data-countdown" => true}
-    .alert.limit_exceeded{style: "display: none", "data-length-exceeded" => true}
-      %p We recommend keeping updates to 300 characters or less. (#{why_limit_length_link}) Otherwise, a call home or an email may be more appropriate. For your convenience, here are the contact details of the student's parent(s):
-      %ul
-        - @student.parents.each do |parent|
-          - contact = parent.prefers_email? ? link_to(parent.email, "mailto: #{parent.email}") : parent.phone
-          %li <b>#{parent.preference.capitalize}:</b> #{contact}
+= render "shared/messages/form", message: @message
+
 = render "shared/messages/recent", student: @student
