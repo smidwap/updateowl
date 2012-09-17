@@ -4,8 +4,17 @@
   %h3 New Update
 
 - if @user.students.with_registered_parents.all.count > 0
-  .autocomplete_container
-    = text_field_tag("autocomplete", nil, autofocus: true, data: {behavior: "autocomplete autocomplete_selectable_link", source: message_autocomplete_data_for_students(@user.students.with_registered_parents), remote: true}, placeholder: "Send an update for...", class: "fat_input")
+  .select_who.clearfix
+    .select_who_container
+      .select_who_inner
+        .autocomplete_container
+          = text_field_tag("autocomplete", nil, autofocus: true, data: {behavior: "autocomplete autocomplete_selectable_link", source: message_autocomplete_data_for_students(@user.students.with_registered_parents), remote: true}, placeholder: "Send an update for...", class: "fat_input")
+    .select_who_container
+      .select_who_inner.group_messages
+        Or,
+        = link_to "Update All Students", "#"
+
+
 
   - if @user.messages.count == 0
     .no_previous_messages.call_to_action

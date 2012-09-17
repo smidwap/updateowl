@@ -1,6 +1,21 @@
 @import 'includes';
 
 .student_selector {
+  .select_who {
+    @include clearfix();
+
+    > .select_who_container {
+      float: left;
+      width: 50%;
+
+      > .select_who_inner {
+        &.group_messages {
+          text-align: center;
+          line-height: 40px;
+        }
+      }
+    }
+  }
   .autocomplete_container {
     padding-bottom: 10px;
   }
