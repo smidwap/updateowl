@@ -67,6 +67,7 @@ gem "to_lang"
 
 group :development do
   gem "letter_opener"
+  gem "active_record_query_trace"
 end
 
 group :development, :test do
