@@ -24,4 +24,8 @@ module MessagesHelper
   def message_placeholder(message)
     message.individual? ? "Update #{message.students.first.full_name}'s parents" : "Update everyone's parents..."
   end
+
+  def student_name_for_message(message)
+    message.individual? ? message.students.first.full_name : "All Students"
+  end
 end

@@ -9,6 +9,4 @@ module EventsHelper
     }
     student_links.to_sentence.html_safe
   end
-
-  private
 end

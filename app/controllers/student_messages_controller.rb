@@ -26,17 +26,4 @@ class StudentMessagesController < ApplicationController
 
     authorize! :manage, @message
   end
-
-  def create
-    @message = Message.new(params[:message])
-    @message.students << @student
-
-    authorize! :manage, @message
-
-    @message.save!
-
-    @event = Event::NewMessage.new(@message)
-  rescue ActiveRecord::RecordInvalid
-    render_resource_invalid @message
-  end
 end

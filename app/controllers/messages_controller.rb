@@ -6,6 +6,13 @@ class MessagesController < ApplicationController
   def show
   end
 
-  def create#FIX
+  def create
+    @message = Message.new(params[:message])
+
+    authorize! :manage, @message
+
+    @message.save!
+  rescue ActiveRecord::RecordInvalid
+    render_resource_invalid @message
   end
 end

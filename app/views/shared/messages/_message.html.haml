@@ -1,6 +1,6 @@
 %tr.message_container
   %td.message
-    %span.student= message.student.full_name
+    %span.student= student_name_for_message(message)
     %span.message_body= "- #{message.body}"
     %span.from= "- #{second_or_third_person(message.user).titleize}"
   %td.time= time_or_date_format(message.created_at)

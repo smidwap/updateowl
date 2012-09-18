@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   has_many :classroom_relationships, dependent: :destroy
   has_many :students, through: :classroom_relationships
   has_many :parents, through: :students
-  has_many :student_messages, through: :students, class_name: 'Message', source: :messages
+  has_many :student_messages, through: :students, class_name: 'Message', source: :messages, uniq: true
 
 
   # Setup accessible (or protected) attributes for your model

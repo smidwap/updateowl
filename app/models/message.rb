@@ -3,11 +3,13 @@ class Message < ActiveRecord::Base
   include Translatable
 
   has_and_belongs_to_many :students
-  has_many :deliveries
+  has_many :recipients, through: :students, source: :parents, class_name: 'Parent'
+  has_many :grade_levels, through: :students, uniq: true
 
   belongs_to :user
   has_one :school, through: :user
-  has_many :recipients, through: :students, source: :parents, class_name: 'Parent'
+  
+  has_many :deliveries
 
   validates :body, presence: true
 
@@ -34,7 +36,7 @@ class Message < ActiveRecord::Base
     where("messages.id NOT IN (?)", checked_ids.blank? ? '' : checked_ids)
   }
 
-  attr_accessible :body, :user_id
+  attr_accessible :body, :user_id, :student_ids
 
   after_create :queue_delivery_setup
 

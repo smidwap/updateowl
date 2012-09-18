@@ -1,6 +1,8 @@
 App.main.alert('<%= escape_javascript(render("shared/alert", message: "Your update to <b>#{@message.student.full_name}</b> has been sent, and will soon be delivered by phone or email")) %>');
 
-$('.events_list').prepend('<%= escape_javascript(partial_for_event(@event)) %>');
+<% event = Event::NewMessage.new(@message) %>
+
+$('.events_list').prepend('<%= escape_javascript(partial_for_event(event)) %>');
 
 $('#user_<%= @message.user_id %>_all_messages table.messages tbody').prepend('<%= escape_javascript(render "shared/messages/message", message: @message) %>');
 
