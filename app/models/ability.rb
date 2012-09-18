@@ -3,13 +3,13 @@ class Ability
 
   def initialize(user)
     can :manage, Message do |message|
-      message.user_id == user.id #&& user.has_student?(message.student)#FIX
+      message.user_id == user.id && user.has_these_students?(message.students)
     end
 
     can :manage, User, id: user.id
 
     can :manage, Student do |student|
-      user.has_student?(student)
+      user.has_this_student?(student)
     end
 
     can :manage, Parent do |parent|

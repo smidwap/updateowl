@@ -19,12 +19,15 @@ class User < ActiveRecord::Base
   has_many :parents, through: :students
   has_many :student_messages, through: :students, class_name: 'Message', source: :messages, uniq: true
 
-
-  # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :title, :school_id
 
-  def has_student?(student)
-    students.include?(student)
+  def has_this_student?(student)
+    has_these_students?([student])
+  end
+
+  def has_these_students?(students)
+    common_student_ids = student_ids & students.map(&:id)
+    common_student_ids.length == students.length
   end
 
   def professional_name
