@@ -9,11 +9,11 @@ describe Event::Builder do
       new_message = Event::NewMessage.new(build_stubbed(:message))
       new_message.time = 3.days.ago
 
-      checked_message = Event::CheckedMessage.new(build_stubbed(:delivered_delivery))
-      checked_message.time = Time.now
+      checked_individual_message = Event::CheckedMessage.new(create(:delivered_individual_message))
+      checked_individual_message.time = Time.now
 
       builder.stub(:new_messages).and_return [new_message]
-      builder.stub(:checked_deliveries).and_return [checked_message]
+      builder.stub(:checked_messages).and_return [checked_individual_message]
 
       events = builder.events
 
@@ -45,14 +45,13 @@ describe Event::Builder do
       end
     end
 
-    describe "#checked_deliveries" do
-      it "should return checked delivery events for each checked delivery of the user's messages" do
-        checked_message = create(:delivered_message, user: @user)
+    describe "#checked_messages" do
+      it "should return events for each checked individual message" do
+        checked_individual_message = create(:delivered_individual_message, user: @user)
+        checked_mass_message = create(:delivered_mass_message, user: @user)
 
-        @builder.checked_deliveries.count.should == checked_message.deliveries.checked.count
-        @builder.checked_deliveries.each do |event|
-          event.should be_instance_of(Event::CheckedMessage)
-        end
+        @builder.checked_messages.count.should == 2
+        @builder.checked_messages.first.should be_instance_of(Event::CheckedMessage)
       end
     end
 

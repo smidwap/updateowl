@@ -1,6 +1,6 @@
 - @second_tier_page_class = 'message_preview'
 
 .message.single
-  %span.student= "#{@message.student.full_name} -"
+  %span.student= "#{student_name_for_message(@message)} -"
   %span.message_body= @message.body
   %span.from= "- #{second_or_third_person(@message.user).titleize}"

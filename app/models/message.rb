@@ -10,6 +10,7 @@ class Message < ActiveRecord::Base
   has_one :school, through: :user
   
   has_many :deliveries
+  has_many :checked_deliveries, class_name: 'Delivery', conditions: "deliveries.delivered_at IS NOT NULL", order: "delivered_at DESC"
 
   validates :body, presence: true
 
@@ -35,14 +36,22 @@ class Message < ActiveRecord::Base
     checked_ids = ids_from(checked.all)
     where("messages.id NOT IN (?)", checked_ids.blank? ? '' : checked_ids)
   }
+  scope :individual, lambda {
+     joins(:students)
+    .select("messages.*, count(messages.id) as n_students")
+    .group("messages.id")
+    .having("n_students = 1")
+  }
+  scope :mass, lambda {
+     joins(:students)
+    .select("messages.*, count(messages.id) as n_students")
+    .group("messages.id")
+    .having("n_students > 1")
+  }
 
   attr_accessible :body, :user_id, :student_ids
 
   after_create :queue_delivery_setup
-
-  def student
-    students.first#FIX
-  end
 
   def individual?
     students.length == 1

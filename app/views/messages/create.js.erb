@@ -1,4 +1,4 @@
-App.main.alert('<%= escape_javascript(render("shared/alert", message: "Your update to <b>#{@message.student.full_name}</b> has been sent, and will soon be delivered by phone or email")) %>');
+App.main.alert('<%= escape_javascript(render("shared/alert", message: "Your update to <b>#{student_name_for_message(@message)}</b> has been sent")) %>');
 
 <% event = Event::NewMessage.new(@message) %>
 
@@ -8,8 +8,10 @@ $('#user_<%= @message.user_id %>_all_messages table.messages tbody').prepend('<%
 
 $('#user_<%= @message.user_id %>_unchecked_messages table.messages tbody').prepend('<%= escape_javascript(render "shared/messages/message", message: @message) %>');
 
-$('#student_<%= @message.student.id %>_all_messages table.messages tbody').prepend('<%= escape_javascript(render "shared/messages/message", message: @message) %>');
+<% if @message.individual? %>
+  $('#student_<%= @message.students.first.id %>_all_messages table.messages tbody').prepend('<%= escape_javascript(render "shared/messages/message", message: @message) %>');
 
-$('#student_<%= @message.student.id %>_unchecked_messages table.messages tbody').prepend('<%= escape_javascript(render "shared/messages/message", message: @message) %>');
+  $('#student_<%= @message.students.first.id %>_unchecked_messages table.messages tbody').prepend('<%= escape_javascript(render "shared/messages/message", message: @message) %>');
+<% end %>
 
 $('.no_messages').remove();

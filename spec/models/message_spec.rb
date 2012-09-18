@@ -35,6 +35,24 @@ describe Message do
         Message.unchecked.should include message_without_delivery, message_with_unchecked_delivery
       end
     end
+
+    describe "individual" do
+      it "should return only messages that are for one student" do
+        individual_message = create(:individual_message)
+        mass_message = create(:mass_message)
+
+        Message.individual.should == [individual_message]
+      end
+    end
+
+    describe "mass" do
+      it "should return only messages that are for more than one student" do
+        individual_message = create(:individual_message)
+        mass_message = create(:mass_message)
+
+        Message.mass.should == [mass_message]
+      end
+    end
   end
 
   describe "checked?" do
