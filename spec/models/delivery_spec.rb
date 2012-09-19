@@ -19,19 +19,19 @@ describe Delivery do
   end
 
   describe "#checked!" do
-    it "should mark the delivery has having been checkedly delivered" do
+    it "should mark the delivery as having been checked" do
       @delivery.checked!
 
-      @delivery.delivered_at.should_not == nil
+      @delivery.checked_at.should_not == nil
     end
 
-    it "should not change the delivered_at timestamp if the delivery is already checked" do
+    it "should not change the checked_at timestamp if the delivery is already checked" do
       time = 3.weeks.ago
-      @delivery.delivered_at = time
+      @delivery.checked_at = time
 
       @delivery.checked!
 
-      @delivery.delivered_at.should == time
+      @delivery.checked_at.should == time
     end
   end
 

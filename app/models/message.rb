@@ -10,7 +10,7 @@ class Message < ActiveRecord::Base
   has_one :school, through: :user
   
   has_many :deliveries
-  has_many :checked_deliveries, class_name: 'Delivery', conditions: "deliveries.delivered_at IS NOT NULL", order: "delivered_at DESC"
+  has_many :checked_deliveries, class_name: 'Delivery', conditions: "deliveries.checked_at IS NOT NULL", order: "checked_at DESC"
 
   validates :body, presence: true
 
@@ -27,7 +27,7 @@ class Message < ActiveRecord::Base
   }
   scope :checked, lambda {
      joins(:deliveries)
-    .where("deliveries.delivered_at IS NOT NULL")
+    .where("deliveries.checked_at IS NOT NULL")
     .select("messages.*, count(messages.id) as n_checked_deliveries")
     .group("messages.id")
     .having("n_checked_deliveries > 0")

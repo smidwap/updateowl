@@ -1,4 +1,4 @@
-class Parent < ActiveRecord::Base
+  class Parent < ActiveRecord::Base
   include Phoneable
   include ArrayMaker
 
@@ -12,7 +12,7 @@ class Parent < ActiveRecord::Base
   }
   scope :with_unchecked_messages, lambda {
      joins(:deliveries)
-    .where(deliveries: {delivered_at: nil})
+    .where(deliveries: {checked_at: nil})
     .select("parents.*, count(parents.id) as n_delivered_messages")
     .group("parents.id")
     .having("n_delivered_messages > 0")

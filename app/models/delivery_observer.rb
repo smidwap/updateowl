@@ -13,6 +13,6 @@ class DeliveryObserver < ActiveRecord::Observer
 
   # Is this the first checked delivery of this message 
   def should_track_check?(delivery)
-    delivery.delivered_at_changed? && delivery.message.deliveries.checked.count == 1
+    delivery.checked_at_changed? && delivery.message.deliveries.checked.count == 1 #TODO: Is this complexity worth it?
   end
 end

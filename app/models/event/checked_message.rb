@@ -3,6 +3,6 @@ class Event::CheckedMessage < Event::Base
 
   def initialize(message)
     @message = message
-    @time = message.checked_deliveries.first.delivered_at
+    @time = message.checked_deliveries.first.checked_at
   end
 end

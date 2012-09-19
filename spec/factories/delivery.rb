@@ -7,7 +7,7 @@ FactoryGirl.define do
   end
 
   factory :delivered_delivery, parent: :delivery do
-    delivered_at Time.now
+    checked_at Time.now
   end
 
   factory :undelivered_delivery, parent: :delivery do

@@ -11,8 +11,8 @@ class Delivery < ActiveRecord::Base
     delivery_ids = ids_from(deliveries)
     where("id NOT IN (?)", delivery_ids.blank? ? '' : delivery_ids)
   }
-  scope :checked, where("delivered_at IS NOT NULL")
-  scope :unchecked, where(delivered_at: nil)
+  scope :checked, where("checked_at IS NOT NULL")
+  scope :unchecked, where(checked_at: nil)
 
   before_create :set_access_code
   after_create :deliver_via_email, if: :should_deliver_immediately?
@@ -22,9 +22,10 @@ class Delivery < ActiveRecord::Base
   end
 
   def checked!
-    return if delivered_at?
-    self.delivered_at = Time.now
-    save!
+    return if checked_at?
+    
+    self.checked_at = Time.now
+    self.save!
   end
 
   def next_delivery?
