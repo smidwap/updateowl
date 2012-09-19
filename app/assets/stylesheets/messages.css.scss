@@ -89,6 +89,10 @@ section.messages {
     background: $grayLighter;
     @include border-radius($standardRadius);
 
+    > header {
+      margin-bottom: 5px;
+    }
+
     .inner_box {
       margin-bottom: 10px;
       background: white;

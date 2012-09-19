@@ -3,10 +3,12 @@
     = f.hidden_field :user_id
     - message.students.each do |student|
       = hidden_field_tag "message[student_ids][]", student.id
+    %header
+      %b= message_placeholder(message)
     .inner_box
       - if message.requires_translation?
         .translation_note.alert.alert-warn= message_translation_note(message)
-      = f.text_area :body, placeholder: message_placeholder(message), data: {limited_input: true, behavior: "autogrow"}, autofocus: true
+      = f.text_area :body, data: {limited_input: true, behavior: "autogrow"}, autofocus: true
     %footer.clearfix
       .choices{style: "float: left;"}
         = f.submit "Send this Message", class: "btn btn-success btn-small", disable_with: "Sending..."
