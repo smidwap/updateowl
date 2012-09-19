@@ -12,6 +12,11 @@ class UserStatsCompiler
           last_update_sent = user.messages.count > 0 ? user.messages.last.created_at : nil
 
           Analytics.set_people_properties({
+            "$first_name" => user.first_name,
+            "$last_name" => user.last_name,
+            "$email" => user.email,
+            "$created" => user.created_at,
+            "School" => user.school.name,
             "Students" => num_students,
             "Students with Registered Parents" => num_registered,
             "Percentage Students with Registered Parents" => percentage,

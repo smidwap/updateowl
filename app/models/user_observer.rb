@@ -3,14 +3,6 @@ class UserObserver < ActiveRecord::Observer
     Analytics.with_current_user(user) do
       Analytics.track_event "User: Registered"
       Analytics.track_event "$signup"
-
-      Analytics.set_people_properties({
-        "$first_name" => user.first_name,
-        "$last_name" => user.last_name,
-        "$email" => user.email,
-        "$created" => user.created_at,
-        "School" => user.school.name
-      })
     end
   end
 
