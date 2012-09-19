@@ -1,0 +1,6 @@
+test:
+  tracking_id: UA-34926404-1
+development:
+  tracking_id: UA-34926404-1
+production:
+  tracking_id: UA-34778894-1
