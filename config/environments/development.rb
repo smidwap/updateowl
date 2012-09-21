@@ -40,4 +40,7 @@ UpdateMe::Application.configure do
 
   # For twilio callbacks
   config.root_url = 'http://updateme.oncloud.org'
+
+  # Google analytics
+  GA.tracker = 'UA-34926404-1'
 end

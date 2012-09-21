@@ -73,4 +73,7 @@ UpdateMe::Application.configure do
 
   # For twilio callbacks
   config.root_url = 'http://' + config.action_mailer.default_url_options[:host]
+
+  # Google analytics
+  GA.tracker = 'UA-34778894-1'
 end

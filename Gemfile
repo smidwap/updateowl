@@ -64,6 +64,7 @@ gem "exceptional"
 gem "rvm-capistrano"
 gem "aws-ses", require: 'aws/ses'
 gem "to_lang"
+gem 'google-analytics-rails'
 
 group :development do
   gem "letter_opener"

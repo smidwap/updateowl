@@ -109,6 +109,7 @@ GEM
     formtastic (2.1.1)
       actionpack (~> 3.0)
     git (1.2.5)
+    google-analytics-rails (0.0.3)
     growl (1.0.3)
     guard (1.2.3)
       listen (>= 0.4.2)
@@ -356,6 +357,7 @@ DEPENDENCIES
   exceptional
   factory_girl_rails
   foreman
+  google-analytics-rails
   growl
   guard
   guard-rspec
