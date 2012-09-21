@@ -15,7 +15,7 @@ class UserMessagesController < ApplicationController
   def new_mass
     @message = @user.messages.new
     @message.user = @user
-    @message.students << @user.students
+    @message.students << @user.students.with_registered_parents
 
     authorize! :manage, @message
 
