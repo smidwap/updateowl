@@ -6,10 +6,12 @@ describe Delivery do
   end
 
   describe "#deliver_via_email" do
-    it "should send an email to the student's parent" do
+    before(:each) do
       @delivery = create(:delivery)
       @delivery.parent = build_stubbed(:parent_prefers_email)
+    end
 
+    it "should send an email to the student's parent" do
       @delivery.deliver_via_email
 
       email = ActionMailer::Base.deliveries.last

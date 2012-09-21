@@ -19,6 +19,8 @@ class Delivery < ActiveRecord::Base
 
   def deliver_via_email
     MessageMailer.notification(self).deliver
+  rescue AWS::SES::ResponseError
+    # Don't stop execution if this exception is raised.
   end
 
   def checked!
