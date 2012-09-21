@@ -11,7 +11,9 @@ module Parental
       def feedback
         @delivery = Delivery.find_by_access_code(params[:id])
 
-        Analytics.track_parent_event @delivery.parent, "Update: Poor Translation"
+        Analytics.track_parent_event @delivery.parent, "Update: Poor Translation", {
+          "Message ID" => @delivery.message_id
+        }
       end
     end
   end

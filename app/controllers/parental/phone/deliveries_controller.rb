@@ -86,7 +86,9 @@ module Parental
       end
 
       def track_feedback
-        Analytics.track_parent_event @delivery.parent, "Update: Poor Translation"
+        Analytics.track_parent_event @delivery.parent, "Update: Poor Translation", {
+          "Message ID" => @delivery.message_id
+        }
       end
     end
   end
