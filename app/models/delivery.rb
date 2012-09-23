@@ -2,7 +2,10 @@ class Delivery < ActiveRecord::Base
   include ArrayMaker
 
   belongs_to :parent
+  has_one :school, through: :parent
+
   belongs_to :student
+  
   belongs_to :message
   has_one :user, through: :message
 
@@ -43,7 +46,7 @@ class Delivery < ActiveRecord::Base
     return message.body
   end
 
-  private
+private
 
   def should_deliver_immediately?
     parent.preference == 'email'

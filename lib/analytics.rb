@@ -20,6 +20,19 @@ module Analytics
     track_event(event, default_properties.merge(properties))
   end
 
+  def self.track_delivery_event(delivery, event, properties = {})
+    default_properties = {
+      "distinct_id" => "Delivery - #{delivery.id}",
+      "mp_name_tag" => "Delivery #{delivery.id}",
+      "School" => delivery.school.name,
+      "Grade Levels" => delivery.student.grade_level.name,
+      "Translated" => delivery.parent.spanish_speaking?,
+      "Via" => delivery.parent.preference
+    }
+
+    track_event(event, default_properties.merge(properties))
+  end
+
   def self.set_people_properties(properties = {})
     $mixpanel_event_builder.build_and_queue_people_data({
       "$set" => properties

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Delivery do
   before(:each) do
-    @delivery = build_stubbed(:delivery)
+    @delivery = build(:delivery)
   end
 
   describe "#deliver_via_email" do
