@@ -27,6 +27,7 @@ module Analytics
       "School" => delivery.school.name,
       "Grade Levels" => delivery.student.grade_level.name,
       "Translated" => delivery.parent.spanish_speaking?,
+      "Mass Update" => !delivery.message.individual?,
       "Via" => delivery.parent.preference
     }
 
