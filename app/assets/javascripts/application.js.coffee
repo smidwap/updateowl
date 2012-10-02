@@ -7,6 +7,7 @@
 //= require jquery.closest_descendant
 //= require jquery.autosize
 //= require placeholders
+//= require jquery.sparkline
 //= require_tree .
 
 $ ->

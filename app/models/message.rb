@@ -48,6 +48,8 @@ class Message < ActiveRecord::Base
     .group("messages.id")
     .having("n_students > 1")
   }
+  scope :earliest_first, order("created_at ASC")
+  scope :lastest_first, order("created_at DESC")
 
   attr_accessible :body, :user_id, :student_ids
 
@@ -61,7 +63,7 @@ class Message < ActiveRecord::Base
     deliveries.checked.count > 0
   end
 
-  private
+private
 
   def queue_delivery_setup
     Resque.enqueue(DeliverySetup, id)

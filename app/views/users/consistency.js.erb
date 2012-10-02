@@ -1,0 +1,5 @@
+$consitency_graph = $("<%= escape_javascript(render("shared/users/consistency_graph", consistency: @consistency)) %>");
+
+$('#consistency_graph').replaceWith($consitency_graph);
+
+App.register_behaviors($consitency_graph);

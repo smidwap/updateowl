@@ -1,5 +1,5 @@
 - content_for :aside do
-  .sidebox.user_overview
+  .sidebox.user_overview.hide
     %header Your Overview
     .sidebox_body
       .stats.three
@@ -15,5 +15,33 @@
           .stat
             .number= blank_or_link_for_stat(@user.num_messages_unchecked, unchecked_user_messages_path(@user))
             .description UNCHECKED
+
+  .sidebox#consistency
+    %header
+      Consistency
+
+      .dropdown
+        = link_to "#", "data-toggle" => "dropdown" do
+          Compare me to
+          %span.caret
+
+        %ul.dropdown-menu
+          %li= link_to "School Average", consistency_user_path(@user, school_average_comaprison: true), remote: true, data: {"no-second-tier" => true}
+          %li.divider
+          - @user.colleagues.has_sent_a_message_since(5.weeks.ago.beginning_of_week).ordered_by_name.each do |colleague|
+            %li= link_to colleague.professional_name, consistency_user_path(@user, comparison_user_id: colleague.id), remote: true, data: {"no-second-tier" => true}
+
+    .sidebox_body
+      .stats.two
+        .stat_container
+          .stat
+            .number= @user.consistency.stats[:primary][:this_week]
+            .description THIS WEEK
+        .stat_container
+          .stat.school_goal
+            .number= @user.consistency.goal
+            .description SCHOOL GOAL
+
+      = render("shared/users/consistency_graph", consistency: @user.consistency)
 
 = render template: "layouts/application"

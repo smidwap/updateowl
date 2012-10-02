@@ -23,10 +23,16 @@
 }
 
 table.messages {
+  tr:hover td {
+    background: none;
+  }
+
   tbody > tr > td {
+    border-top: none;
     border-bottom: 1px solid $grayLighter;
 
     &:first-child {
+      padding-left: 0;
       @include border-radius($standardRadius 0 0 $standardRadius);
     }
 

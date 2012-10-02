@@ -1,0 +1,26 @@
+#consistency_graph
+  %span{data: {behavior: "consistency", counts: consistency.stats[:primary][:counts], goal: 10, "comparison-counts" => consistency.is_a_comparison? ? consistency.stats[:comparison][:counts] : nil}}
+  .x_label Past 5 Weeks
+
+  - if consistency.is_a_comparison?
+    %table.table.table-condensed
+      %thead
+        %tr
+          %th
+          %th You
+          %th= consistency.comparison.kind_of?(School) ? 'Your School' : consistency.comparison.professional_name
+      %tbody
+        %tr
+          %td This Week
+          %td= consistency.stats[:primary][:this_week]
+          %td= consistency.stats[:comparison][:this_week]
+        %tr
+          %td Last Week
+          %td= consistency.stats[:primary][:last_week]
+          %td= consistency.stats[:comparison][:last_week]
+        %tr
+          %td Average
+          %td= consistency.stats[:primary][:average]
+          %td= consistency.stats[:comparison][:average]
+
+    .finish= link_to "Done comparing", consistency_user_path(consistency.primary), remote: true, data: {"no-second-tier" => true}

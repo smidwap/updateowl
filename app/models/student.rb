@@ -34,7 +34,6 @@ class Student < ActiveRecord::Base
      joins(:family_ties)
     .where(family_ties: {parent_id: ids_from(parents)})
   }
-  scope :ordered_by_name, order("last_name ASC, first_name ASC")
 
   after_create :create_pin
 

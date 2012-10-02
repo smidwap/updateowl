@@ -27,6 +27,8 @@ UpdateMe::Application.routes.draw do
   end
 
   resources :users do
+    get :consistency, on: :member
+
     resources :students, only: [:index] do
       get :select, on: :collection
     end

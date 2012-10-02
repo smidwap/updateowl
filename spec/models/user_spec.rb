@@ -6,14 +6,22 @@ describe User do
   end
 
   describe "scopes" do
-    describe "messages.last_week" do
-      it "should return only messages sent last week from this user" do
-        message_last_week = create(:message, user: @user)
-        message_last_week.update_attribute(:created_at, 1.week.ago.beginning_of_week)
-        message_this_week = create(:message, user: @user)
+    describe "has_sent_a_message_since" do
+      it "should return users who have sent at least one message since the given time"
+    end
+  end
 
-        @user.messages.last_week.should == [message_last_week]
+  describe "#weekly_message_counts" do
+    it "should return counts for the given number of past weeks" do
+      num_messages_this_week = 1
+      num_messages_last_week = 2
+
+      create_list(:message, num_messages_this_week, user: @user)
+      create_list(:message, num_messages_last_week, user: @user).each do |message|
+        message.update_column(:created_at, 1.week.ago)
       end
+
+      @user.weekly_message_counts(6).should == [num_messages_this_week, num_messages_last_week, 0, 0, 0, 0]
     end
   end
 end
