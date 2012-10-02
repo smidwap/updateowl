@@ -1,5 +1,10 @@
 @import 'includes';
 
+.unchecked_messages {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
 .sidebox#consistency {
   .dropdown {
     float: right;
