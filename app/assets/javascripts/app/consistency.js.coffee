@@ -4,7 +4,7 @@ class App.consistency extends Backbone.View
 
   FILL_COLOR: '#E2EDF7'
   PRIMARY_LINE_COLOR: '#333'
-  COMPARISON_LINE_COLOR: 'blue'
+  COMPARISON_LINE_COLOR: '#00B1E9'
   GOAL_LINE_COLOR: '#46A546'
   SPOT_COLOR: '#000'
 
