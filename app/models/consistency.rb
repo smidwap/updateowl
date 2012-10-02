@@ -11,7 +11,7 @@ class Consistency
   end
 
   def goal
-    10
+    primary.school.messages_per_week_goal
   end
 
   def stats
