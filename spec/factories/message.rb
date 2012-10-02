@@ -3,7 +3,7 @@ FactoryGirl.define do
     user
     body "message body"
 
-    after_build do |message|
+    after(:build) do |message|
       message.students << build(:student)
     end
   end
@@ -12,7 +12,7 @@ FactoryGirl.define do
   end
 
   factory :mass_message, parent: :message do
-    after_build do |message|
+    after(:build) do |message|
       message.students << build_list(:student, 2)
     end
   end

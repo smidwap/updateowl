@@ -7,7 +7,15 @@ describe User do
 
   describe "scopes" do
     describe "has_sent_a_message_since" do
-      it "should return users who have sent at least one message since the given time"
+      it "should return users who have sent at least one message since the given time" do
+        @user_1 = create(:user)
+        create(:message, user: @user_1).update_column(:created_at, 3.weeks.ago)
+
+        @user_2 = create(:user)
+        create(:message, user: @user_2).update_column(:created_at, 1.week.ago)
+
+        User.has_sent_a_message_since(2.weeks.ago).should == [@user_2]
+      end
     end
   end
 

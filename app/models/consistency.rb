@@ -52,8 +52,10 @@ private
   end
 
   def max_or_num_weeks_since_first_message
-    num_weeks_since_first_message = NUM_TRAILING_WEEKS - primary.school.weekly_message_count_averages(NUM_TRAILING_WEEKS).reverse.find_index { |x| x != 0 }
+    num_weeks_since_first_message = primary.school.num_weeks_since_first_message
     num_weeks_since_first_message > NUM_TRAILING_WEEKS ? NUM_TRAILING_WEEKS : num_weeks_since_first_message
+  rescue School::NoMessagesSent
+    1.0/0
   end
 
   def valid_comparison_type?(comparison)

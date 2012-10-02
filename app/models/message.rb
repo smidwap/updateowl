@@ -49,7 +49,7 @@ class Message < ActiveRecord::Base
     .having("n_students > 1")
   }
   scope :earliest_first, order("created_at ASC")
-  scope :lastest_first, order("created_at DESC")
+  scope :recent_first, order("created_at DESC")
 
   attr_accessible :body, :user_id, :student_ids
 
