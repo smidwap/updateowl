@@ -26,4 +26,14 @@ class StudentMessagesController < ApplicationController
 
     authorize! :manage, @message
   end
+
+private
+
+  after_filter :track_index, only: :index
+
+  def track_index
+    Analytics.track_event "Student Messages: View", {
+      "School" => @student.school.name
+    }
+  end
 end
