@@ -9,7 +9,7 @@ class Message < ActiveRecord::Base
   belongs_to :user
   has_one :school, through: :user
   
-  has_many :deliveries
+  has_many :deliveries, dependent: :destroy
   has_many :checked_deliveries, class_name: 'Delivery', conditions: "deliveries.checked_at IS NOT NULL", order: "checked_at DESC"
 
   validates :body, presence: true
