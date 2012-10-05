@@ -1,11 +1,11 @@
 module Parental
   module Web
     class DeliveriesController < BaseController
-      def show
-        @delivery = Delivery.find_by_access_code(params[:id])
-        @delivery.checked!
+      def index
+        @deliveries = Delivery.with_access_codes(params[:c]).latest_first
+        @deliveries.each(&:checked!)
 
-        I18n.locale = @delivery.parent.locale
+        I18n.locale = @deliveries.first.parent.locale
       end
 
       def feedback

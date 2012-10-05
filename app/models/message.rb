@@ -48,7 +48,7 @@ class Message < ActiveRecord::Base
     .group("messages.id")
     .having("n_students > 1")
   }
-  scope :earliest_first, order("created_at ASC")
+  scope :oldest_first, order("created_at ASC")
   scope :recent_first, order("created_at DESC")
 
   attr_accessible :body, :user_id, :student_ids

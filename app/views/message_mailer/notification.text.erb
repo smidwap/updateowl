@@ -2,4 +2,10 @@
     teacher: @delivery.message.user.professional_name,
     student: @delivery.student.first_name %>
 
-<%= t 'parental.email.click_to_access' %> <%= parental_web_delivery_url(@delivery.access_code) %>
+<% if @num_other_deliveries == 1 %>
+<%= t 'parental.email.one_other_delivery' %>
+<% elsif @num_other_deliveries > 1 %>
+<%= t 'parental.email.multiple_other_deliveries', num_other_deliveries: @num_other_deliveries %>
+<% end %>
+
+<%= t 'parental.email.click_to_access' %> <%= parental_web_deliveries_url(c: @unchecked_deliveries.map(&:access_code)) %>

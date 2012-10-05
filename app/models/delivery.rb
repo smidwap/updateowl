@@ -16,6 +16,9 @@ class Delivery < ActiveRecord::Base
   }
   scope :checked, where("checked_at IS NOT NULL")
   scope :unchecked, where(checked_at: nil)
+  scope :with_access_codes, lambda { |access_codes| where(access_code: access_codes) }
+  scope :latest_first, order("created_at DESC")
+  scope :oldest_first, order("created_at ASC")
 
   before_create :set_access_code
   after_create :deliver_via_email, if: :should_deliver_immediately?

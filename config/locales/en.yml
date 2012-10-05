@@ -20,6 +20,8 @@ en:
       sent: 'Sent by %{by} %{time_ago} for %{for}.'
     email:
       notification: 'A new update has been sent from %{teacher} for %{student}.'
+      one_other_delivery: 'You also have 1 other unread update'
+      multiple_other_deliveries: 'You also have %{num_other_deliveries} other unread updates'
       click_to_access: 'Click here to view the update:'
       read: 'Read the update'
       subject: 'New Update for %{student} - %{time}'

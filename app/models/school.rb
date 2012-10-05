@@ -28,7 +28,7 @@ class School < ActiveRecord::Base
   class NoMessagesSent < StandardError; end
 
   def num_weeks_since_first_message
-    first_message = messages.earliest_first.first
+    first_message = messages.oldest_first.first
 
     raise NoMessagesSent unless first_message.present?
 

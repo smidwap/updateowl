@@ -23,6 +23,8 @@ es:
       sent: 'Enviado por %{by} %{time_ago} para %{for}.'
     email:
       notification: 'Un nuevo mensaje ha sido enviado por %{teacher} para %{student}.'
+      one_other_delivery: 'Usted tiene un otro mensaje sin leer'
+      multiple_other_deliveries: 'Usted tiene %{num_other_deliveries} otros mensajes sin leer'
       click_to_access: 'Presione aqui para ver el mensaje:'
       read: 'Lea el mensaje'
       subject: 'Nuevo Mensaje para %{student} - %{time}'

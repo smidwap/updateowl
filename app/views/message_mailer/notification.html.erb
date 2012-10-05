@@ -2,4 +2,10 @@
         teacher: @delivery.message.user.professional_name,
         student: @delivery.student.first_name %></p>
 
-<p><%= link_to t('parental.email.read'), parental_web_delivery_url(@delivery.access_code) %></p>
+<% if @num_other_deliveries == 1 %>
+  <p><%= t 'parental.email.one_other_delivery' %></p>
+<% elsif @num_other_deliveries > 1 %>
+  <p><%= t 'parental.email.multiple_other_deliveries', num_other_deliveries: @num_other_deliveries %></p>
+<% end %>
+
+<p><%= link_to t('parental.email.read'), parental_web_deliveries_url(c: @unchecked_deliveries.map(&:access_code)) %></p>
