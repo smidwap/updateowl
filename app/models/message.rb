@@ -1,7 +1,8 @@
 class Message < ActiveRecord::Base
   include Translatable
 
-  has_and_belongs_to_many :students
+  has_many :subjects
+  has_many :students, through: :subjects
   has_many :recipients, through: :students, source: :parents, class_name: 'Parent'
   has_many :grade_levels, through: :students, uniq: true
 
@@ -57,6 +58,10 @@ class Message < ActiveRecord::Base
 
   def checked?
     deliveries.checked.count > 0
+  end
+
+  def checked_for_student?(student)
+    checked_deliveries.where(student_id: student).count > 0
   end
 
 private

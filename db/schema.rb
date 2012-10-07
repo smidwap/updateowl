@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121002035559) do
+ActiveRecord::Schema.define(:version => 20121007161719) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -106,14 +106,6 @@ ActiveRecord::Schema.define(:version => 20121002035559) do
     t.text     "spanish_body"
   end
 
-  create_table "messages_students", :force => true do |t|
-    t.integer "message_id"
-    t.integer "student_id"
-  end
-
-  add_index "messages_students", ["message_id", "student_id"], :name => "index_messages_students_on_message_id_and_student_id"
-  add_index "messages_students", ["student_id", "message_id"], :name => "index_messages_students_on_student_id_and_message_id"
-
   create_table "parents", :force => true do |t|
     t.string   "phone"
     t.string   "email"
@@ -139,6 +131,14 @@ ActiveRecord::Schema.define(:version => 20121002035559) do
     t.datetime "updated_at",     :null => false
     t.string   "pin"
   end
+
+  create_table "subjects", :force => true do |t|
+    t.integer "message_id"
+    t.integer "student_id"
+  end
+
+  add_index "subjects", ["message_id", "student_id"], :name => "index_messages_students_on_message_id_and_student_id"
+  add_index "subjects", ["student_id", "message_id"], :name => "index_messages_students_on_student_id_and_message_id"
 
   create_table "users", :force => true do |t|
     t.integer  "school_id"
