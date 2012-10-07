@@ -5,10 +5,7 @@ class UserMessagesController < ApplicationController
 
   def index
   end
-
-  def last_week
-  end
-
+  
   def unchecked
   end
 

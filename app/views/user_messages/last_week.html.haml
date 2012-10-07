@@ -1,6 +1,0 @@
-%section.messages{id: "user_#{@user.id.to_s}_last_week_messages"}
-  = render "header"
-  
-  .filter_alert These are the updates you sent <b>Last Week</b>. #{link_to "View all updates", user_messages_path(@user)} instead
-
-  = render "shared/messages/list", messages: @user.messages.last_week

@@ -34,7 +34,6 @@ UpdateMe::Application.routes.draw do
     end
 
     resources :messages, controller: 'user_messages' do
-      get :last_week, on: :collection
       get :unchecked, on: :collection
       get :student, on: :collection
       get :new_mass, on: :collection
