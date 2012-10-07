@@ -18,8 +18,7 @@ class Student < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :classroom_relationships_attributes, :grade_level_id
 
   scope :not_these, lambda { |students|
-    student_ids = ids_from(students)
-    where("students.id NOT IN (?)", student_ids.blank? ? '' : student_ids)
+    where("students.id NOT IN (?)", students)
   }
   scope :with_registered_parents, lambda {
      joins(:parents)
@@ -34,14 +33,14 @@ class Student < ActiveRecord::Base
      joins(:family_ties)
     .where(family_ties: {parent_id: ids_from(parents)})
   }
-
+  
   after_create :create_pin
 
   def has_parents?
     parents.count > 0
   end
 
-  private
+private
 
   def create_pin
     self.pin = sprintf('%05d', id * 11 + id)

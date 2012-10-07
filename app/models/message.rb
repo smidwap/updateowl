@@ -1,5 +1,4 @@
 class Message < ActiveRecord::Base
-  include ArrayMaker
   include Translatable
 
   has_and_belongs_to_many :students
@@ -14,7 +13,7 @@ class Message < ActiveRecord::Base
 
   validates :body, presence: true
 
-  scope :from_user, lambda { |users| where(user_id: ids_from(users)) }
+  scope :from_user, lambda { |users| where(user_id: users) }
   scope :last_week, lambda { weeks_ago(1) }
   scope :weeks_ago, lambda { |weeks_ago|
     in_date_range(
@@ -32,10 +31,7 @@ class Message < ActiveRecord::Base
     .group("messages.id")
     .having("n_checked_deliveries > 0")
   }
-  scope :unchecked, lambda {
-    checked_ids = ids_from(checked.all)
-    where("messages.id NOT IN (?)", checked_ids.blank? ? '' : checked_ids)
-  }
+  scope :unchecked, lambda { where("messages.id NOT IN (?)", checked) }
   scope :individual, lambda {
      joins(:students)
     .select("messages.*, count(messages.id) as n_students")
