@@ -61,9 +61,7 @@ UpdateMe::Application.routes.draw do
       resources :parents do
         get :answer, on: :collection
 
-        resources :deliveries, only: :index do
-          get :voicemail, on: :collection
-        end
+        resources :deliveries, only: :index
       end
     end
   end

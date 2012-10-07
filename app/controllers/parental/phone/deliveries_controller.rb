@@ -1,25 +1,15 @@
 module Parental
   module Phone
     class DeliveriesController < BaseController
-      load_resource except: [:index, :voicemail]
-      before_filter :set_locale_from_delivery, except: [:index, :voicemail]
+      load_resource except: :index
+      before_filter :set_locale_from_delivery, except: :index
 
       def index
         @parent = Parent.find(params[:parent_id])
 
-        check_voicemail
-
         set_locale_of @parent
 
         track_index
-      end
-      
-      def voicemail
-        @parent = Parent.find(params[:parent_id])
-
-        set_locale_of @parent
-
-        track_voicemail
       end
 
       def show
@@ -53,10 +43,6 @@ module Parental
 
     private
 
-      def check_voicemail
-        redirect_to voicemail_parental_phone_parent_deliveries_path(@parent) if params[:AnsweredBy] == "machine"
-      end
-
       def set_locale_from_delivery
         set_locale_of @delivery.parent
       end
@@ -67,10 +53,6 @@ module Parental
 
       def track_index
         Analytics.track_parent_event @parent, "Phone Call: Main Menu"
-      end
-
-      def track_voicemail
-        Analytics.track_parent_event @parent, "Phone Call: Voicemail Reached"
       end
 
       def track_show
