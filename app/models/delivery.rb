@@ -1,19 +1,14 @@
 class Delivery < ActiveRecord::Base
-  include ArrayMaker
-
   belongs_to :parent
   has_one :school, through: :parent
 
-  belongs_to :student
-  
-  belongs_to :message
+  belongs_to :subject
+  has_one :student, through: :subject
+  has_one :message, through: :subject
   has_one :user, through: :message
 
-  scope :recipient, lambda { |parents| where(parent_id: ids_from(parents)) }
-  scope :not_these, lambda { |deliveries|
-    delivery_ids = ids_from(deliveries)
-    where("id NOT IN (?)", delivery_ids.blank? ? '' : delivery_ids)
-  }
+  scope :recipient, lambda { |parents| where(parent_id: parents) }
+  scope :not_these, lambda { |deliveries| where("id NOT IN (?)", deliveries) }
   scope :checked, where("checked_at IS NOT NULL")
   scope :unchecked, where(checked_at: nil)
   scope :with_access_codes, lambda { |access_codes| where(access_code: access_codes) }
@@ -44,6 +39,7 @@ class Delivery < ActiveRecord::Base
     Delivery.recipient(parent).not_these(self).unchecked.first
   end
 
+  # TODO: Maybe move into decorator and check for IL8n?
   def message_body
     return message.spanish_body if parent.spanish_speaking?
     return message.body

@@ -3,6 +3,7 @@ class Student < ActiveRecord::Base
   include HasManyMessages
   include Nameable
 
+  # TODO: Archive this student upon deletion so that all messages remain intact
   has_many :subjects
   has_many :messages, through: :subjects, order: 'created_at DESC'
 

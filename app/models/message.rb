@@ -1,16 +1,17 @@
 class Message < ActiveRecord::Base
   include Translatable
 
-  has_many :subjects
+  has_many :subjects, dependent: :destroy
+
   has_many :students, through: :subjects
   has_many :recipients, through: :students, source: :parents, class_name: 'Parent'
   has_many :grade_levels, through: :students, uniq: true
 
+  has_many :deliveries, through: :subjects  
+  has_many :checked_deliveries, through: :subjects, class_name: 'Delivery', conditions: "deliveries.checked_at IS NOT NULL", order: "checked_at DESC", source: :deliveries
+
   belongs_to :user
   has_one :school, through: :user
-  
-  has_many :deliveries, dependent: :destroy
-  has_many :checked_deliveries, class_name: 'Delivery', conditions: "deliveries.checked_at IS NOT NULL", order: "checked_at DESC"
 
   validates :body, presence: true
 
