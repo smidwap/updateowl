@@ -12,6 +12,7 @@ class MessagesController < ApplicationController
     authorize! :manage, @message
 
     @message.save!
+    @message.reload
   rescue ActiveRecord::RecordInvalid
     render_resource_invalid @message
   end

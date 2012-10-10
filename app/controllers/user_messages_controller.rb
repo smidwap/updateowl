@@ -4,9 +4,11 @@ class UserMessagesController < ApplicationController
   layout "users"
 
   def index
+    @messages = @user.messages
   end
   
   def unchecked
+    @messages = @user.messages.unchecked
   end
 
   def new_mass

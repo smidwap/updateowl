@@ -15,12 +15,13 @@ module Message::Translatable
   end
 
   def requires_translation?
-    Parent.of_students(students).spanish_speaking.count > 0
+    recipients.spanish_speaking.count > 0
   end
 
 private
 
   def should_retranslate?
-    requires_translation? && body_changed?
+    return false unless body_changed?
+    requires_translation?
   end
 end

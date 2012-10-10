@@ -5,14 +5,6 @@ describe Message::Translatable do
     @message = create(:message)
   end
 
-  describe "#translate" do
-    it "should queue MessageTranslator" do
-      Resque.should_receive(:enqueue).with(MessageTranslator, @message.id)
-
-      @message.send(:translate)
-    end
-  end
-
   describe "spanish_body" do
     before(:each) do
       @new_translation = 'new translation'
@@ -39,7 +31,8 @@ describe Message::Translatable do
 
   describe "#requires_translation?" do
     it "should return true if one or more of the students' parents are spanish speaking" do
-      @message.students.first.parents << create(:parent, spanish_speaking: true)
+      student_message = create(:student_message, message: @message)
+      student_message.student.parents << create(:parent, spanish_speaking: true)
 
       @message.send(:requires_translation?).should == true
     end

@@ -4,6 +4,8 @@ class StudentMessagesController < ApplicationController
   layout "second_tier_page"
 
   def index
+    @messages = @student.student_messages
+
     render layout: "students"
   end
 
@@ -12,10 +14,14 @@ class StudentMessagesController < ApplicationController
 
     authorize! :read, @user
 
+    @messages = @student.student_messages.from_user(@user)
+
     render layout: "students"
   end
 
   def unchecked
+    @messages = @student.student_messages.unchecked
+
     render layout: "students"
   end
 

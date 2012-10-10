@@ -1,11 +1,10 @@
 class Student < ActiveRecord::Base
-  include ArrayMaker
   include HasManyMessages
   include Nameable
 
   # TODO: Archive this student upon deletion so that all messages remain intact
-  has_many :subjects
-  has_many :messages, through: :subjects, order: 'created_at DESC'
+  has_many :student_messages, order: 'created_at DESC'
+  has_many :messages, through: :student_messages, order: 'created_at DESC'
 
   belongs_to :grade_level
   has_one :school, through: :grade_level
@@ -19,21 +18,18 @@ class Student < ActiveRecord::Base
 
   attr_accessible :first_name, :last_name, :classroom_relationships_attributes, :grade_level_id
 
-  scope :not_these, lambda { |students|
-    where("students.id NOT IN (?)", students)
-  }
+
+  scope :not_these, lambda { |students| where("students.id NOT IN (?)", students) }
   scope :with_registered_parents, lambda {
      joins(:parents)
     .select("students.*, count(students.id) as n_parents")
     .group("students.id")
     .having("n_parents > 0")
   }
-  scope :without_registered_parents, lambda {
-    not_these(with_registered_parents.all)
-  }
+  scope :without_registered_parents, lambda { not_these(with_registered_parents.all) }
   scope :with_parent, lambda { |parents|
      joins(:family_ties)
-    .where(family_ties: {parent_id: ids_from(parents)})
+    .where(family_ties: {parent_id: parents})
   }
   
   after_create :create_pin

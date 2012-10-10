@@ -1,10 +1,11 @@
 class Delivery < ActiveRecord::Base
+  # TODO: rename to recipient
   belongs_to :parent
   has_one :school, through: :parent
 
-  belongs_to :subject
-  has_one :student, through: :subject
-  has_one :message, through: :subject
+  belongs_to :student_message
+  has_one :student, through: :student_message
+  has_one :message, through: :student_message
   has_one :user, through: :message
 
   scope :recipient, lambda { |parents| where(parent_id: parents) }
@@ -17,6 +18,7 @@ class Delivery < ActiveRecord::Base
 
   before_create :set_access_code
   after_create :deliver_via_email, if: :should_deliver_immediately?
+  after_save :update_student_message_as_checked, if: :checked_at_changed?
 
   def deliver_via_email
     MessageMailer.notification(self).deliver
@@ -46,6 +48,10 @@ class Delivery < ActiveRecord::Base
   end
 
 private
+
+  def update_student_message_as_checked
+    student_message.update_attribute(:checked_at, Time.now) unless student_message.checked?
+  end
 
   def should_deliver_immediately?
     parent.preference == 'email'

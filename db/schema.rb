@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121007181234) do
+ActiveRecord::Schema.define(:version => 20121009045442) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -77,10 +77,10 @@ ActiveRecord::Schema.define(:version => 20121007181234) do
   create_table "deliveries", :force => true do |t|
     t.string   "access_code"
     t.integer  "parent_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.datetime "checked_at"
-    t.integer  "subject_id"
+    t.integer  "student_message_id"
   end
 
   create_table "family_ties", :force => true do |t|
@@ -100,9 +100,12 @@ ActiveRecord::Schema.define(:version => 20121007181234) do
   create_table "messages", :force => true do |t|
     t.integer  "user_id"
     t.text     "body"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.text     "spanish_body"
+    t.integer  "checks_count",           :default => 0
+    t.integer  "student_messages_count", :default => 0
+    t.datetime "last_checked_at"
   end
 
   create_table "parents", :force => true do |t|
@@ -122,6 +125,17 @@ ActiveRecord::Schema.define(:version => 20121007181234) do
     t.integer  "messages_per_week_goal", :default => 10
   end
 
+  create_table "student_messages", :force => true do |t|
+    t.integer  "message_id"
+    t.integer  "student_id"
+    t.datetime "checked_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "student_messages", ["message_id", "student_id"], :name => "index_messages_students_on_message_id_and_student_id"
+  add_index "student_messages", ["student_id", "message_id"], :name => "index_messages_students_on_student_id_and_message_id"
+
   create_table "students", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -130,14 +144,6 @@ ActiveRecord::Schema.define(:version => 20121007181234) do
     t.datetime "updated_at",     :null => false
     t.string   "pin"
   end
-
-  create_table "subjects", :force => true do |t|
-    t.integer "message_id"
-    t.integer "student_id"
-  end
-
-  add_index "subjects", ["message_id", "student_id"], :name => "index_messages_students_on_message_id_and_student_id"
-  add_index "subjects", ["student_id", "message_id"], :name => "index_messages_students_on_student_id_and_message_id"
 
   create_table "users", :force => true do |t|
     t.integer  "school_id"

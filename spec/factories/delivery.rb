@@ -1,8 +1,7 @@
 FactoryGirl.define do
   factory :delivery do
     parent
-    student
-    message
+    student_message
     access_code 'fefwefwef'
   end
 

@@ -11,12 +11,9 @@ module EventsHelper
   end
 
   def checked_message_copy(message)
-    #TODO: message.deliveries.count should be cached in messages table to avoid lookup.
-    # However, this is only called when a mass message is sent, which we don't
-    # expect to happen more than maybe once a week per user
     parents_copy = message.individual? \
       ? "#{message.students.first.full_name}'s parent checked" \
-      : "#{message.checked_deliveries.count} of #{pluralize(message.deliveries.count, 'parent')} have checked"
+      : "#{message.checks_count} of #{pluralize(message.student_messages_count, 'parent')} have checked"
 
     "#{parents_copy} #{link_to truncate(message.body, length: 30), message_path(message), remote: true}".html_safe
   end

@@ -18,8 +18,8 @@ class User < ActiveRecord::Base
   
   has_many :classroom_relationships, dependent: :destroy
   has_many :students, through: :classroom_relationships
-  has_many :parents, through: :students
-  has_many :student_messages, through: :students, class_name: 'Message', source: :messages, uniq: true
+  has_many :parents_of_students, through: :students, class_name: 'Parent', source: :parents
+  has_many :all_messages_for_students, through: :students, class_name: 'Message', source: :messages, uniq: true
 
   scope :has_sent_a_message_since, lambda { |time|
      joins(:messages)
@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
     common_student_ids.length == students.length
   end
 
+  # TODO: Move to a decorator
   def professional_name
     "#{try(:title)}" + " #{try(:last_name)}"
   end

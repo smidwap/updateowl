@@ -63,17 +63,25 @@ describe Delivery do
 
   describe "message_body" do
     before(:each) do
-      @delivery.message = build_stubbed(:message, spanish_body: 'hola')
+      @message = build_stubbed(:message, spanish_body: 'hola')
+      @delivery.stub(:message).and_return @message
     end
 
     it "should return the english version of the message if the parent does not require translation" do
-      @delivery.message_body.should == @delivery.message.body
+      @delivery.message_body.should == @message.body
     end
 
     it "should return the spanish version of the message if the parent speaks spanish" do
       @delivery.parent = build_stubbed(:spanish_parent)
 
-      @delivery.message_body.should == @delivery.message.spanish_body
+      @delivery.message_body.should == @message.spanish_body
+    end
+  end
+
+  describe "#update_student_message_as_checked" do
+    it "should set the student message as checked" do
+      @delivery.send(:update_student_message_as_checked)
+      @delivery.student_message.checked_at.should_not == nil
     end
   end
 

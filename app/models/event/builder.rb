@@ -1,24 +1,41 @@
 class Event::Builder
-  attr_accessor :user, :events
+  attr_accessor :user
 
   def initialize(user)
-    @user = user
+    self.user = user
   end
 
   def events
-    unordered = new_messages + checked_messages + new_parents
-    unordered.sort_by { |event| -event.time.to_i }
+    @events ||= unsorted_events.sort_by { |event| -event.time.to_i }
+  end
+
+  def new_message_events
+    new_messages.map { |message| Event::NewMessage.new(message) }
+  end
+
+  def checked_message_events
+    checked_messages.map { |message| Event::CheckedMessage.new(message) }
+  end
+
+  def new_parent_events
+    new_parents.map { |parent| Event::NewParent.new(user, parent) }
+  end
+
+private
+
+  def unsorted_events
+    new_message_events + checked_message_events + new_parent_events
   end
 
   def new_messages
-    @user.student_messages.includes(:students, :user).map { |message| Event::NewMessage.new(message) }
+    user.all_messages_for_students.includes(:students, :user)
   end
 
   def checked_messages
-    @user.messages.checked.includes(:students, :checked_deliveries).all.map { |message| Event::CheckedMessage.new(message) }
+    user.messages.checked.includes(:students)
   end
 
   def new_parents
-    @user.parents.includes(:students).map { |parent| Event::NewParent.new(@user, parent) }
+    user.parents_of_students.includes(:students)
   end
 end

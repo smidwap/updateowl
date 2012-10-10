@@ -3,4 +3,4 @@
 
   .filter_alert These are <strong>your updates</strong> sent for #{@student.first_name}. You can #{link_to "view all of #{@student.first_name}'s updates", student_messages_path(@student)} instead
 
-  = render "shared/messages/list", messages: @student.messages.from_user(@user)
+  = render "shared/messages/list", messages: @messages
