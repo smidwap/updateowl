@@ -34,7 +34,8 @@ class Message < ActiveRecord::Base
   attr_accessible :body, :user_id, :student_ids
 
   def individual?
-    student_messages_count == 1
+    return student_messages_count == 1 unless student_messages_count == 0
+    return students.length == 1
   end
 
   def checked?
