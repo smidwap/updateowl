@@ -33,6 +33,7 @@ class Message < ActiveRecord::Base
 
   attr_accessible :body, :user_id, :student_ids
 
+  # TODO: test
   def individual?
     return student_messages_count == 1 unless student_messages_count == 0
     return students.length == 1
