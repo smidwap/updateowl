@@ -15,6 +15,8 @@ UpdateMe::Application.routes.draw do
 
   root to: "home#dashboard"
 
+  match "dashboard" => "home#dashboard", via: :get, as: :dashboard
+
   resources :students do
     get :preview, on: :member
     

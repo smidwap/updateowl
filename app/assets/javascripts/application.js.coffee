@@ -8,7 +8,8 @@
 //= require jquery.autosize
 //= require placeholders
 //= require jquery.sparkline
-//= require_tree .
+//= require_directory ./app
+//= require_directory ./
 
 $ ->
   App.vent = _.extend {}, Backbone.Events

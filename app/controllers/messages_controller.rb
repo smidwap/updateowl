@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   load_and_authorize_resource
+  protect_from_forgery except: :create
 
   layout "second_tier_page"
 

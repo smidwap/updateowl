@@ -1,0 +1,6 @@
+= form_for(@message, url: "http://localhost:3000/messages.extension", remote: true) do |f|
+  = f.hidden_field :user_id
+  - @message.students.each do |student|
+    = hidden_field_tag 'message[student_ids][]', student.id
+  = f.text_field :body
+  = f.submit

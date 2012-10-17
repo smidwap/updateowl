@@ -1,0 +1,1 @@
+$('<%= j(render('dashboard')) %>').appendTo $container
