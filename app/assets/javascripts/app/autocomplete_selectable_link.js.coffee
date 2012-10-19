@@ -1,28 +1,44 @@
-class App.autocomplete_selectable_link extends Backbone.View
-  initialize: (options) ->
-    super options
+(($) ->
+  class AutocompleteSelectableLink
+    constructor: (el) ->
+      @$el = $(el)
 
-    @render_links_for_dropdown()
+      @_setupAutocomplete()
+      @_renderLinksForDropdown()
 
-    @$el.bind 'autocomplete:select', (e, value) =>
-      @go_to_url(value)
+    _setupAutocomplete: ->
+      @$el.autocomplete
+        source: @$el.data 'source'
+        autoFocus: true
+        select: (event, ui) =>
+          @_goToUrl(ui.item.value)
 
-  render_links_for_dropdown: ->
-    @$el.data("autocomplete")._renderItem = (ul, item) =>
-      $('<li></li>')
-        .data('item.autocomplete', item)
-        .append(@link_from_url_and_label(item.value, item.label))
-        .appendTo(ul)
+    _renderLinksForDropdown: ->
+      @$el.data("autocomplete")._renderItem = (ul, item) =>
+        $('<li></li>')
+          .data('item.autocomplete', item)
+          .append(@_linkFromUrlForDropdown(item.value, item.label))
+          .appendTo(ul)
 
-  link_from_url_and_label: (url, label = "") ->
-    data_remote_attr = if @$el.data 'remote' then 'data-remote="true"' else ''
-    "<a href=\"#{url}\" #{data_remote_attr}>#{label}</a>"
+    _linkFromUrlForDropdown: (url, label = "") ->
+      data_remote_attr = if @$el.data 'remote' then 'data-remote="true"' else ''
+      "<a href=\"#{url}\" #{data_remote_attr}>#{label}</a>"
 
-  go_to_url: (url) ->
-    if @$el.data 'remote'
-      $(@link_from_url_and_label(url))
-        .appendTo('body')
-        .hide()
-        .click()
-    else
-      window.location = url
+    _goToUrl: (url) ->
+      if @$el.data 'remote'
+        $(@_linkFromUrlForDropdown(url))
+          .appendTo('body')
+          .hide()
+          .click()
+      else
+        window.location = url
+
+  $.fn.autocomplete_selectable_link = () ->
+    @each () ->
+      data = $.data(@, 'autocomplete_selectable_link')
+      $.data(@, 'autocomplete_selectable_link', new AutocompleteSelectableLink(@)) unless data
+
+  $ ->
+    $(document).on 'focus', '[data-behavior~=autocomplete_selectable_link]', ->
+      $(@).autocomplete_selectable_link()
+)($)

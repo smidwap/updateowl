@@ -8,7 +8,7 @@
     .select_who_container
       .select_who_inner
         .autocomplete_container
-          = text_field_tag("autocomplete", nil, autofocus: true, data: {behavior: "autocomplete autocomplete_selectable_link", source: message_autocomplete_data_for_students(@user.students.with_registered_parents), remote: true}, placeholder: "Send an update for...", class: "fat_input")
+          = text_field_tag("autocomplete", nil, autofocus: true, data: {behavior: "autocomplete_selectable_link", source: message_autocomplete_data_for_students(@user.students.with_registered_parents), remote: true}, placeholder: "Send an update for...", class: "fat_input")
     .select_who_container
       .select_who_inner.group_messages
         Or,

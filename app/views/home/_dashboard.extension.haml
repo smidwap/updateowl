@@ -1,1 +1,5 @@
-= link_to "hello", new_student_message_url(262, format: 'extension'), remote: true
+.uox-header
+  .uox-dropdown#uox-message-dropdown
+    = link_to "Send an UpdateOwl", select_user_students_url(current_user, format: 'extension'), class: 'uox-btn uox-btn-success', remote: true
+  %span.uox-or or
+  = link_to "Visit UpdateOwl", root_url, class: "uox-underlined", id: "uox-visit"

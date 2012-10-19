@@ -1,0 +1,5 @@
+$('#uox-new-message').remove()
+$('<%= j(render('select')) %>')
+  .appendTo($container.find('#uox-message-dropdown'))
+  .parent()
+  .addClass('open')

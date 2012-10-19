@@ -1,6 +1,12 @@
-= form_for(@message, url: "http://localhost:3000/messages.extension", remote: true) do |f|
-  = f.hidden_field :user_id
-  - @message.students.each do |student|
-    = hidden_field_tag 'message[student_ids][]', student.id
-  = f.text_field :body
-  = f.submit
+.uox-dropdown-menu#uox-new-message
+  %header
+    New Update for #{student_name_for_message(@message)}
+    = link_to "X", "#", "data-behavior" => "close-dropdown", "data-target" => 'uox-message-dropdown', class: "close"
+  .uox-dropdown-body
+    = form_for(@message, url: "http://localhost:3000/messages.extension", remote: true) do |f|
+      = f.hidden_field :user_id
+      - @message.students.each do |student|
+        = hidden_field_tag 'message[student_ids][]', student.id
+      = f.text_area :body
+      .uox-actions
+        = f.submit "Send the Update", class: "uox-btn uox-btn-success uox-btn-small"

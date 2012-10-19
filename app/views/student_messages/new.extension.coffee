@@ -1,0 +1,1 @@
+$('<%= j(render("shared/messages/form")) %>').replaceAll($('#uox-student-select')).parent().addClass('open')

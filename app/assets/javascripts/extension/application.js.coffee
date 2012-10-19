@@ -1,4 +1,7 @@
-$container = $('<div id="updateowl_extension_container"></div>').prependTo 'body'
+//= require_tree .
+//= require ../app/autocomplete_selectable_link
+
+$container = $('<div id="uox_container"></div>').prependTo 'body'
 
 class RemoteUrl
   constructor: (@url, @method = 'get', @data = '') ->
@@ -29,12 +32,28 @@ $(document, $container).on 'submit', 'form[data-remote]', (e) ->
   url = $(@).attr 'action'
   data = $.param($(@).serializeArray())
 
+
   new RemoteUrl(url, 'post', data).goto()
 
 (()->
+  #TODO: FIX
   new RemoteUrl('http://localhost:3000/dashboard.extension').goto()
 
   $('body').css({
     paddingTop: parseInt($('body').css('padding-top')) + 50
   })
+  $('body > *').each ->
+    $div = $(@)
+    $div.css('top', parseInt($div.css('top')) + 50) if $div.css('position') is 'fixed'
+
 ).call(@)
+
+$(document).on 'focus', '[data-behavior~=autocomplete_selectable_link]', ->
+  $(@).autocomplete('option', 'appendTo', $container)
+
+$(document).on 'click', '[data-behavior~=close-dropdown]', ->
+  $target = $("##{$(@).data('target')}")
+  $target.removeClass('open')
+
+$(document).on 'submit', '.uox-dropdown form', ->
+  $(@).parents('.uox-dropdown').removeClass('open')
