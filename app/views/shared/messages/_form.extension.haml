@@ -3,7 +3,7 @@
     New Update for #{student_name_for_message(@message)}
     = link_to "X", "#", "data-behavior" => "close-dropdown", "data-target" => 'uox-message-dropdown', class: "close"
   .uox-dropdown-body
-    = form_for(@message, url: "http://localhost:3000/messages.extension", remote: true) do |f|
+    = form_for(@message, url: messages_url(format: :extension), remote: true) do |f|
       = f.hidden_field :user_id
       - @message.students.each do |student|
         = hidden_field_tag 'message[student_ids][]', student.id

@@ -1,3 +1,6 @@
+# TODO: Get rid of localhost refeences
+# only show for certain sites
+
 //= require_tree .
 //= require ../app/autocomplete_selectable_link
 
@@ -32,12 +35,10 @@ $(document, $container).on 'submit', 'form[data-remote]', (e) ->
   url = $(@).attr 'action'
   data = $.param($(@).serializeArray())
 
-
   new RemoteUrl(url, 'post', data).goto()
 
 (()->
-  #TODO: FIX
-  new RemoteUrl('http://localhost:3000/dashboard.extension').goto()
+  new RemoteUrl('<%= Rails.application.routes.url_helpers.dashboard_url(format: :extension, host: Rails.application.config.action_mailer.default_url_options[:host]) %>').goto()
 
   $('body').css({
     paddingTop: parseInt($('body').css('padding-top')) + 50
