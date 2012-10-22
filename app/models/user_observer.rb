@@ -1,7 +1,7 @@
 class UserObserver < ActiveRecord::Observer
   def after_create(user)
     Analytics.with_current_user(user) do
-      Analytics.track_event "User: Registered"
+      Analytics.track_event "User: Added"
       Analytics.track_event "$signup"
     end
   end
