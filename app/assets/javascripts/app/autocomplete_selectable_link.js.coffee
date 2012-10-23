@@ -7,8 +7,11 @@
       @_renderLinksForDropdown()
 
     _setupAutocomplete: ->
+      source = @$el.data('source')
       @$el.autocomplete
-        source: @$el.data 'source'
+        # Must manually define to avoid IE9 error where source is not found to be an Array
+        source: (request, response) ->
+          response( $.ui.autocomplete.filter( source, request.term ) );
         autoFocus: true
         select: (event, ui) =>
           @_goToUrl(ui.item.value)
