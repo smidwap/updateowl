@@ -1,1 +1,5 @@
+<% if current_user.present? %>
 $('<%= j(render('dashboard')) %>').appendTo($container)
+<% else %>
+$('<%= j(render('login_dashboard')) %>').appendTo($container)
+<% end %>

@@ -1,0 +1,2 @@
+$('#uox-login-box').remove();
+$('<%= j(render('devise/sessions/new')) %>').appendTo($container.find('#uox-login-dropdown')).parent().addClass('open');

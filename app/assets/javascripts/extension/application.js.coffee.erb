@@ -5,7 +5,7 @@ $container = $('<div id="uox_container"></div>').prependTo 'body'
 
 class RemoteUrl
   constructor: (@url, @method = 'get', @data = '') ->
-    @
+  @
 
   goto: ->
     if @method is 'get' then @_goto_via_get() else @_goto_via_post()
@@ -50,7 +50,7 @@ $(document).on 'focus', '[data-behavior~=autocomplete_selectable_link]', ->
   $(@).autocomplete('option', 'appendTo', $container)
 
 $(document).on 'click', '[data-behavior~=close-dropdown]', ->
-  $target = $("##{$(@).data('target')}")
+  $target = $(this).parents('.uox-dropdown')
   $target.removeClass('open')
 
 $(document).on 'submit', '.uox-dropdown form', ->

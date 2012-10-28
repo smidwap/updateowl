@@ -37,37 +37,33 @@
   }
 }
 
-#uox-message-dropdown {
-  display: inline-block;
+.uox-dropdown-menu {
   color: #000;
+  width: 400px;
+
+  > header, > .uox-dropdown-body {
+    padding: 8px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  > header {
+    border-bottom: 1px solid $grayLighter;
+
+    a.close {
+      float: right;
+      color: $grayLight;
+    }
+  }
 
   a {
-    color: #fff;
+    display: inline;
+    color: $linkColor;
   }
+}
 
-  .uox-dropdown-menu {
-    width: 400px;
-
-    > header, > .uox-dropdown-body {
-      padding: 8px;
-      font-size: 18px;
-      line-height: 22px;
-    }
-
-    a {
-      display: inline;
-      color: $linkColor;
-    }
-
-    > header {
-      border-bottom: 1px solid $grayLighter;
-
-      a.close {
-        float: right;
-        color: $grayLight;
-      }
-    }
-  }
+#uox-message-dropdown {
+  display: inline-block;
 
   #uox-student-select {
     input {
@@ -87,6 +83,17 @@
     .uox-actions {
       margin-top: 6px;
     }
+  }
+}
+
+#uox-login-box {
+  .uox-login-error {
+    color: #C70303;
+    margin-bottom: 15px;
+  }
+
+  label {
+    display: block;
   }
 }
 

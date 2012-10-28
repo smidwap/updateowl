@@ -1,0 +1,14 @@
+.uox-dropdown-menu#uox-login-box
+  %header
+    Sign In
+    = link_to "X", "#", "data-behavior" => "close-dropdown", "data-target" => 'uox-message-dropdown', class: "close"
+  .uox-dropdown-body
+    - if flash[:error]
+      .uox-login-error= flash[:error]
+    = form_for(resource, as: resource_name, url: session_url(resource_name, format: 'extension'), remote: true) do |f|
+      = f.label :email
+      = f.text_field :email
+      = f.label :password
+      = f.password_field :password
+      .uox-actions
+        = f.submit "Sign In", class: "uox-btn uox-btn-primary uox-btn-small"
