@@ -2,4 +2,4 @@
   %header
     %h3 Recent Updates
     
-  = render "shared/messages/list", messages: student.reload.messages[0..2]
+  = render "shared/messages/list", messages: student.reload.student_messages[0..2]
