@@ -13,6 +13,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def hide_extension_download_notification
+    cookies[:hide_extension_download_notification] = { value: true, expires: 1.year.from_now }
+  end
+
 private
 
   after_filter :track_consistency, only: :consistency

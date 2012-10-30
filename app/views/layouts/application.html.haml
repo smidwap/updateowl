@@ -6,7 +6,9 @@
   %body
     %header
       .container
+
         = link_to "UpdateOwl", root_path, class: "brand"
+
         %ul.menu.main_menu.unstyled
           %li
             = link_to select_user_students_path(current_user), remote: true, class: "new_update" do
@@ -14,16 +16,50 @@
                 %i.icon-edit.icon-white{style: "margin-top: 1px;"}
               %span{style: "margin-left: 3px;"} Update
           %li= link_to "Students", user_students_path(current_user)
+
         .search
           = text_field_tag("autocomplete", nil, data: {behavior: "autocomplete autocomplete_selectable_link", source: global_autocomplete_data_for_students(current_user.students)}, placeholder: "Jump to a student...", class: "span3")
+
         %ul.menu.personal_menu.unstyled
+
           %li= link_to "Support", support_path, remote: true
+
           %li= link_to current_user.professional_name, user_messages_path(current_user)
+
           %li.dropdown
             = link_to "#", class: "dropdown-toggle", data: {toggle: "dropdown"} do
               %b.caret
             %ul.dropdown-menu
               %li= link_to "Logout", destroy_user_session_path, method: :delete
+
+    - unless cookies[:hide_extension_download_notification]
+      .container#extension_download_unit
+        %h1 Get the UpdateOwl Browser Addon
+        %h3 Conveniently send updates straight from Navigation!
+        .screenshot
+          = image_tag("extension_screenshot.jpg")
+        .download
+          :erb
+            <script type="text/javascript" src="https://crossrider.cotssl.net/javascripts/installer/installer.js"></script>
+
+            <script type="text/javascript">
+            var __CRI = new crossriderInstaller({
+              app_id:17676,
+              app_name:'UpdateOwl'
+            });
+
+            var _cr_button = new __CRI.button({
+              button_size:'big',
+              color:'blue'
+            });
+
+            //__CRI.install(); //use this if you want to use your own button
+            </script>
+
+            <div id="crossriderInstallButton"></div>
+        .download_instructions You should install UpdateOwl on the computer and browser that you normally access Navigation on (Internet Explorer).
+        .opt_out= link_to "Hide this notification", hide_extension_download_notification_user_path(current_user), remote: true, method: :post
+
     .container#inner
       .row
         .span8

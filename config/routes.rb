@@ -30,6 +30,7 @@ UpdateMe::Application.routes.draw do
 
   resources :users do
     get :consistency, on: :member
+    post :hide_extension_download_notification, on: :member
 
     resources :students, only: [:index] do
       get :select, on: :collection
