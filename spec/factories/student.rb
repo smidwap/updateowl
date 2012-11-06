@@ -8,4 +8,10 @@ FactoryGirl.define do
       student.parents << create(:parent)
     end
   end
+
+  factory :student_with_spanish_speaking_parent, parent: :student do
+    after_build(:build) do |student|
+      student.parents << create(:spanish_parent)
+    end
+  end
 end

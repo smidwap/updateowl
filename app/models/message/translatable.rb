@@ -15,7 +15,11 @@ module Message::Translatable
   end
 
   def requires_translation?
-    recipients.spanish_speaking.count > 0
+    if new_record?
+      Parent.spanish_speaking.of_students(students).count > 0
+    else
+      recipients.spanish_speaking.count > 0
+    end
   end
 
 private

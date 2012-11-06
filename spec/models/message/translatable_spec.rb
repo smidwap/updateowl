@@ -30,15 +30,27 @@ describe Message::Translatable do
   end
 
   describe "#requires_translation?" do
-    it "should return true if one or more of the students' parents are spanish speaking" do
-      student_message = create(:student_message, message: @message)
-      student_message.student.parents << create(:parent, spanish_speaking: true)
+    context "when the message is persisted" do
+      it "should return true if one or more of the students' parents are spanish speaking" do
+        student_message = create(:student_message, message: @message)
+        student_message.student.parents << create(:parent, spanish_speaking: true)
 
-      @message.send(:requires_translation?).should == true
+        @message.requires_translation?.should == true
+      end
+
+      it "should return false if no recipients are spanish speaking" do
+        @message.requires_translation?.should == false
+      end
     end
 
-    it "should return false if no recipients are spanish speaking" do
-      @message.send(:requires_translation?).should == false
+    context "when the message hasn't been persisted" do
+      it "should return true if one or more of the students' parents are spanish speaking" do
+        message = build(:message)
+        student_with_spanish_speaking_parent = create(:student_with_spanish_speaking_parent)
+        message.students << student_with_spanish_speaking_parent
+
+        message.requires_translation?.should == true
+      end
     end
   end
 
