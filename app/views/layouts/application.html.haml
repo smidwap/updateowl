@@ -33,7 +33,7 @@
               %li= link_to "Logout", destroy_user_session_path, method: :delete
 
     - if cookies[:hide_extension_download_notification].nil? && current_user.school_id == 11
-      .container#extension_download_unit
+      .container#extension_download_unit.hide
         %h1 Get the UpdateOwl Browser Addon
         %h3 Conveniently send updates straight from Navigation!
         .screenshot
