@@ -21,6 +21,6 @@ production:
   database: updateme_prod
   username: updateme
   password: emetadpu
-  host: dtcentral01.cnzo2nas7x7t.us-east-1.rds.amazonaws.com
+  host: updateme-prod.ch0s3uhei7vz.us-east-1.rds.amazonaws.com
   pool: 5
   timeout: 5000
