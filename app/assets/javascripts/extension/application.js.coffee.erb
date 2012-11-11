@@ -35,7 +35,9 @@ $(document, $container).on 'submit', 'form[data-remote]', (e) ->
   new RemoteUrl(url, 'post', data).goto()
 
 (()->
-  new RemoteUrl('<%= Rails.application.routes.url_helpers.dashboard_url(format: :extension, host: Rails.application.config.action_mailer.default_url_options[:host]) %>').goto()
+  # Will need to make this env-dependent somehow. Explicitly setting so
+  # we can deploy to Heroku
+  new RemoteUrl('http://www.updateowl.com/dashboard.extension').goto()
 
   $('body').css({
     paddingTop: parseInt($('body').css('padding-top')) + 50
