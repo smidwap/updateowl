@@ -1,9 +1,12 @@
 development:
   host: localhost
   port: 6379
+  password: 
 test:
   host: localhost
   port: 6379
+  password: 
 production:
-  host: localhost
+  host: slimehead.redistogo.com
   port: 9493
+  password: d9e880b3f80f94f68abb6febd974c115
