@@ -1,3 +1,3 @@
-web:     bundle exec puma -e $RAILS_ENV -p $PORT
+web:    bundle exec rails server puma -p $PORT -e $RACK_ENV
 resque:  bundle exec rake environment resque:work QUEUE=*
 scheduler: bundle exec rake VERBOSE=true environment resque:scheduler
