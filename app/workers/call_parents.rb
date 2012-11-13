@@ -4,6 +4,7 @@ class CallParents
   def self.perform
     Parent.with_unchecked_messages.prefers_phone.each do |parent|
       call(parent)
+      sleep(5)
     end
   end
 
