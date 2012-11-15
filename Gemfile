@@ -63,6 +63,7 @@ gem "rvm-capistrano"
 gem "aws-ses", require: 'aws/ses'
 gem "to_lang"
 gem 'google-analytics-rails'
+gem 'newrelic_rpm'
 
 group :development do
   gem "letter_opener"
