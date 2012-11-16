@@ -2,8 +2,7 @@ class Student < ActiveRecord::Base
   include HasManyMessages
   include Nameable
 
-  # TODO: Archive this student upon deletion so that all messages remain intact
-  has_many :student_messages, order: 'created_at DESC'
+  has_many :student_messages, order: 'created_at DESC', dependent: :destroy
   has_many :messages, through: :student_messages, order: 'created_at DESC'
 
   belongs_to :grade_level
@@ -17,7 +16,6 @@ class Student < ActiveRecord::Base
   has_many :parents, through: :family_ties
 
   attr_accessible :first_name, :last_name, :classroom_relationships_attributes, :grade_level_id
-
 
   scope :not_these, lambda { |students| where("students.id NOT IN (?)", students) }
   scope :with_registered_parents, lambda {

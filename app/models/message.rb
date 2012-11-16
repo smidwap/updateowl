@@ -42,4 +42,8 @@ class Message < ActiveRecord::Base
   def checked?
     checks_count > 0
   end
+
+  def destroy_if_individual_student_is_destroyed
+    destroy if students.length == 0
+  end
 end

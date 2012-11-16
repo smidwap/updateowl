@@ -17,4 +17,20 @@ describe Message do
       end
     end
   end
+
+  describe "#destroy_if_individual_student_is_destroyed" do
+    it "should destroy if the individual message no longer has a student" do
+      @message.should_receive(:destroy)
+
+      @message.destroy_if_individual_student_is_destroyed
+    end
+
+    it "should not destroy if there are still students associated with the message" do
+      @message.students = build_stubbed_list(:student, 1)
+
+      @message.should_not_receive(:destroy)
+
+      @message.destroy_if_individual_student_is_destroyed
+    end
+  end
 end
