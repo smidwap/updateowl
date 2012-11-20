@@ -15,6 +15,8 @@ UpdateMe::Application.routes.draw do
 
   root to: "home#dashboard"
 
+  match "marketing" => "pages#index", via: :get
+
   match "dashboard" => "home#dashboard", via: :get, as: :dashboard
 
   resources :students do

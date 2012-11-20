@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>UpdateOwl</title>
+  <%= stylesheet_link_tag    "marketing/style", :media => "all" %>
+  <%= csrf_meta_tags %>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+
+<body>
+
+<div id="banner">
+  <div class="container">
+    <div id="navbar">
+    </div>
+    <div id="tagline">
+      <h1>Finally, parent communication that <span>happens</span></h1>
+      <h2>Teachers love it. Parents love it. Your school is next.</h2>
+    </div>
+    <div id="call-to-action">
+      <%= link_to "30 days free — contact us for a demo and pricing", "#contact", id: 'contact-us' %>
+    </div>
+  </div>
+</div>
+
+<div id="intro">
+  <div class="container">
+    <div id="description">
+      <div class="description-body">
+        <h3>
+          Teachers need to contact parents<br/>
+          And a lot of them<br/>
+          Now they can, <i>effortlessly</i>
+        </h3>
+        <p>In less than 15 minutes each week, teachers can update dozens of individual parents for reasons like classroom achievement, missing homework, volunteer opportunities, and exam reminders. Parents automatically receive updates either by phone or email—it's their choice. Watch your relationships with parents grow and see students become more accountable in the classroom.</p>
+        <p>UpdateOwl isn't another gradebook, parent portal, or SIS - it's just a new way for teachers to easily communicate with parents <i>that simply works</i>.</p>
+        <p>
+          <%= link_to "See why teachers and their schools love UpdateOwl →", "#features" %>
+        </p>
+        <p>or <%= link_to "hear what teachers and parents think about UpdateOwl", "#testimonials" %>
+      </div>
+    </div>
+    <div id="video-lead-in">
+      <%= link_to "#", id: "video-play-button", class: 'coming-soon' do %>
+        <div class="circle-icon black">
+          <i class="icon-play icon-white"></i>
+        </div>
+        See UpdateOwl in action
+      <% end %>
+      <br />
+      Coming Soon
+    </div>
+  </div>
+</div>
+
+<div id="features" class="section">
+  <header>
+    <h3>8 Reasons Your School Will Love UpdateOwl</h3>
+  </header>
+  <div class="container">
+    <div id="features-list">
+      <div class="feature">
+        <div class="caption">
+          <div class="caption-body">
+            <div class="short">It's fast, which means more communication</div>
+            <div class="description">
+                <p>No more endless quests for current contact information: sending an update is as easy as typing in a student's name. Updates are one-way, which means that teachers don't deal with back-and-forth email conversations or extended phone calls when a simple message will suffice.</p>
+                <p>And in the spirit of the clarity and conciseness, updates are generally between 1 and 4 sentences long, making them quick to write.</p>
+            </div>
+          </div>
+        </div>
+        <div class="image">
+          <div class="image-body">
+            <%= image_tag "feature_fast.jpg", width: 300 %>   
+            <%= image_tag "feature_fast2.jpg", width: 300 %>         
+          </div>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="caption">
+          <div class="caption-body">
+            <div class="short">No training required—it's just two clicks</div>
+            <div class="description">UpdateOwl is intuitive to use. Just click Update and you're halfway there already. There's no need to host training sessions or worry that teachers will resist difficult change. UpdateOwl is really that easy to use. <%= link_to "Want to hear it straight from our customers?", "#testimonials" %></div>
+          </div>
+        </div>
+        <div class="image">
+          <div class="image-body">
+            <%= image_tag "feature_notraining.jpg", width: 300 %>        
+          </div>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="caption">
+          <div class="caption-body">
+            <div class="short">All communication is trackable</div>
+            <div class="description">There's no more uncertainty about whether a parent has received an update. UpdateOwl tracks whether each update was listened to over the phone or read by email. It's time for communication surprises to end.</div>
+          </div>
+        </div>
+        <div class="image">
+          <div class="image-body">
+            <%= image_tag "feature_trackable.jpg", width: 300 %>        
+          </div>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="caption">
+          <div class="caption-body">
+            <div class="short">Spanish translation is available</div>
+            <div class="description">For the first time for many spanish-speaking parents, they will receive updates about their children directly from teachers. UpdateOwl's automatic translator is capable of translating short updates and delivering them to parents by email or phone.</div>
+          </div>
+        </div>
+        <div class="image">
+          <div class="image-body">
+            <%= image_tag "feature_translation.jpg", width: 300 %>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="caption">
+          <div class="caption-body">
+            <div class="short">Updates can be received by phone or email</div>
+            <div class="description">Parents don't change their routines to receive more communication. Parents simply pick up the phone or check their email as they already do. UpdateOwl provides parents two means of receiving updates: phone and email. When an update is sent, it is automatically delivered over the phone using state-of-the-art text-to-voice technology.</div>
+          </div>
+        </div>
+        <div class="image">
+          <div class="image-body">
+            <%= image_tag "feature_preferences.jpg", width: 300 %>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="caption">
+          <div class="caption-body">
+            <div class="short">Improvement can be gauged with analytics</div>
+            <div class="description">See which students are receiving consistent communication and which aren't. Quickly see a snapshot of your school's frequency of communication.</div>
+          </div>
+        </div>
+        <div class="image">
+          <div class="image-body">
+            <%= image_tag "feature_analytics.jpg", width: 300 %>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="caption">
+          <div class="caption-body">
+            <div class="short">Get setup in less than 24 hours</div>
+            <div class="description">
+              <p>There's no lengthy setup process or required training. Just send us your list of teachers and you'll be on your way. Bonus: if you already have parent contact information, you can be sending updates in no time! (Otherwise, UpdateOwl provides a convenient method for parents to sign up online or by phone.)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="caption">
+          <div class="caption-body">
+            <div class="short">Our customers come first</div>
+            <div class="description">We've built this business to make an impact on education. We provide our customers with the support they need to be successful. Not sure about our customer service? Just try it:  <%= link_to "info@updateowl.com", "mailto: info@updateowl.com" %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p><%= link_to "See what teachers and administrators are saying about us →", "#testimonials" %></p>
+    <p>or <%= link_to "contact us for a demo and pricing", "#contact" %></p>
+  </div>
+</div>
+
+<div id="testimonials" class="section">
+  <header>
+    <h3>Enough talk, let's hear it from the parents and teachers</h3>
+  </header>
+  <div class="container">
+    <h4>At one school, UpdateOwl helped 71% of parents become more involved in their children's education</h4>
+    <div id="testimonial-list">
+      <div class="testimonial" style="display: table-cell; width: 33%; padding: 20px;">
+        <p>I resisted UpdateOwl for a while.  It felt like a new thing to learn and, being new to my teaching job, like one more thing to do.  Two months into the school year I finally gave it a try, and was blown away by how effortless it was.  I no longer have to look up my students' contact information, make calls and send emails.  With two mouse clicks I have opened a window, typed my message, and sent it.  What a gift to a busy teacher!</p>
+        <p class="who">
+          - Al Fisher, Music Teacher
+          <br />
+          City Academy, St. Louis
+        </p>
+      </div>
+      <div class="testimonial" style="display: table-cell; width: 33%; padding: 20px;">
+        <p>The most positive feedback has been when kids have come up to me with big smiles on their faces, saying that their mom told them I sent a really nice message home about them. Frequent, individualized communication is no longer something that I simply consider a “nice-to-have” but is now something I can actually do!  </p>
+        <p class="who">
+          - Desiree Cossyleon, 7th Grade Science
+          <br />
+          Yes Prep, Houston
+        </p>
+      </div>
+      <div class="testimonial" style="display: table-cell; width: 33%; padding: 20px;">
+        <p>UpdateOwl has helped me reach out to parents with important messages in a timely fashion. It has been especially helpful in sharing positive news that parents benefit from hearing about their child's learning. Furthermore, UpdateOwl enables me to know whether or not parents have received my messages within the necessary time frame. This tool has efficiently improved the parent-teacher partnership that supports my students' learning.</p>
+        <p class="who">
+          - Marie Spear, 3rd Grade
+          <br />
+          Winfield Central, Winfield, IL
+        </p>
+      </div>
+    </div>
+    <h4>2 months into using UpdateOwl, another school has seen 7 teachers send over 1,400 updates to parents</h4>
+    <p class="next-steps">
+      <%= link_to "Ready to get in touch with us?", "#contact" %>
+      or
+      <%= link_to "Want to read more about what UpdateOwl comes bundled with?", "#features" %>
+  </div>
+</div>
+
+<div id="contact" class="section">
+  <header>
+    <h3>Is your school next to drastically improve parent communication?</h3>
+  </header>
+  <div class="container">
+    <div id="contact-box">
+      Contact Us<br/>
+      Email: <%= link_to "hello@updateowl.com", "mailto:hello@updateowl.com" %><br/>
+      Phone: 630.649.4224<br/>
+    </div>
+  </div>
+</div>
+
+</body>
+
+</html>
