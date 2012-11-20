@@ -13,7 +13,7 @@ UpdateMe::Application.routes.draw do
 
   devise_for :users, :controllers => { :sessions => 'sessions' }
 
-  root to: "home#dashboard"
+  root to: "pages#index"
 
   match "marketing" => "pages#index", via: :get
 

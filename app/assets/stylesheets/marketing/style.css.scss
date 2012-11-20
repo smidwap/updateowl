@@ -17,6 +17,22 @@ h3 {
 
 #navbar {
   height: 60px;
+  @include clearfix();
+  padding-top: 15px;
+
+  .logo {
+    float: left;
+    color: #eee;
+    font-size: 30px;
+  }
+
+  .login {
+    float: right;
+
+    a {
+      color: $green;
+    }
+  }
 }
 
 #banner {
