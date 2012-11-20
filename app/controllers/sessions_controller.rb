@@ -3,7 +3,7 @@ class SessionsController < Devise::SessionsController
       resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#failure") 
       sign_in(resource_name, resource)
       respond_to do |format|
-         format.html { redirect_to root_path }
+         format.html { redirect_to after_sign_in_path_for(resource) }
          format.extension
       end
    end
