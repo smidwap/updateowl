@@ -3,6 +3,7 @@
 <head>
   <title>UpdateOwl</title>
   <%= stylesheet_link_tag    "marketing/style", :media => "all" %>
+  <%= javascript_include_tag "marketing/marketing" %>
   <%= csrf_meta_tags %>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 </head>
@@ -43,14 +44,12 @@
       </div>
     </div>
     <div id="video-lead-in">
-      <%= link_to "#", id: "video-play-button", class: 'coming-soon' do %>
+      <%= link_to "#video", id: "video-play-button" do %>
         <div class="circle-icon black">
           <i class="icon-play icon-white"></i>
         </div>
         See UpdateOwl in action
       <% end %>
-      <br />
-      Coming Soon
     </div>
   </div>
 </div>
@@ -224,6 +223,12 @@
       Email: <%= link_to "hello@updateowl.com", "mailto:hello@updateowl.com" %><br/>
       Phone: 630.649.4224<br/>
     </div>
+  </div>
+</div>
+
+<div class="modal hide" id="video-modal">
+  <div class="modal-body">
+    <iframe src="http://www.youtube.com/embed/1P_pqV1Rilw" frameborder="0" allowfullscreen></iframe>
   </div>
 </div>
 
