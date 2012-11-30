@@ -2,7 +2,7 @@ module StudentMessage::Deliverable
   extend ActiveSupport::Concern
 
   included do
-    after_create :queue_delivery_setup
+    after_commit :queue_delivery_setup
   end
 
   def create_deliveries
