@@ -1,10 +1,57 @@
 @import 'includes';
 
 .messages {
-  .message {
-    > header {
-      .to {
-      }
+}
+
+.message {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ececec;
+
+  > header {
+    @include clearfix();
+
+    .to, .from {
+      float: left;
+      width: 45%;
+      font-weight: bold;
+    }
+
+    .from {
+      text-align: right;
+    }
+  }
+
+  > .message_container {
+    margin-bottom: 4px;
+    @include clearfix();
+
+    .message_body {
+      float: left;
+      width: 90%;
+    }
+
+    .checked_state {
+      float: left;
+      width: 10%;
+      text-align: center;
+    }
+  }
+
+  > footer {
+    @include clearfix();
+    color: $lightBrown;
+
+    .last_checked {
+      float: left;
+      width: 50%;
+    }
+
+    time {
+      float: right;
+      width: 40%;
+      margin-right: 10%;
+      text-align: right;
     }
   }
 }

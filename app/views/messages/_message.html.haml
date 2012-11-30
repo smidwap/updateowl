@@ -1,0 +1,22 @@
+.message
+  %header{style: "margin-bottom: 4px; overflow: hidden;"}
+    .to
+      - if message.individual?
+        = link_to(message.students.first.full_name, preview_student_path(message.students.first), remote: true)
+      - else
+        All Students
+    .from= message.user.professional_name
+  .message_container
+    .message_body= message.body
+    .checked_state
+      - if message.checked?
+        .circle_icon.green
+          %i.icon-ok.icon-white
+  %footer
+    - if message.checked?
+      .last_checked
+        Last checked on
+        %span.last_checked_time= message.last_checked_at.strftime('%B %d at %l:%M%P')
+    %time
+      Sent
+      %span.sent_time= message.created_at.strftime('%b %e')
