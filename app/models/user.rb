@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   has_many :classroom_relationships, dependent: :destroy
   has_many :students, through: :classroom_relationships
   has_many :parents_of_students, through: :students, class_name: 'Parent', source: :parents
-  has_many :all_messages_for_students, through: :students, class_name: 'Message', source: :messages, uniq: true
+  has_many :all_messages_for_students, through: :students, class_name: 'Message', source: :messages, uniq: true, order: 'messages.created_at DESC'
 
   scope :has_sent_a_message_since, lambda { |time|
      joins(:messages)

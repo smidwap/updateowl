@@ -1,5 +1,14 @@
 @import 'includes';
 
+.messages {
+  .message {
+    > header {
+      .to {
+      }
+    }
+  }
+}
+
 .message {      
   span.to {
     color: #000;

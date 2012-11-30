@@ -1,6 +1,17 @@
 %section.events
   %header
-    %h3 Recent Activity
-  .events_list
-    - current_user.events.each do |event|
-      = partial_for_event(event)
+    %h3 Recent Updates
+  .messages
+    - @user.all_messages_for_students.first(20).each do |message|
+      .message{style: "padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid #ececec;"}
+        %header{style: "margin-bottom: 4px; overflow: hidden;"}
+          .to{style: "float: left; width: 45%; font-weight: bold;"}= link_to student_name_for_message(message), '#'
+          .from{style: "float: left; width: 45%; text-align: right; font-weight: bold;"}= message.user.professional_name
+        .message_container{style: "margin-bottom: 4px; overflow: hidden;"}
+          .message_body{style: "float: left; width: 90%"}= message.body
+          .checked_state{style: "float: left; width: 10%; text-align: center;"}
+            .circle_icon.green
+              %i.icon-ok.icon-white
+        %footer{style: "clear: both; color: #C2B4B4;"}
+          Last checked on November 23 at 9:13pm
+          %time{style: "float: right; color: #C2B4B4; margin-right: 60px;"} Sent Nov 13
