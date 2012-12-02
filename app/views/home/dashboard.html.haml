@@ -2,4 +2,4 @@
   %header
     %h3 Recent Updates
   .messages
-    = render @user.all_messages_for_students.first(3)
+    = render @user.all_messages_for_students.mass.first(3)

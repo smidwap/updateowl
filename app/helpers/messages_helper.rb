@@ -1,4 +1,15 @@
 module MessagesHelper
+  CHECKMARK_CLASSES = [
+    'checked_by_12_point_5_percent',
+    'checked_by_25_percent', 
+    'checked_by_37_point_5_percent',
+    'checked_by_50_percent',
+    'checked_by_62_point_5_percent',
+    'checked_by_75_percent',
+    'checked_by_87_point_5_percent',
+    'checked_by_100_percent'
+  ]
+
   def why_limit_length_link
     link_to "Why?", "#", data: {
       behavior: 'popover',
@@ -27,5 +38,12 @@ module MessagesHelper
 
   def student_name_for_message(message)
     message.individual? ? message.students.first.full_name : "All Students"
+  end
+
+  # Assuming message is checked
+  def message_checkmark_class(message)
+    return "checked_by_100_percent" if message.individual?
+
+    CHECKMARK_CLASSES[message.percentage_checked_octile - 1]
   end
 end

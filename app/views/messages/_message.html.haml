@@ -10,8 +10,7 @@
     .message_body= message.body
     .checked_state
       - if message.checked?
-        .circle_icon.green
-          %i.icon-ok.icon-white
+        .message_checkmark{class: message_checkmark_class(message)}
   %footer
     - if message.checked?
       .last_checked

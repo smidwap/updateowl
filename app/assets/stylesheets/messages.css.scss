@@ -35,6 +35,23 @@
       float: left;
       width: 10%;
       text-align: center;
+
+      .message_checkmark {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: image-url("checkmarks.png");
+        background-position: 24px 72px;
+
+        &.checked_by_12_point_5_percent { background-position: 0 0; }
+        &.checked_by_25_percent         { background-position: -24px 0; }
+        &.checked_by_37_point_5_percent { background-position: -48px 0; }
+        &.checked_by_50_percent         { background-position: -72px 0; }
+        &.checked_by_62_point_5_percent { background-position: 0 -24px; }
+        &.checked_by_75_percent         { background-position: -24px -24px; }
+        &.checked_by_87_point_5_percent { background-position: -48px -24px; }
+        &.checked_by_100_percent        { background-position: -72px -24px; }
+      }
     }
   }
 

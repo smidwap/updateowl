@@ -1,5 +1,6 @@
 class Message < ActiveRecord::Base
   include Translatable
+  include Checkable
 
   has_many :student_messages, dependent: :destroy
 
@@ -24,8 +25,6 @@ class Message < ActiveRecord::Base
   scope :in_date_range, lambda { |start_date, end_date|
     where(created_at: start_date..end_date)
   }
-  scope :checked, where('checks_count > 0')
-  scope :unchecked, where('checks_count = 0')
   scope :individual, where('student_messages_count = 1')
   scope :mass, where('student_messages_count > 1')
   scope :oldest_first, order('created_at ASC')
@@ -37,10 +36,6 @@ class Message < ActiveRecord::Base
   def individual?
     return student_messages_count == 1 unless student_messages_count == 0
     return students.length == 1
-  end
-
-  def checked?
-    checks_count > 0
   end
 
   def destroy_if_individual_student_is_destroyed

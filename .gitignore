@@ -18,3 +18,4 @@ Notes
 .DS_STORE
 app/concerns/second_tierable.rb
 lib/tasks/student_load.rake
+*.psd
