@@ -5,6 +5,7 @@ class HomeController < ApplicationController
 
   def dashboard
     @user = current_user
+    @messages = @user.all_messages_for_students.includes(:students, :user)
   end
 
 private

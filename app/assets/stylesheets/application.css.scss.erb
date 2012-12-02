@@ -210,15 +210,25 @@ body > header {
   }
 }
 
-section > header {
-  @include clearfix();
-  
-  h3 {
-    float: left;
-    font-size: 16px;
-    color: $red;
+section {
+  margin-bottom: 20px;
+
+  > header {
+    @include clearfix();
     margin-bottom: 10px;
-    font-weight: normal;
+
+    h3 {
+      font-size: 16px;
+      margin-bottom: 0;
+      color: $red;
+      font-weight: normal;
+    }
+
+    .inline_navigation_container {
+      h3 {
+        float: left;
+      }
+    }
   }
 }
 

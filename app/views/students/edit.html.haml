@@ -7,12 +7,13 @@
 
 %section.student_parents_edit
   %header
-    %h3 #{@student.first_name}'s Parents
-    .circle_icon_nav.add_parent
-      = link_to new_student_parent_path(@student), remote: true do
-        .circle_icon
-          %i.icon-plus.icon-black
-        %span Add contact details for a new parent
+    .inline_navigation_container
+      %h3 #{@student.first_name}'s Parents
+      .circle_icon_nav.add_parent
+        = link_to new_student_parent_path(@student), remote: true do
+          .circle_icon
+            %i.icon-plus.icon-black
+          %span Add contact details for a new parent
   %ol.parents#parents
     - @student.parents.each do |parent|
       %li.parent{id: "parent_#{parent.id}"}

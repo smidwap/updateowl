@@ -56,6 +56,8 @@ GEM
     bourbon (2.1.1)
       sass (>= 3.1)
     builder (3.0.0)
+    cache_digests (0.2.0)
+      actionpack (>= 3.2)
     cancan (1.6.8)
     capistrano (2.12.0)
       highline
@@ -347,6 +349,7 @@ DEPENDENCIES
   audited-activerecord
   aws-ses
   bootstrap-sass (~> 2.0.2)
+  cache_digests
   cancan
   capistrano
   capistrano-ext
