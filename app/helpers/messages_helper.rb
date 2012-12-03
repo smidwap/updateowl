@@ -40,10 +40,25 @@ module MessagesHelper
     message.individual? ? message.students.first.full_name : "All Students"
   end
 
-  # Assuming message is checked
+  # We assume the message is checked here
   def message_checkmark_class(message)
-    return "checked_by_100_percent" if message.individual?
+    return "checked_by_100_percent" if message.individual? || message.kind_of?(StudentMessage)
 
     CHECKMARK_CLASSES[message.percentage_checked_octile - 1]
+  end
+
+  # When the message is of type StudentMessage, the message
+  # template differs between mass messages and individual
+  # messages.
+  def message_cache_key(message)
+    if message.kind_of?(Message)
+      message.cache_key
+    else
+      if message.individual?
+        message.message.cache_key
+      else
+        message.cache_key
+      end
+    end
   end
 end

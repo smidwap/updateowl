@@ -3,4 +3,4 @@
   
   .filter_alert These are your updates <b>unchecked by parents</b>. #{link_to "View all updates", user_messages_path(@user)} instead
 
-  = render "shared/messages/list", messages: @user.messages.unchecked
+  = render "messages/message_list", messages: @messages

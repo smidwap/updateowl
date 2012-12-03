@@ -1,2 +1,6 @@
-.messages
-  = render messages
+- if messages.length > 0
+  .messages
+    - messages.each do |message|
+      = render "messages/message", message: message
+- else
+  .messages.no_messages There aren't any messages to show you yet!
