@@ -1,35 +1,8 @@
 @import 'includes';
 
-.event_container {
-  border-bottom: 1px solid $grayLighter;
-  margin-bottom: 10px;
-
-  > header {
-    @include clearfix();
-    font-weight: bold;
-    padding-bottom: 10px;
-    
-    .subject {
-      float: left;
-      width: 70%;
-    }
-
-    time {
-      float: left;
-      width: 30%;
-      text-align: right;
-    }
-  }
-
-  .event_body {
-    padding: 10px;
-    padding-top: 0;
-  }
-}
-
-.event_container.new_message {
-  > .event_body {
-    color: $grayLight;
+section#accessible_messages {
+  .pagination {
+    display: none;
   }
 }
 

@@ -65,6 +65,7 @@ gem "to_lang"
 gem 'google-analytics-rails'
 gem 'newrelic_rpm'
 gem 'cache_digests'
+gem 'will_paginate'
 
 group :development do
   gem "letter_opener"

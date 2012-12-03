@@ -337,6 +337,7 @@ GEM
       rack (>= 1.0.0)
     warden (1.2.1)
       rack (>= 1.0)
+    will_paginate (3.0.3)
     xml-simple (1.1.1)
     yard (0.8.2.1)
 
@@ -395,4 +396,5 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   uuid
   valid_email
+  will_paginate
   yard

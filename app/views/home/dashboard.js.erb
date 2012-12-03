@@ -1,0 +1,2 @@
+$('#accessible_messages .messages').append('<%= j(render(@messages)) %>');
+$('.pagination').replaceWith('<%= j(will_paginate(@messages)) %>');

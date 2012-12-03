@@ -5,7 +5,7 @@ class HomeController < ApplicationController
 
   def dashboard
     @user = current_user
-    @messages = @user.all_messages_for_students.includes(:students, :user)
+    @messages = @user.all_messages_for_students.paginate(page: params[:page], per_page: 40).includes(:students, :user)
   end
 
 private
