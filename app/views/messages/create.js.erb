@@ -1,17 +1,15 @@
-App.main.alert('<%= escape_javascript(render("shared/alert", message: "Your update to <b>#{student_name_for_message(@message)}</b> has been sent")) %>');
-
-<% event = Event::NewMessage.new(@message) %>
-
-$('.events_list').prepend('<%= escape_javascript(partial_for_event(event)) %>');
-
-$('#user_<%= @message.user_id %>_all_messages table.messages tbody').prepend('<%= escape_javascript(render "shared/messages/message", message: @message) %>');
-
-$('#user_<%= @message.user_id %>_unchecked_messages table.messages tbody').prepend('<%= escape_javascript(render "shared/messages/message", message: @message) %>');
-
-<% if @message.individual? %>
-  $('#student_<%= @message.students.first.id %>_all_messages table.messages tbody').prepend('<%= escape_javascript(render "shared/messages/message", message: @message) %>');
-
-  $('#student_<%= @message.students.first.id %>_unchecked_messages table.messages tbody').prepend('<%= escape_javascript(render "shared/messages/message", message: @message) %>');
-<% end %>
+App.main.alert('<%= j(render("shared/alert", message: "Your update to <b>#{student_name_for_message(@message)}</b> has been sent")) %>');
 
 $('.no_messages').remove();
+
+$('#accessible_messages .messages').prepend('<%= j(render @message) %>');
+
+$('#user_<%= @message.user_id %>_all_messages .messages').prepend('<%= j(render @message) %>');
+
+$('#user_<%= @message.user_id %>_unchecked_messages .messages').prepend('<%= j(render @message) %>');
+
+<% if @message.individual? %>
+  $('#student_<%= @message.students.first.id %>_all_messages .messages').prepend('<%= j(render @message) %>');
+
+  $('#student_<%= @message.students.first.id %>_unchecked_messages .messages').prepend('<%= j(render @message) %>');
+<% end %>

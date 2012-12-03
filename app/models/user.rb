@@ -45,10 +45,6 @@ class User < ActiveRecord::Base
     "#{try(:title)}" + " #{try(:last_name)}"
   end
 
-  def events
-    Event::Builder.new(self).events
-  end
-
   def consistency
     @consistency ||= Consistency.new(self)
   end
