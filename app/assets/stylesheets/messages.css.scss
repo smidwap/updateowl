@@ -1,5 +1,10 @@
 @import 'includes';
 
+.messages.no_messages {
+  text-align: center;
+  font-style: italic;
+}
+
 .message {
   padding-bottom: 10px;
   margin-bottom: 10px;
@@ -67,65 +72,6 @@
       width: 40%;
       margin-right: 10%;
       text-align: right;
-    }
-  }
-}
-
-.message {      
-  span.to {
-    color: #000;
-    font-weight: bold;
-  }
-
-  span.message_body {
-    color: $grayLight;
-  }
-
-  span.from {
-    color: $grayLight;
-    font-size: 11px;
-  }
-
-  &.single {
-    span.message_body {
-      color: $textColor;
-    }
-  }
-}
-
-table.messages {
-  tr:hover td {
-    background: none;
-  }
-
-  tbody > tr > td {
-    border-top: none;
-    border-bottom: 1px solid $grayLighter;
-
-    &:first-child {
-      padding-left: 0;
-      @include border-radius($standardRadius 0 0 $standardRadius);
-    }
-
-    &:last-child {
-      @include border-radius(0 $standardRadius $standardRadius 0);
-    }
-
-    &.time {
-      width: 75px;
-      font-weight: bold;
-      white-space: nowrap;
-      text-align: right;
-    }
-
-    &.status {
-      width: 22px;
-    }
-
-    &.no_messages {
-      text-align: center;
-      padding: 10px;
-      font-style: italic;
     }
   }
 }
