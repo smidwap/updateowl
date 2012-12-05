@@ -2,8 +2,8 @@ module Message::Translatable
   extend ActiveSupport::Concern
 
   included do
-    after_commit :translate, if: :requires_translation?
-    after_update :translate, if: :should_retranslate?
+    after_commit :translate, if: :requires_translation?, on: :create
+    after_commit :translate, if: :should_retranslate?, on: :update
   end
 
   def translate
