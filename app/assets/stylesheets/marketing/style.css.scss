@@ -39,10 +39,10 @@ h3 {
   background: $blueDarker;
   @include box-shadow(0 4px 8px #ccc);
   padding-bottom: 60px;
+  color: #fff;
 
   h1, h2 {
     text-align: center;
-    color: #fff;
     font-family: $serifFontFamily;
   }
 
@@ -71,10 +71,10 @@ h3 {
       background: darken($blue, 5%);
       padding: 15px;
       font-size: 18px;
-      color: #fff;
       font-weight: 100;
       letter-spacing: 0.1em;
       @include border-radius(3px);
+      color: #fff;
 
       &:hover {
         background: $blue;
