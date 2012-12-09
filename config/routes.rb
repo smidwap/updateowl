@@ -16,6 +16,7 @@ UpdateMe::Application.routes.draw do
   root to: "pages#index"
 
   match "marketing" => "pages#index", via: :get
+  match "parents" => "Parental::Web::Parents#new"
 
   match "dashboard" => "home#dashboard", via: :get, as: :dashboard
 
