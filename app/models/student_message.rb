@@ -11,11 +11,16 @@ class StudentMessage < ActiveRecord::Base
   after_save :update_message_last_checked_at, if: :checked_at_changed?
 
   after_destroy { message.destroy_if_individual_student_is_destroyed }
+  after_destroy :decrement_checks_counter, if: :checked_at?
 
 private
 
   def increment_checks_counter
     message.increment!(:checks_count)
+  end
+
+  def decrement_checks_counter
+    message.decrement!(:checks_count)
   end
 
   def update_message_last_checked_at

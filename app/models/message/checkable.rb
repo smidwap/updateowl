@@ -1,6 +1,7 @@
 module Message::Checkable
   extend ActiveSupport::Concern
 
+  # Creates an array like [[0, 0.125], ..., [.875, 1.0]]
   OCTILE_INTERVALS = 8.times.inject([]) do |intervals, index|
     lower_bound = index * 0.125
     upper_bound = 0.125 + index * 0.125
