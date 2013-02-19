@@ -37,6 +37,10 @@ class ParentsController < ApplicationController
     render_resource_invalid @parent
   end
 
+  def toggle_translation
+    @parent.toggle!(:spanish_speaking)
+  end
+
   def destroy
     @parent.destroy
 

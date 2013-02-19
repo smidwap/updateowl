@@ -16,5 +16,5 @@
           %span Add contact details for a new parent
   %ol.parents#parents
     - @student.parents.each do |parent|
-      %li.parent{id: "parent_#{parent.id}"}
+      %li.parent{id: dom_id(parent)}
         = render "shared/parents/parent", student: @student, parent: parent

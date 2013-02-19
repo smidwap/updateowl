@@ -1,9 +1,13 @@
 .current_contact
-  %span.preference #{parent.preference.capitalize}:
-  #{parent.current_contact}
-.actions
-  This parent's communication preference is <b>#{parent.preference}</b>.
-  <br />
-  #{link_to "Edit", edit_student_parent_path(student, parent), remote: true}
-  |
-  #{link_to "Remove", student_parent_path(student, parent), remote: true, method: :delete, confirm: "Are you sure you want to delete this parent's contact details?", class: "remove"}
+  %p
+    %span.preference #{parent.preference.capitalize}:
+    #{parent.current_contact}
+  %p
+    = link_to 'Edit Contact', edit_student_parent_path(student, parent), remote: true
+    |
+    - if parent.spanish_speaking?
+      = link_to 'Disable Spanish Translation', toggle_translation_student_parent_path(student, parent), remote: true, method: :post
+    - else
+      = link_to 'Enable Spanish Translation', toggle_translation_student_parent_path(student, parent), remote: true, method: :post
+    |
+    = link_to 'Remove', student_parent_path(student, parent), remote: true, method: :delete, confirm: "Are you sure you want to delete this parent's contact details?", class: "remove"

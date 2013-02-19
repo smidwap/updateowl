@@ -28,7 +28,9 @@ UpdateMe::Application.routes.draw do
       get :unchecked, on: :collection
     end
 
-    resources :parents
+    resources :parents do
+      post :toggle_translation, on: :member
+    end
   end
 
   resources :users do
