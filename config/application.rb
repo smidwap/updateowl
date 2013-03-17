@@ -56,6 +56,9 @@ module UpdateMe
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    # Generate digests for assets URLs
+    config.assets.digest = true
+
     # Don't initialize the app when running rake assets:precompile
     config.assets.initialize_on_precompile = false
 
