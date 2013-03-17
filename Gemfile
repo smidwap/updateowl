@@ -2,10 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -20,21 +16,6 @@ end
 
 gem 'jquery-rails'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
-
 gem "mysql2"
 gem "haml"
 gem "haml-rails"
@@ -43,11 +24,6 @@ gem "devise"
 gem "cancan"
 gem "activeadmin"
 gem "meta_search", ">= 1.1.0.pre"
-gem "capistrano", :require => false
-gem "capistrano-ext", :require => false
-gem "capistrano-helpers", :require => false
-gem "capistrano_colors", :require => false
-gem "therubyracer", :require => false
 gem "foreman", :require => false
 gem "puma", :require => false
 gem "jquery-ui-rails"
@@ -67,15 +43,13 @@ gem 'newrelic_rpm'
 gem 'cache_digests'
 gem 'will_paginate'
 
+
 group :development do
   gem "letter_opener"
   gem "active_record_query_trace"
 end
 
 group :development, :test do
-  gem "yard", :require => false
-  gem "simplecov", :require => false
-  gem "simplecov-rcov", :require => false
   gem "rails3-generators"
   gem "guard", :require => false
   gem "guard-rspec", :require => false
