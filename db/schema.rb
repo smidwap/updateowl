@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121009045442) do
+ActiveRecord::Schema.define(:version => 20130319211002) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -73,6 +73,8 @@ ActiveRecord::Schema.define(:version => 20121009045442) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "classroom_relationships", ["user_id", "student_id"], :name => "index_classroom_relationships_on_user_id_and_student_id"
 
   create_table "deliveries", :force => true do |t|
     t.string   "access_code"
