@@ -33,7 +33,7 @@ class Student < ActiveRecord::Base
   after_create :create_pin
 
   def has_parents?
-    parents.count > 0
+    parents_count > 0
   end
 
 private
