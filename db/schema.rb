@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130319211002) do
+ActiveRecord::Schema.define(:version => 20130319211929) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -91,6 +91,8 @@ ActiveRecord::Schema.define(:version => 20130319211002) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "family_ties", ["parent_id", "student_id"], :name => "index_family_ties_on_parent_id_and_student_id", :unique => true
 
   create_table "grade_levels", :force => true do |t|
     t.string   "name"
