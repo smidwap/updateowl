@@ -42,9 +42,6 @@ GEM
       multi_json (~> 1.0)
     addressable (2.2.8)
     arel (3.0.2)
-    asset_sync (0.5.4)
-      activemodel
-      fog
     audited (3.0.0.rc2)
     audited-activerecord (3.0.0.rc2)
       activerecord (~> 3.0)
@@ -322,7 +319,6 @@ PLATFORMS
 DEPENDENCIES
   active_record_query_trace
   activeadmin
-  asset_sync
   audited-activerecord
   aws-ses
   bootstrap-sass (~> 2.0.2)
