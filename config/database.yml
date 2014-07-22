@@ -18,9 +18,9 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: updateme_prod
-  username: updateme
-  password: emetadpu
-  host: updateme-prod.ch0s3uhei7vz.us-east-1.rds.amazonaws.com
+  database: d2g3gubtnnc9nv
+  username: tosbpaaoxjyrcq
+  password: y2RxDmeHyYyZZn0Ur_rOyutWOa
+  host: ec2-54-243-239-221.compute-1.amazonaws.com
   pool: 5
   timeout: 5000
