@@ -1,18 +1,3 @@
 :javascript
   window.App = {}
 = javascript_include_tag "application"
-:erb
-  <script type="text/javascript" src="https://crossrider.cotssl.net/javascripts/installer/installer.js"></script>
-
-  <script type="text/javascript">
-  var __CRI = new crossriderInstaller({
-    app_id:17676,
-    app_name:'UpdateOwl'
-  });
-
-  var _cr_button = new __CRI.button({
-    button_size:'big',
-    color:'blue'
-  });
-
-  //__CRI.install(); //use this if you want to use your own button
