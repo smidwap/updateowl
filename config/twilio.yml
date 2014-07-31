@@ -5,5 +5,5 @@ development:
   sid: "ACb2a6a4428ac048c8b518c7004dcac736"
   auth_token: "c3bf7ad7601b8e86e142317375666591"
 production:
-  sid: "ACb2a6a4428ac048c8b518c7004dcac736"
-  auth_token: "c3bf7ad7601b8e86e142317375666591"
+  sid: "AC211f188327f400ae44b7a804adf4eece"
+  auth_token: "e3ec3d6aa35d4d35b5c0b05a52521e5c"
