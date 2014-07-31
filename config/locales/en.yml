@@ -17,7 +17,7 @@ en:
         next: 'To hear the next update, press 2.'
         otherwise: 'Otherwise, you can hang up at anytime.'
       bad_route: 'Sorry, I did not understand your response.'
-      sent: 'Sent by %{by} %{time_ago} for %{for}.'
+      sent: 'Sent by %{by} %{time_ago} ago for %{for}.'
     email:
       notification: 'A new update has been sent from %{teacher} for %{student}.'
       one_other_delivery: 'You also have 1 other unread update'
