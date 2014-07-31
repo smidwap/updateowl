@@ -69,7 +69,7 @@ UpdateMe::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # For twilio callbacks
-  config.root_url = 'http://www.updateowl.com'
+  config.root_url = 'http://ec2-54-86-132-237.compute-1.amazonaws.com'
 
   # Google analytics
   GA.tracker = 'UA-34778894-1'
